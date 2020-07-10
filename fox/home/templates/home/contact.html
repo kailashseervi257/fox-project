@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block navbar %}
+			<li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
+            <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Ours Services</a></li>
+            <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+            <li class="nav-item active"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock  %}
+{% block content %}
+
+{% load static  %}
+    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Contact Us</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex contact-info">
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Address</h3>
+	            <p>#53, 2nd floor, 3rd Cross, Bhuvaneshwari Nagar, Dasarahalli main road, Hebbal, Kempapura, Bangalore-560024 Land mark- Near Union Bank / Nice Mart, INDIA.</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Contact Number</h3>
+	            <p><a href="tel:9590747327">+91-9590747327</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Email Address</h3>
+	            <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Website</h3>
+	            <p><a href="#">yoursite.com</a></p>
+	          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+			<div class="container">
+				<div class="row d-flex align-items-stretch no-gutters">
+					<div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
+						<form method='POST' action="{% url 'contact' %}">
+            {% csrf_token %}
+            {% if error %}
+            <div class="alert alert-danger text-warning bg-transparent border-0 " role="alert">
+					    <span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>
+  						{{ message }}
+					  </div>
+						{{ error }}
+					</div>
+					{% endif %}
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" name="name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email" name="email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject" name="subject">
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+					</div>
+					<div class="col-md-6 d-flex align-items-stretch">
+						<div id="map"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var fss = {lat: 13.055000, lng: 77.600722};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 10, center: fss});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: fss, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTpqjFSrMZz1btmRIKWSlt02nvVp3TbHU&callback=initMap">
+    </script>
+
+
+{% endblock %}

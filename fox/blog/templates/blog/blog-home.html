@@ -1,0 +1,92 @@
+ {% extends "base.html" %}
+ {% block title %}Blogs{% endblock %}
+  {% load static  %}
+{% block navbar %}
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
+            <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Ours Services</a></li>
+            <li class="nav-item active"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock  %}
+ {% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Certified Teacher</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Teacher <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+{% comment %} {% if is_paginated %}
+<nav aria-label="Page navigation container"></nav>
+<ul class="pagination justify-content-center">
+{% if page_obj.has_previous %}
+<li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Prev </a></li>
+{% endif %}
+{% if page_obj.has_next %}
+<li><a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;  </a></li>
+{% endif %}
+</ul>
+</nav>
+</div>
+
+{% endif %} {% endcomment %}
+
+
+
+<section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
+    <div class="container">
+      <div class="row">
+      {% for  blog in blog_list  %}
+        <div class="col-md-6 col-lg-4 ftco-animate">
+          <div class="blog-entry" style="margin-bottom:0;">
+            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
+							<div class="meta-date text-center p-2">
+                <span class="day">{{ blog.pub_date_pro_day }}</span>
+                <span class="mos">{{ blog.pub_date_pro_month }}</span>
+                <span class="yr">{{ blog.pub_date_pro_year }}</span>
+              </div>
+            </a>
+          </div>
+          <div class="text bg-white p-4">
+            <h5 ><a href="{% url 'details' blog.slug %}"  style="color:#000; font:20px;">{{blog.title}}</a></h5>
+            <p>{{blog.short | safe}}...</p>
+              <div class="d-flex align-items-center mt-4">
+	              <p class="mb-0"><a href="{% url 'details' blog.slug %}" style="color: #fd5f00;">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	              <p class="ml-auto mb-0">
+                  <a href="{% url 'details' blog.slug %}" class="mr-2">{{ blog.author}}</a>
+                  <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	              </p>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+</div>
+<br/>
+    </div>
+</section>
+<div class="pagination justify-content-center">
+{% if blog_list.has_other_pages %}
+  <nav></nav>
+  <ul class="pagination justify-content-center" style="margin-top:16px;">
+{% if blog_list.has_previous %}
+<li><a href="?page={{ blog_list.previous_page_number }}" class="page-link btn btn-primary rounded-0" style="margin-right:3px;">< Prev </a></li>
+{% endif %}
+<span class="current" style="margin-left:2px; margin-right:2px; margin-top:4px;">
+Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }} 
+</span>
+{% if blog_list.has_next %}
+<li><a href="?page={{ blog_list.next_page_number }}" class="page-link btn btn-primary rounded-0" style="margin-right:3px;">Next >  </a></li>
+<li><a href="?page={{ blog_list.paginator.num_pages }}" class="page-link border-0" style="color: #fd5f00;">Last &raquo</a></li>
+{% endif %}
+</ul>
+</nav>
+</div>
+{% endif %}
+      </div>
+ {% endblock  %}

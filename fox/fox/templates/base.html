@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+ <title>{% block title %}{% endblock %}</title>
+ <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    
+    {% comment %} <link href="{% static '' %}" > {% endcomment %}
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href=  "{% static 'css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+<header>
+<div class="bg-top navbar-light">
+      <div class="container">
+        <div class="row no-gutters d-flex align-items-center align-items-stretch">
+          <div class="col-md-4 d-flex align-items-center py-4">
+            <a class="navbar-brand" href="{% url 'home' %}">Future Step<br> Solutions<span></span></a>
+          </div>
+          <div class="col-lg-8 d-block">
+            <div class="row d-flex">
+              <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                <div class="text">
+                  <span>Email</span>
+                  <span><a href="mailto:futurestepsolutions@gmail.com">futurestepsolutions@gmail.com</a></span>
+                </div>
+              </div>
+              <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
+                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                <div class="text">
+                  <span>Call</span>
+                  <span><a href="tel:9590747327">9590747327 9590747327</span>
+
+                </div>
+              </div>
+              <div class="col-md topper d-flex align-items-center justify-content-end">
+                <p class="mb-0">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdojvlVgiE95kk_GpKolIIeegIBH6E0gfeV1S66SqSi67xW-w/viewform?usp=sf_link" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center" target="_blank">
+                    <span>Enquire Now</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container d-flex align-items-center px-4">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <form action="#" class="searchform order-lg-last">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control pl-3" placeholder="Search">
+            <button type="submit" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
+          </div>
+        </form>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav mr-auto">
+            {% block navbar %}
+            
+            {% endblock %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    </header>
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+<svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="ftco-footer ftco-bg-dark ftco-section" style="padding-top: 4">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><a href="https://goo.gl/maps/vNjPWoDCvV5nHdsG6"><span class="icon icon-map-marker"></span><span class="text">#53, 2nd floor, 3rd Cross, Bhuvaneshwari Nagar, Dasarahalli main road, Hebbal, Kempapura, Bangalore-560024 Land mark- Near Union Bank / Nice Mart, INDIA.</span></a></li>
+                  <li><a href="tel:9590747327"><span class="icon icon-phone"></span><span class="text">+91-9590747327</span></a></li>
+                  <li><a href="mailto:futurestepsolutions@gmail.com"><span class="icon icon-envelope"></span><span class="text">futurestepsolution@gmail.com</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!---blog area in footer--->
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              
+
+          
+              {% for blog in recBlogs %}
+              <div class="block-21 mb-4 d-flex">
+                <a href="{% url 'details' blog.slug %}" class="blog-img mr-4" style="background-image: url({{ blog.image.url }});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="{% url 'details' blog.slug %}">{{ blog.title }}</a></h3>
+                  <div class="meta">
+                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-calendar"></span> {{ blog.pub_date_pro}}</a></div><br/>
+                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-person"></span> {{ blog.author }}</a></div>
+                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+
+
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5 ml-md-4">
+              <h2 class="ftco-heading-2">Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="{% url 'home' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
+                <li><a href="{% url 'about' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
+                <li><a href="{% url 'services' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
+                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Deparments</a></li>
+                <li><a href="{% url 'contact' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5">
+              <h2 class="ftco-heading-2">Subscribe Us!</h2>
+              <form action="#" class="subscribe-form">
+                <div class="form-group">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+            <div class="ftco-footer-widget mb-5">
+              <h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-education" aria-hidden="true"></i> by <a href="https://fssonline.in" target="_blank">fssonline</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer> 
+
+    
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  {% comment %} <script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.6960844506734!2d77.59852621482288!3d13.0550068908012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAzJzE4LjAiTiA3N8KwMzYnMDIuNiJF!5e0!3m2!1sen!2sin!4v1594021034738!5m2!1sen!2sin" ></script> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+  {% comment %} <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>  {% endcomment %}
+  {% comment %} https://goo.gl/maps/vNjPWoDCvV5nHdsG6 {% endcomment %}
+  {% comment %} <script src="{% static 'js/google-map.js' %}"></script> {% endcomment %}
+  <script src="{% static 'js/main.js' %}"></script>   
+</body>
+
+</html>
+
