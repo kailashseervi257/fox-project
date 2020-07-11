@@ -7,5 +7,8 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ['title', 'body']
     pre_populated_fields = {'slug': ('title',)}
 
+class BlogViewAdmin(admin.ModelAdmin):
+    list_display = ('blog_id', 'blog','ip', 'created')
+    
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(BlogView)
+admin.site.register(BlogView, BlogViewAdmin)

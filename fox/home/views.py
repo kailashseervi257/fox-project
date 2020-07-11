@@ -47,4 +47,5 @@ def new_enquiry(request):
             return render(request,'home/home.html',{'error':'All fields required.'})
     else:
         return render(request, 'home/home.html')
+
         
