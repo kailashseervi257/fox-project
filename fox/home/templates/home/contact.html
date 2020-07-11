@@ -53,21 +53,19 @@
         </div>
       </div>
     </section>
-		
+		{% if error %}
+            <div id="error" class="alert alert-danger  " role="alert">
+            <span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>  						
+  							{{ error }}
+					  </div>
+					</div>
+					{% endif %}
 		<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
 			<div class="container">
 				<div class="row d-flex align-items-stretch no-gutters">
 					<div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
 						<form method='POST' action="{% url 'contact' %}">
             {% csrf_token %}
-            {% if error %}
-            <div class="alert alert-danger text-warning bg-transparent border-0 " role="alert">
-					    <span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>
-  						{{ message }}
-					  </div>
-						{{ error }}
-					</div>
-					{% endif %}
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Your Name" name="name">
               </div>

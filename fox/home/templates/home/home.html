@@ -55,7 +55,7 @@ FSS
     </section>
 	<br/>
 
-<section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" style="background-image: url({% static 'images/bg_5.jpg' %});" data-stellar-background-ratio="0.5">
+<section id="enquiry" class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" style="background-image: url({% static 'images/bg_5.jpg' %});" data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
     	<div class="container">
         	<div class="row justify-content-end">
@@ -69,7 +69,7 @@ FSS
 					
 
 					{% if message %}
-					<div class="alert alert-danger text-warning bg-transparent border-0" role="alert">
+					<div id="error" class="alert alert-success" role="alert">
 					<span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>  						
 						  {{ message }}
 					</div>
@@ -77,13 +77,13 @@ FSS
 
 					{% if error %}
 					<br/>
-					<div class="alert text-warning bg-transparent border-0" role="alert">
+					<div id="error" class="alert alert-danger" role="alert" >
 					<span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>  							
 						  {{ error }}
 					</div>
 					{% endif %}
 
-              		<form  name="enquiryform"  method="POST" action="{% url 'home' %}"  class="appointment-form ftco-animate">
+              		<form name="enquiryform"  method="POST" action="{% url 'home' %}"  class="appointment-form ftco-animate">
                 	{% csrf_token %}
                 	<div class="d-md-flex">
                   		<div class="form-group">
@@ -120,7 +120,7 @@ FSS
                     			<textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
                   			</div>
                   			<div class="form-group ml-md-4">
-                    			<a href="#formerror"><input type="submit" value="Enquire Now" class="btn btn-primary py-3 px-4"></a>
+                    			<input type="submit" value="Enquire Now" class="btn btn-primary py-3 px-4">
                   			</div>
                 		</div>
 					</div>
@@ -661,7 +661,7 @@ FSS
         </div>
 				<div class="row">
 		{% for blog in recBlogs %}
-		<div class="col-md-6 col-lg-4 ftco-animate">
+		<div class="col-md-6 col-lg-4 ftco-animate" style="z-index:5;">
             <div class="blog-entry">
               <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
 				<div class="meta-date text-center p-2">
@@ -671,13 +671,13 @@ FSS
                 </div>
               </a>
               <div class="text bg-white p-4">
-                <h3 class="heading"><a href="{% url 'details' blog.slug %}">{{ blog.title }}</a></h3>
-				<p>{{ blog.short | safe }}...</p>
-                <div class="d-flex align-items-center mt-4">
-	                <p class="mb-0"><a href="{% url 'details' blog.slug %}" style="color: #fd5f00;">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-	                <p class="ml-auto mb-0">
-	                	<a href="{% url 'details' blog.slug %}" class="mr-2">{{ blog.author }}</a>
-	                	<a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a>
+                <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{ blog.title }}</a></h5>
+				{% comment %} <p>{{ blog.short | safe }}...</p> {% endcomment %}
+                <div class="d-flex align-items-center mt-1">
+	                {% comment %} <p class="mb-0"><a href="{% url 'details' blog.slug %}" style="color: #fd5f00;">Read More <span class="ion-ios-arrow-round-forward"></span></a></p> {% endcomment %}
+	                <p class="ml-0 mb-0">
+	                	<a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #000">{{ blog.author }}  | Uploaded {{blog.pub_date_pro_month}} {{blog.pub_date_pro_day}}, {{blog.pub_date_pro_year}}</a>
+	                	{% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
 	                </p>
                 </div>
               </div>

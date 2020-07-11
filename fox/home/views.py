@@ -26,11 +26,6 @@ def contact(request):
             return render(request,'home/contact.html',{'error': 'All fields required.'})
     else:
         return render(request,'home/contact.html')
-    
-def blog(request):
-    return render(request, 'home/blog-home.html.html')
-    
-    
 
 def new_enquiry(request):
     if request.method == 'POST':

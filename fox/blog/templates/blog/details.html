@@ -11,6 +11,8 @@
 {% block content %}
 {% load static  %}
 
+
+
 {% comment %} <h1>Details</h1>
 <p class="heading">
     {{blog.title}}
@@ -67,14 +69,42 @@
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
-          <div class="col-lg-8 ftco-animate"  style="color:#000;">
-            <h1 class="mb-3">{{singleBlog.title}}</h1>
-            <p class="text-left"><span class="icon-calendar"></span> Uploaded on:{{singleBlog.pub_date_pro}} </p>
-            
+          <div class="col-lg-8 ftco-animate"  style="color:#000;">            
             <p>
               <img src="{{ singleBlog.image.url }}" alt="" class="img-fluid">
             </p>
-            <p>{{singleBlog.body|safe }}</p>
+            <h1 class="mb-3"><strong class="custom-blog-title">{{singleBlog.title}}</strong></h1>
+            <p class="text-left"><span class="icon-calendar"></span> Uploaded on: {{singleBlog.pub_date_pro}} </p>
+            
+            
+            <!-- Add to HTML Head -->
+<div >
+<div class="short" style="font-size:24px; color:#000;">Share:</div>
+  <div class="social">
+    <a href="#" id="share-wa" class="sharer button"><i class="fa fa-3x fa-whatsapp"></i></a>
+    <a href="#" id="share-fb" class="sharer button"><i class="fa fa-3x fa-facebook-square"></i></a>
+    <a href="#" id="share-tw" class="sharer button"><i class="fa fa-3x fa-twitter-square"></i></a>
+    <a href="#" id="share-li" class="sharer button"><i class="fa fa-3x fa-linkedin-square"></i></a>
+    <a href="#" id="share-gp" class="sharer button"><i class="fa fa-3x fa-google-plus-square"></i></a>
+    <a href="#" id="share-em" class="sharer button"><i class="fa fa-3x fa-envelope-square"></i></a>
+  </div>
+<hr style="border: 1px solid #C0C0C0"/>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <p class="custom-blog-body" >{{singleBlog.body|safe }}</p>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">Life</a>
@@ -278,17 +308,18 @@
             <div class="sidebar-box ftco-animate">
               <h3>Popular Articles</h3>
               {% for pblogs in popularBlogs %}
-              <div class="block-21 mb-4 d-flex">
+              <div class="block-21 mb-1 d-flex" style="z-index:5;">
                 <a class="blog-img mr-4" style="background-image: url({{ pblogs.image.url }});"></a>
                 <div class="text">
-                  <h3 class="heading"><a href="{% url 'details' pblogs.slug %}">{{ pblogs.title }}</a></h3>
+                  <h3 class="heading"><a href="{% url 'details' pblogs.slug %}" class="custom-blog-title shorter">{{ pblogs.title }}</a></h3>
                   <div class="meta">
-                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-calendar"></span> {{ pblogs.pub_date_pro }}</a></div>
+                    {% comment %} <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-calendar"></span> {{ pblogs.pub_date_pro }}</a></div>
                     <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-person"></span> {{ pblogs.author }}</a></div>
-                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-chat"></span> 19</a></div>
+                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-chat"></span> 19</a></div> {% endcomment %}
                   </div>
                 </div>
               </div>
+              <hr style="border: 1px dashed #C0C0C0"/>
               {% endfor %}
               
 
@@ -326,5 +357,7 @@
         </div>
 			</div>
 		</section>
+
+ <a title="Scroll back to top" rel="nofollow" href="#" class="generate-back-to-top" style="opacity: 1; visibility: visible;" data-scroll-speed="400" data-start-scroll="300"> <span class="screen-reader-text">Scroll back to top</span> </a>   
 		
 {% endblock  %}
