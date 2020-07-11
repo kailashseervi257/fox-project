@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Enquiry, Contact_request
+from blog.models import Blog
 class EnquiryAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'applied_for', 'post_date')
     search_fields = ['full_name','applied_for', 'message']

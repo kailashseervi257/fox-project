@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.postgres.search import SearchVectorField
-from django.contrib.postgres.indexes import GinIndex
+
+
+
+
+
 
 STATUS = (
     (0, "Draft"),
@@ -19,14 +22,10 @@ class Blog(models.Model):
     views_total = models.IntegerField(default=19)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
-    search=SearchVectorField(null=True)
     
     class Meta:
         ordering=['-pub_date']
 
-        indexes=[
-            GinIndex(fields=['search']),
-        ]
     
     def __str__(self):
         return self.title

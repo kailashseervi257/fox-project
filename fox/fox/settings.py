@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'search.apps.SearchConfig',
     'django.contrib.postgres',
     'staff.apps.StaffConfig',
     'course.apps.CourseConfig',
