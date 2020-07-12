@@ -18,7 +18,7 @@ class BlogDetail(generic.DetailView):
 #---------------
 def blog(request):
     blogs = Blog.objects.filter(status=1).order_by('pub_date').reverse()
-    paginator = Paginator(blogs, 1)
+    paginator = Paginator(blogs, 9)
     page_number = request.GET.get('page')
     try:
         blog_list = paginator.page(page_number)

@@ -58,8 +58,10 @@
 
 
 
+{% comment %} -----------Pagination----------- {% endcomment %}
 
-<div class="pagination justify-content-center">
+
+{% comment %} <div class="pagination justify-content-center">
 {% if result.has_other_pages %}
   <nav></nav>
   <ul class="pagination justify-content-center" style="margin-top:16px;">
@@ -78,5 +80,6 @@ Page {{ result.number }} of {{ result.paginator.num_pages }}
 </div>
 {% endif %}
       </div>
+</div> {% endcomment %}
 </div>
 {% endblock  %}
