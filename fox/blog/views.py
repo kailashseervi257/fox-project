@@ -4,16 +4,17 @@ from django.http.response import HttpResponse
 from itertools import chain
 from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 
 # ---class based
-class BlogList(generic.ListView):
-    queryset = Blog.objects.filter(status=1).order_by('-pub_date')
-    template_name = 'blog-home.html'
-    paginate_by = 3
+# class BlogList(generic.ListView):
+#     queryset = Blog.objects.filter(status=1).order_by('-pub_date')
+#     template_name = 'blog-home.html'
+#     paginate_by = 3
 
-class BlogDetail(generic.DetailView):
-    model = Blog
-    template_name='details.html'
+# class BlogDetail(generic.DetailView):
+#     model = Blog
+#     template_name='details.html'
 
 #---------------
 def blog(request):
@@ -49,3 +50,16 @@ def record_view(request, slug):
     return HttpResponse(BlogView.objects.filter(blog=blog).count())
 
 
+def category(request,cat):
+    query= cat
+    if query is not None:
+        submitbutton = 'cat'
+        lookups= Q(title__icontains=query) | Q(body__icontains=query)
+
+        results= Blog.objects.filter(lookups).distinct()
+        
+        body={'results': results, 'submitbutton':submitbutton}
+
+        return render(request, 'search/search.html', body)
+    else:
+        return render(request, 'search/search.html')

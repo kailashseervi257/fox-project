@@ -1,10 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-
-
-
-
+from slugify import slugify
 
 STATUS = (
     (0, "Draft"),
@@ -16,7 +12,7 @@ class Blog(models.Model):
     url = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/')
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     views_total = models.IntegerField(default=19)
@@ -24,9 +20,9 @@ class Blog(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     
     class Meta:
-        ordering=['-pub_date']
+        ordering = ['-pub_date']
+        
 
-    
     def __str__(self):
         return self.title
 
@@ -53,9 +49,23 @@ class BlogView(models.Model):
     blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
     ip=models.CharField(max_length=40)
     session=models.CharField(max_length=40)
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
             return self.blog.title
+
+class Comment(models.Model):
+    blog = models.ForeignKey(Blog,on_delete=models.CASCADE,related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
 
 

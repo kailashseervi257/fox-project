@@ -8,8 +8,7 @@ def searchposts(request):
     if request.method == 'GET':
         query= request.GET.get('q')
 
-        submitbutton= request.GET.get('submit')
-
+        submitbutton = request.GET.get('submit')
         if query is not None:
             lookups= Q(title__icontains=query) | Q(body__icontains=query)
 

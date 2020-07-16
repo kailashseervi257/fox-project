@@ -12,8 +12,49 @@
 
 {% block content %}
 <div class="container">
-{% if submitbutton == 'Search' and request.GET.q != '' %}
-{% if results %}
+
+{% if submitbutton == 'cat' %}
+
+
+<section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
+    <div class="container">
+      <div class="row">
+        {% for result in results %}
+
+        <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
+          <div class="blog-entry" style="margin-bottom:0;">
+            <a href="{% url 'details' result.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ result.image.url }});">
+							<div class="meta-date text-center p-2">
+                <span class="day">{{ result.pub_date_pro_day }}</span>
+                <span class="mos">{{ result.pub_date_pro_month }}</span>
+                <span class="yr">{{ result.pub_date_pro_year }}</span>
+              </div>
+            </a>
+          </div>
+          <div class="text bg-white p-4">
+            <h5><a href="{% url 'details' result.slug %}" class="custom-blog-title short">{{result.title}}</a></h5>
+            {% comment %} <p>{{blog.short | safe}}...</p> {% endcomment %}
+              <div class="d-flex align-items-center mt-1">
+	              {% comment %} <p class="mb-0"><a href="{% url 'details' blog.slug %}" style="color: #fd5f00;">Read More <span class="ion-ios-arrow-round-forward"></span></a></p> {% endcomment %}
+	              <p class="ml-0 mb-0">
+                  <a href="{% url 'details' result.slug %}" class="mr-2" style="color: #000">{{ result.author}} | Uploaded {{result.pub_date_pro_month}} {{result.pub_date_pro_day}}, {{result.pub_date_pro_year}}</a>
+                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
+	              </p>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+        </div>
+        <br/>
+    </div>
+</section>
+{% else %}
+{% endif %}
+
+
+  {% if submitbutton == 'Search' and request.GET.q != '' %}
+  {% if results %}
 <h1>Results for <b>{{ request.GET.q }}</b></h1>
 <br/><br/>
 <section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
