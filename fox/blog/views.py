@@ -33,25 +33,26 @@ def blog(request):
 def detail(request, slug):
     singleBlog = get_object_or_404(Blog, slug=slug)
     resultQuerySet = Blog.objects.order_by('views_total').reverse().filter(status=1)
-    record_view(request, slug)
-    return render(request,'blog/details.html',{'singleBlog':singleBlog,'popularBlogs':resultQuerySet})
+    if singleBlog:
+        record_view(request, slug)
+        return render(request, 'blog/details.html', {'singleBlog': singleBlog, 'popularBlogs': resultQuerySet})
 
 def record_view(request, slug):
-    blog=get_object_or_404(Blog, slug=slug)
+    blog = get_object_or_404(Blog, slug=slug)
     if not BlogView.objects.filter(
         blog=blog,
         session=request.session.session_key):
         view=BlogView(blog=blog,
         ip=request.META['REMOTE_ADDR'],
         session=request.session.session_key)
-        blog.views_total+=1
+        blog.views_total += 1
         blog.save()
         view.save()
     return HttpResponse(BlogView.objects.filter(blog=blog).count())
 
 
 def category(request,cat):
-    query= cat
+    query = cat
     if query is not None:
         submitbutton = 'cat'
         lookups= Q(title__icontains=query) | Q(body__icontains=query)

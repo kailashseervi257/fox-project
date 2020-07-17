@@ -35,6 +35,10 @@
 
 <section class="ftco-section " style="padding-top:5px;">
 	<div class="container">
+  {% if 404_error %}
+  {{ 404_error|safe }}
+  
+  {% endif %}
 		<div id="top" class="row">
       <div class=" col-8 ftco-animate"  style="color:#000; ">    
           <h1 class="mb-3"><strong class="custom-blog-title">{{singleBlog.title}}</strong></h1>        
@@ -72,7 +76,7 @@
               </div> {% endcomment %}
             </div>
           </div>
-          
+
             {% comment %} <div class="pt-5 mt-5">
               <h3 class="mb-5 h4 font-weight-bold">6 Comments</h3>
               <ul class="comment-list">
