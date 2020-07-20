@@ -9,7 +9,7 @@ STATUS = (
 
 class Blog(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    url = models.TextField()
+    url = models.CharField(max_length=255,default=None)
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/')
     slug = models.SlugField(max_length=255, unique=True)
@@ -45,7 +45,13 @@ class Blog(models.Model):
         return self.body[:62]
 
 
-
+class BlogImages(models.Model):
+    blog = models.ForeignKey(Blog, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+    
+    def __str__(self):
+        return "{}'s image {}".format(self.blog.title, self.image)
+    
 
 class BlogView(models.Model):
     blog=models.ForeignKey(Blog,on_delete=models.CASCADE)

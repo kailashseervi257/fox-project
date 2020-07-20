@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import Blog, BlogView
+from .models import Blog, BlogView, BlogImages
 from django.http.response import HttpResponse
 from itertools import chain
 from django.views import generic
@@ -33,6 +33,7 @@ def blog(request):
 
 def detail(request, slug):
     singleBlog = get_object_or_404(Blog, slug=slug)
+    photos=BlogImages.objects.filter(blog=singleBlog)
     comments = singleBlog.comments.filter(active=True)
     new_comment = None
     if request.method == 'POST':
@@ -51,7 +52,8 @@ def detail(request, slug):
                                                     'popularBlogs': resultQuerySet,
                                                     'comments': comments,
                                                     'new_comment': new_comment,
-                                                    'comment_form': comment_form})
+                                                    'comment_form': comment_form,
+                                                    'photos':photos,})
 
 def record_view(request, slug):
     blog = get_object_or_404(Blog, slug=slug)
