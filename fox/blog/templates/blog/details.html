@@ -40,7 +40,7 @@
   
   {% endif %}
 		<div id="top" class="row">
-      <div class=" col-8 ftco-animate"  style="color:#000; ">    
+      <div class="col-lg-8 ftco-animate fadeInUp ftco-animated"  style="color:#000; ">    
           <h1 class="mb-3"><strong class="custom-blog-title">{{singleBlog.title}}</strong></h1>        
           <p>
           <img src="{{ singleBlog.image.url }}" alt="" class="img-fluid">
@@ -56,7 +56,7 @@
 
           <hr style="border: 1px solid #C0C0C0"/>
      
-          <div class="custom-blog-body " >{% autoescape off %} {{ singleBlog.body }} {% endautoescape %}</div>
+          <div class="custom-blog-body text-justify" >{% autoescape off %} {{ singleBlog.body | linebreaks }} {% endautoescape %}</div>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">Life</a>
@@ -76,6 +76,149 @@
               </div> {% endcomment %}
             </div>
           </div>
+
+
+
+
+
+
+
+
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box ftco-animate">
+            <br/>
+            	<h3>Category</h3>
+              <ul class="categories">
+                <li><a href="{% url 'category' 'top' %}">Engineering <span></span></a></li>
+                <li><a href="{% url 'category' 'Sports' %}">Sports <span></span></a></li>
+                <li><a href="{% url 'category' 'Language' %}">Language <span></span></a></li>
+                <li><a href="{% url 'category' 'Food' %}">Food <span></span></a></li>
+                <li><a href="{% url 'category' 'Music' %}">Music <span></span></a></li>
+              </ul>
+            </div>
+
+
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Popular Articles</h3>
+              {% for pblogs in popularBlogs %}
+              <div class="block-21 mb-1 d-flex" style="z-index:5;">
+                <a class="blog-img mr-4" style="background-image: url({{ pblogs.image.url }});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="{% url 'details' pblogs.slug %}" class="custom-blog-title shorter">{{ pblogs.title }}</a></h3>
+                  <div class="meta">
+                    {% comment %} <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-calendar"></span> {{ pblogs.pub_date_pro }}</a></div>
+                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-person"></span> {{ pblogs.author }}</a></div>
+                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-chat"></span> 19</a></div> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+              <hr style="border: 1px dashed #C0C0C0"/>
+              {% endfor %}
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Tag Cloud</h3>
+              <ul class="tagcloud m-0 p-0">
+                <a href="{% url 'category' 'top' %}" class="tag-cloud-link">Engineering</a>
+                {% comment %} <a href="#" class="tag-cloud-link">Kids</a>
+                <a href="#" class="tag-cloud-link">Nursery</a>
+                <a href="#" class="tag-cloud-link">Daycare</a>
+                <a href="#" class="tag-cloud-link">Care</a>
+                <a href="#" class="tag-cloud-link">Kindergarten</a>
+                <a href="#" class="tag-cloud-link">Teacher</a> {% endcomment %}
+              </ul>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+            	<h3>Archives</h3>
+              <ul class="categories">
+              	<li><a href="#">December 2018 <span>(30)</span></a></li>
+              	<li><a href="#">Novemmber 2018 <span>(20)</span></a></li>
+                <li><a href="#">September 2018 <span>(6)</span></a></li>
+                <li><a href="#">August 2018 <span>(8)</span></a></li>
+              </ul>
+            </div>
+
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Paragraph</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+            </div>
+          </div>
+        </div>
+
+<!-- Comments -->
+          <div class=" mt-5" style="color:#000;">
+              <h3 class="mb-5 h4 font-weight-bold">{{ comments.count }} Comment(s)</h3>
+              <ul class="comment-list">
+                {% for comment in comments %}
+                <li class="comment">
+                <hr/>
+                   <div class="vcard bio">
+                    <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3><strong>{{ comment.name }}</strong></h3>
+                    <div class="meta mb-2" style="color:#696969;" >{{ comment.created_on }}</div>
+                    <article><p>{{ comment.body | linebreaks }}</p></article>
+                    {% comment %} <p><a href="#" class="reply">Reply</a></p> {% endcomment %}
+                  </div>
+                </li>
+                {% endfor %}
+
+              </ul>
+<!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+               {% if new_comment %}
+                <div class="alert alert-success" role="alert">
+                  Your comment is awaiting moderation
+                </div>
+                {% else %}
+                {% load crispy_forms_tags %}
+                <form method="POST" action="#" class="p-5 bg-light">
+                <h3 class="mb-1 h4 font-weight-bold">Leave a comment</h3>
+                <p>Your email address will not be published. Required fields are marked *</p>
+                {{ comment_form | crispy }}
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" style="border-radius:0;" class="btn py-3 px-4 btn-primary">
+                  </div>
+                  {% comment %} <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                   {% endcomment %}
+
+                </form>
+                {% endif %}
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
             {% comment %} <div class="pt-5 mt-5">
               <h3 class="mb-5 h4 font-weight-bold">6 Comments</h3>
@@ -213,71 +356,7 @@
             </div>
             </div> <!-- .col-md-8 --> {% endcomment %}
 
-          <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box">
-            </div>
-            <div class="sidebar-box ftco-animate">
-            	<h3>Category</h3>
-              <ul class="categories">
-                <li><a href="{% url 'category' 'top' %}">Engineering <span></span></a></li>
-                <li><a href="{% url 'category' 'Sports' %}">Sports <span></span></a></li>
-                <li><a href="{% url 'category' 'Language' %}">Language <span></span></a></li>
-                <li><a href="{% url 'category' 'Food' %}">Food <span></span></a></li>
-                <li><a href="{% url 'category' 'Music' %}">Music <span></span></a></li>
-              </ul>
-            </div>
-
-
-            <div class="sidebar-box ftco-animate">
-              <h3>Popular Articles</h3>
-              {% for pblogs in popularBlogs %}
-              <div class="block-21 mb-1 d-flex" style="z-index:5;">
-                <a class="blog-img mr-4" style="background-image: url({{ pblogs.image.url }});"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="{% url 'details' pblogs.slug %}" class="custom-blog-title shorter">{{ pblogs.title }}</a></h3>
-                  <div class="meta">
-                    {% comment %} <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-calendar"></span> {{ pblogs.pub_date_pro }}</a></div>
-                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-person"></span> {{ pblogs.author }}</a></div>
-                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-chat"></span> 19</a></div> {% endcomment %}
-                  </div>
-                </div>
-              </div>
-              <hr style="border: 1px dashed #C0C0C0"/>
-              {% endfor %}
-              
-
-
-
-            <div class="sidebar-box ftco-animate">
-              <h3>Tag Cloud</h3>
-              <ul class="tagcloud m-0 p-0">
-                <a href="{% url 'category' 'top' %}" class="tag-cloud-link">Engineering</a>
-                {% comment %} <a href="#" class="tag-cloud-link">Kids</a>
-                <a href="#" class="tag-cloud-link">Nursery</a>
-                <a href="#" class="tag-cloud-link">Daycare</a>
-                <a href="#" class="tag-cloud-link">Care</a>
-                <a href="#" class="tag-cloud-link">Kindergarten</a>
-                <a href="#" class="tag-cloud-link">Teacher</a> {% endcomment %}
-              </ul>
-            </div>
-
-            <div class="sidebar-box ftco-animate">
-            	<h3>Archives</h3>
-              <ul class="categories">
-              	<li><a href="#">December 2018 <span>(30)</span></a></li>
-              	<li><a href="#">Novemmber 2018 <span>(20)</span></a></li>
-                <li><a href="#">September 2018 <span>(6)</span></a></li>
-                <li><a href="#">August 2018 <span>(8)</span></a></li>
-              </ul>
-            </div>
-
-
-            <div class="sidebar-box ftco-animate">
-              <h3>Paragraph</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-            </div>
-          </div><!-- END COL -->
-        </div>
+          
 			</div>
 		</section>
 {% endblock  %}

@@ -5,6 +5,7 @@ from itertools import chain
 from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from .forms import CommentForm
 
 # ---class based
 # class BlogList(generic.ListView):
@@ -32,10 +33,25 @@ def blog(request):
 
 def detail(request, slug):
     singleBlog = get_object_or_404(Blog, slug=slug)
+    comments = singleBlog.comments.filter(active=True)
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.blog = singleBlog
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
     resultQuerySet = Blog.objects.order_by('views_total').reverse().filter(status=1)
     if singleBlog:
         record_view(request, slug)
-        return render(request, 'blog/details.html', {'singleBlog': singleBlog, 'popularBlogs': resultQuerySet})
+        return render(request, 'blog/details.html', {'singleBlog': singleBlog,
+                                                    'popularBlogs': resultQuerySet,
+                                                    'comments': comments,
+                                                    'new_comment': new_comment,
+                                                    'comment_form': comment_form})
 
 def record_view(request, slug):
     blog = get_object_or_404(Blog, slug=slug)

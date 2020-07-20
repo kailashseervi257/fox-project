@@ -12,7 +12,7 @@ urlpatterns = [
     path('blog/',include('blog.urls')),
     path('staff/',include('staff.urls')),
     path('course/', include('course.urls')),
-    path('home/', include('home.urls')),
+    path('', include('home.urls')),
     re_path(r'^search/',include(('search.urls', 'search'), namespace='search')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

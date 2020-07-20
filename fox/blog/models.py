@@ -45,6 +45,8 @@ class Blog(models.Model):
         return self.body[:62]
 
 
+
+
 class BlogView(models.Model):
     blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
     ip=models.CharField(max_length=40)
