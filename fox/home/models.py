@@ -34,6 +34,10 @@ class Contact_request(models.Model):
     message = models.TextField()
     requested_on=models.DateTimeField(auto_now=True)
     
+class Subscribers(models.Model):
+    email=models.EmailField(unique=True)
+
+
 
 
     

@@ -24,7 +24,7 @@ class BlogViewAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'blog', 'created_on', 'active')
-    list_filter = ('active', 'created_on')
+    list_filter = ('active', 'created_on','blog')
     search_fields = ('name', 'email', 'body')
     actions = ['approve_comments']
 

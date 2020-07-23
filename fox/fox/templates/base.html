@@ -139,7 +139,7 @@ font-size:24px;
         </button>
         <form name="searchbox" method="GET" action="{% url 'search:searchposts' %}" value="{{request.GET.q}}" class="searchform order-lg-last">
           <div class="form-group d-flex">
-            <input type="text" name="q" value="{{request.GET.q}}" class="form-control pl-3" placeholder="Type a keyword">
+            <input type="text" name="q" class="form-control pl-3" placeholder="Type a keyword">
             <button type="submit" name="submit" value="Search" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
           </div>
         </form>
@@ -189,8 +189,8 @@ font-size:24px;
                   <h3 class="heading"><a href="{% url 'details' blog.slug %}">{{ blog.title }}</a></h3>
                   <div class="meta">
                     <div><a href="{% url 'details' blog.slug %}"><span class="icon-calendar"></span> {{ blog.pub_date_pro}}</a></div><br/>
-                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-person"></span> {{ blog.author }}</a></div>
-                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-chat"></span> 19</a></div>
+                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-person"></span> {{ blog.author | title }}</a></div>
+                    {% comment %} <div><a href="{% url 'details' blog.slug %}"><span class="icon-chat"></span> 19</a></div> {% endcomment %}
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@ font-size:24px;
                 <li><a href="{% url 'home' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
                 <li><a href="{% url 'about' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
                 <li><a href="{% url 'services' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Deparments</a></li>
+                <li><a href="{% url 'blog' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Blog</a></li>
                 <li><a href="{% url 'contact' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
               </ul>
             </div>
@@ -215,7 +215,7 @@ font-size:24px;
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2">Subscribe Us!</h2>
-              <form action="#" class="subscribe-form">
+              <form class="subscribe-form">
                 <div class="form-group">
                   <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
                   <input type="submit" value="Subscribe" class="form-control submit px-3">
