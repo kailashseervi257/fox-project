@@ -61,7 +61,7 @@ def record_view(request, slug):
         blog=blog,
         session=request.session.session_key):
         view=BlogView(blog=blog,
-        ip=request.META['REMOTE_ADDR'],
+        ip=request.session.session_key,
         session=request.session.session_key)
         blog.views_total += 1
         blog.save()
