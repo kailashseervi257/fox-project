@@ -55,8 +55,8 @@ class BlogImages(models.Model):
 
 class BlogView(models.Model):
     blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
-    ip=models.CharField(max_length=40)
-    session=models.CharField(max_length=40)
+    ip=models.CharField(max_length=40,blank=True, default='',null=True)
+    session=models.CharField(max_length=40, blank=True, default='',null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

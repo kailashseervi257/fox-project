@@ -66,6 +66,9 @@ def record_view(request, slug):
         blog.views_total += 1
         blog.save()
         view.save()
+    else:
+        blog.views_total += 1
+        blog.save()
     return HttpResponse(BlogView.objects.filter(blog=blog).count())
 
 
