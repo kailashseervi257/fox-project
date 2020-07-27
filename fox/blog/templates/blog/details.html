@@ -8,9 +8,27 @@
   width:730px;
 }
 
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 30px; 
+  z-index: 99; 
+  border: none;
+  outline: none; 
+  background-color: #fd5f00; 
+  color: white;
+  cursor: pointer; 
+  padding: 15px;
+  border-radius: 2px; 
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
 </style>
-
-
 			      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
             <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
             <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
@@ -19,6 +37,8 @@
             <li class="nav-item "><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
 {% endblock  %}
 {% block content %}
+    <button onclick="topFunction()" id="myBtn" title="Go to top" class="p-0"><span class="ion-ios-arrow-up ml-2 mr-2"></span></button>
+
 {% load static  %}
 
  {% comment %} <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});">
@@ -32,7 +52,6 @@
         </div>
       </div>
   </section> {% endcomment %}
-
 <section class="ftco-section " style="padding-top:5px;">
 	<div class="container">
   {% if 404_error %}
@@ -44,36 +63,19 @@
              <br/>    
           <p>
           <img src="{{ singleBlog.image.url }}" alt="" class="img-fluid">
-          <h2 class="mb-3">{{singleBlog.title}}</h2>
+          <h1 class="mb-3"><b>{{singleBlog.title}}</b></h1>
           </p>
           <p class="text-left" style="color:#808080;"><span class="icon-calendar"></span>   {{ singleBlog.pub_date_pro}} | {{ singleBlog.author|title }} </p> 
          
-         
-          {% comment %}<strong class="short" style="font-size:24px; color:##6148c3;">Share:  </strong><a href="#" id="share-wa" class="sharer button"><i class="fa fa-2x fa-whatsapp"></i></a>         
-           <a href="http://google.com" id="share-fb" class="sharer button"><i class="fa fa-2x fa-facebook-square"></i></a>
-          <a href="#" id="share-tw" class="sharer button"><i class="fa fa-2x fa-twitter-square"></i></a>
-          <a href="#" id="share-li" class="sharer button"><i class="fa fa-2x fa-linkedin-square"></i></a>
-          <a href="#" id="share-gp" class="sharer button"><i class="fa fa-2x fa-google-plus-square"></i></a>
-          <a href="#" id="share-em" class="sharer button"><i class="fa fa-2x fa-envelope-square"></i></a>
-          <a href="#" id="share-ig" class="sharer button"><i class="fa fa-2x fa-instagram"></i></a> {% endcomment %}
+    
 
      
           <div class="custom-blog-body text-justify" >{% autoescape off %} {{ singleBlog.body | linebreaks }} {% endautoescape %}</div>
-            <div class="tag-widget post-tag-container mb-5 mt-5">
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">Life</a>
-                <a href="#" class="tag-cloud-link">Sport</a>
-                <a href="#" class="tag-cloud-link">Tech</a>
-                <a href="#" class="tag-cloud-link">Travel</a>
-              </div>
-            </div>
 
-
-
-
-
+            
             <div class="ftco-footer-widget mb-5">
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <h3 class="h4 font-weight-bold">Share:</h3>
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
@@ -108,11 +110,15 @@
             <br/>
             	<h3>Category</h3>
               <ul class="categories">
+                <li><a href="{% url 'category' 'Mtech' %}">Mtech <span></span></a></li>
+                <li><a href="{% url 'category' 'MBA' %}">MBA <span></span></a></li>
+                <li><a href="{% url 'category' 'UG-Medical' %}">UG-Medical <span></span></a></li>
+                <li><a href="{% url 'category' 'PG-Medical' %}">PG-Medical <span></span></a></li>
                 <li><a href="{% url 'category' 'Engineering' %}">Engineering <span></span></a></li>
-                <li><a href="{% url 'category' 'Sports' %}">Sports <span></span></a></li>
-                <li><a href="{% url 'category' 'Language' %}">Language <span></span></a></li>
-                <li><a href="{% url 'category' 'Food' %}">Food <span></span></a></li>
-                <li><a href="{% url 'category' 'Music' %}">Music <span></span></a></li>
+                <li><a href="{% url 'category' 'Commerce' %}">Commerce <span></span></a></li>
+                <li><a href="{% url 'category' 'Law' %}">Law <span></span></a></li>
+                <li><a href="{% url 'category' 'Architecture' %}">Architecture <span></span></a></li>
+                <li><a href="{% url 'category' 'Management' %}">Management <span></span></a></li>
               </ul>
             </div>
 
@@ -136,10 +142,10 @@
               {% endfor %}
 
             <div class="sidebar-box ftco-animate">
-              <h3>Tag Cloud</h3>
+            {% comment %}  <h3>Tag Cloud</h3>
               <ul class="tagcloud m-0 p-0">
-                <a href="{% url 'category' 'top' %}" class="tag-cloud-link">Engineering</a>
-                {% comment %} <a href="#" class="tag-cloud-link">Kids</a>
+            <a href="{% url 'category' 'top' %}" class="tag-cloud-link">Engineering</a>
+                <a href="#" class="tag-cloud-link">Kids</a>
                 <a href="#" class="tag-cloud-link">Nursery</a>
                 <a href="#" class="tag-cloud-link">Daycare</a>
                 <a href="#" class="tag-cloud-link">Care</a>
@@ -147,45 +153,30 @@
                 <a href="#" class="tag-cloud-link">Teacher</a> {% endcomment %}
               </ul>
             </div>
-
             <div class="sidebar-box ftco-animate">
-            	<h3>Archives</h3>
-              <ul class="categories">
-              	<li><a href="#">December 2018 <span>(30)</span></a></li>
-              	<li><a href="#">Novemmber 2018 <span>(20)</span></a></li>
-                <li><a href="#">September 2018 <span>(6)</span></a></li>
-                <li><a href="#">August 2018 <span>(8)</span></a></li>
-              </ul>
-            </div>
-
-
-            <div class="sidebar-box ftco-animate">
-              <h3>Paragraph</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
             </div>
           </div>
         </div>
 
 <!-- Comments -->
           <div class=" mt-5" style="color:#000;">
-              <h3 class="mb-5 h4 font-weight-bold">{{ comments.count }} Comment(s)</h3>
+              <h3 class="mb-1 h4 font-weight-bold">{{ comments.count }} Comment(s)</h3>
               <ul class="comment-list">
                 {% for comment in comments %}
-                <li class="comment">
+                <li class="comment mb-1">
                 <hr/>
                    <div class="vcard bio">
-                    <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
+                    {% comment %} <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder"> {% endcomment %}
                   </div>
                   <div class="comment-body">
-                    <h5><strong>{{ comment.name }}</strong></h5>
-                    <div class="meta mb-2" style="color:#A9A9A9;" >{{ comment.created_on }}</div>
-                    <article><p style="color:#2F4F4F;">{{ comment.body | linebreaks }}</p></article>
+                    <h5><strong>{{ comment.name }}</strong> <div class="meta" style="color:#A9A9A9;" >{{ comment.created_on }}</div></h5> 
+                    <article><p style="color:#2F4F4F;">{{ comment.body }}</p></article>
                     {% comment %} <p><a href="#" class="reply">Reply</a></p> {% endcomment %}
                   </div>
                 </li>
                 {% endfor %}
-
               </ul>
+              </div>
 <!-- END comment-list -->
               
               <div class="comment-form-wrap pt-5">
@@ -201,7 +192,7 @@
                 {{ comment_form | crispy }}
                     {% csrf_token %}
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" style="border-radius:0;" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" value="Post Comment" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
                   </div>
                   {% comment %} <div class="form-group">
                     <label for="name">Name *</label>
@@ -225,7 +216,6 @@
                 </form>
                 {% endif %}
               </div>
-            </div>
 
 
 
@@ -378,4 +368,25 @@
           
 			</div>
 		</section>
+
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 {% endblock  %}

@@ -26,10 +26,13 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'blog', 'created_on', 'active')
     list_filter = ('active', 'created_on','blog')
     search_fields = ('name', 'email', 'body')
-    actions = ['approve_comments']
+    actions = ['approve_comments','disapprove_comments']
 
     def approve_comments(self, request, queryset):
         queryset.update(active=True)
+    
+    def disapprove_comments(self, request, queryset):
+        queryset.update(active=False)
 
 @admin.register(BlogImages)
 class BlogImageAdmin(admin.ModelAdmin):
