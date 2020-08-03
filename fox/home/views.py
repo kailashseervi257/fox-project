@@ -122,7 +122,7 @@ def subscribe(request):
         subs = Subscribers.objects.all()
         new_sub=None
         if request.POST['email']:
-            if request.POST['email'] != str(subs[0]):
+            if request.POST['email'] not in str(subs):
                 formInfo = Subscribers()
                 formInfo.email = request.POST['email']
                 formInfo.created_on=datetime.now()
