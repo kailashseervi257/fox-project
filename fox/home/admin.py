@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Enquiry, Contact_request, Subscribers
+from .models import Enquiry, Contact_request, Subscribers, Engineering_form
 from blog.models import Blog
 
 @admin.register(Enquiry)
@@ -13,10 +13,14 @@ class contactAdmin(admin.ModelAdmin):
     list_filter=('requested_on',)
     search_fields = ['name', 'message']
 
+@admin.register(Engineering_form)
+class EngineeringFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone','branch' ,'created_on')
+    list_filter = ('created_on', 'branch')
 
 
 
 
 @admin.register(Subscribers)
 class SubscribersAdmin(admin.ModelAdmin):
-    list_display=('email',)
+    list_display=('email', 'created_on')

@@ -1,8 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Enquiry, Contact_request
+from .models import Enquiry, Contact_request, Subscribers
 import re
 from django.utils.timezone import datetime
 from blog.models import Blog
+from .forms import Engineering_Form
+
+
+homeForm = {
+    'engg_form': Engineering_Form(),
+}
+
+
+
 def home(request):
     return render(request, 'home/home.html')
 
@@ -25,7 +34,8 @@ def contact(request):
         else:
             return render(request,'home/contact.html',{'error': 'All fields required.'})
     else:
-        return render(request,'home/contact.html')
+        return render(request, 'home/contact.html')
+
 
 def new_enquiry(request):
     if request.method == 'POST':
@@ -40,12 +50,47 @@ def new_enquiry(request):
                 formInfo.message = request.POST['message']
                 formInfo.post_date=datetime.now()
                 formInfo.save()
-                return render(request, 'home/home.html',{'message':'Message successfully sent'})
+                homeForm['message']='Message successfully sent'
+                return render(request, 'home/home.html',homeForm)
             else:
-                return render(request,'home/home.html',{'error':'Invalid phone number'})
+                homeForm['error']='Invalid phone number'
+                return render(request,'home/home.html',homeForm)
         else:
-            return render(request,'home/home.html',{'error':'All fields required.'})
+            homeForm['error']='All fields required.'
+            return render(request,'home/home.html',homeForm)
     else:
-        return render(request, 'home/home.html')
+        return render(request, 'home/home.html',homeForm)
 
+
+def forms(request):
+    if request.method == 'POST':
+        form = Engineering_Form(data=request.POST)
+        Pattern = re.compile("^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$")
+        if form.is_valid() and Pattern.match(request.POST['phone']) and len(request.POST['phone']) >= 10:
+            form.created_on = datetime.now()
+            new_form = form.save(commit=False)
+            new_form.save()
+            # homeForm['new_form']='Successfully submitted....'
+            homeForm['message'] = 'Applied successfully !'
+            return render(request, 'home/home.html',homeForm)
+        if form.errors:
+            homeForm['error'] = form.errors
+    return render(request, 'home/home.html',homeForm)
         
+def subscribe(request):
+    if request.method == "POST":
+        subs = Subscribers.objects.all()
+        new_sub=None
+        if request.POST['email']:
+            if request.POST['email'] != str(subs[0]):
+                formInfo = Subscribers()
+                formInfo.email = request.POST['email']
+                formInfo.created_on=datetime.now()
+                new_sub = formInfo.email
+                formInfo.save()
+                homeForm['message']='Added to mail list'
+                return render(request, 'home/home.html',homeForm)
+            else:
+                homeForm['message']='You have already subscribed!'
+                return render(request, 'home/home.html',homeForm)
+    return render(request, 'home/home.html',homeForm)

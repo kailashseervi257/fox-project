@@ -45,7 +45,7 @@ def detail(request, slug):
     else:
         comment_form = CommentForm()
 
-    resultQuerySet = Blog.objects.order_by('views_total').reverse().filter(status=1)
+    resultQuerySet = Blog.objects.order_by('views_total').reverse().filter(status=1)[:5]
     if singleBlog:
         record_view(request, slug)
         return render(request, 'blog/details.html', {'singleBlog': singleBlog,

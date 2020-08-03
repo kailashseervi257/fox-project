@@ -6,6 +6,10 @@ from .forms import SubscriptionForm
 def recentBlogs(request):
     resultQuerySet = Blog.objects.order_by('pub_date').filter(status=1).reverse()[:3]
     return {'recBlogs': resultQuerySet}
+
+def recentBlogsFooter(request):
+    recentBlogFoot = Blog.objects.order_by('pub_date').filter(status=1).reverse()[:2]
+    return {'recentBlogFoot': recentBlogFoot}
     
 # def subscribeForm(request):
 #     new_sub=None

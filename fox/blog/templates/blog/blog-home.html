@@ -55,7 +55,7 @@
           </div>
           <div class="text bg-white p-4">
             <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
-            <p style="color: #C0C0C0;">{{blog.body | truncatechars:58}} <a href="{% url 'details' blog.slug %}" >Read More </a></p>
+            <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p>
               <div class="d-flex align-items-center mt-1">  
 	              <p class="ml-0 mb-0">
                   <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">By {{ blog.author | title}}</a>

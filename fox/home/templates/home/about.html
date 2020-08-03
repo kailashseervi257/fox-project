@@ -44,15 +44,15 @@
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-2 d-flex">
     			<div class="col-md-6 align-items-stretch d-flex">
-    				<div class="img img-video d-flex align-items-center" style="background-image: url({% static 'images/about-2.jpg' %});">
+    				{% comment %} <div class="img img-video d-flex align-items-center" style="background-image: url({% static 'images/about-2.jpg' %});">
     					<div class="video justify-content-center">
 								<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
 									<span class="ion-ios-play"></span>
 		  					</a>
-							</div>
+							</div> {% endcomment %}
     				</div>
     			</div>
-          <div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
+          <div class="col-md-10 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
             <h2 class="mb-4">FSS Consultancy</h2>
             <p>FSS is an education consultancy has counselled and guided students to get admissions in good colleges across the country in various fields like Engineering, Medical, Commerce, Law, Aviation, Management and also PG courses of different programmes.</p>
             <p>We have been leading as a top consultancy in Bangalore from a decade and has done 5000 admissions successfully in various colleges in the country based on students score and percentile to accomplish his choice of field interest.</p>
@@ -116,7 +116,7 @@
             <div class="carousel-testimony owl-carousel">
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-1.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -130,7 +130,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-2.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -144,7 +144,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-3.jpg' %})">
+                  <div class="user-img mr-4">
                   </div>
                   <div class="text ml-2">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -158,7 +158,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-4.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -172,7 +172,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-1.jpg' %})">
+                  <div class="user-img mr-4">
                   </div>
                   <div class="text ml-2">
                   	<span class="quote d-flex align-items-center justify-content-center">
@@ -191,7 +191,7 @@
     </section>
 
 
-		<section class="ftco-gallery">
+		{% comment %} <section class="ftco-gallery">
     	<div class="container-wrap">
     		<div class="row no-gutters">
 					<div class="col-md-3 ftco-animate">
@@ -224,7 +224,7 @@
 					</div>
         </div>
     	</div>
-    </section>
+    </section> {% endcomment %}
 
 
 {% endblock %}

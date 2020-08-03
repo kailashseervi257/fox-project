@@ -65,24 +65,7 @@ Future Step Solutions
                 			<h3>Looking for admissions in top colleges</h3>
                 			<p>FSS guides you to get admissions in top colleges under your budget, consult us by droping a message.</p>
               			</div>
-					
-
-					{% if message %}
-					<div id="error" class="alert alert-success" role="alert">
-					<span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>  						
-						  {{ message }}
-					</div>
-					{% endif %}
-
-					{% if error %}
-					<br/>
-					<div id="error" class="alert alert-danger" role="alert" >
-            <span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >
-            &times;
-            </span>  							
-					{{ error }}
-					</div>
-					{% endif %}
+				
 
               		<form name="enquiryform"  method="POST" action="{% url 'home' %}"  class="appointment-form ftco-animate">
                 	{% csrf_token %}
@@ -139,9 +122,8 @@ Future Step Solutions
 	<section class="ftco-services ftco-no-pb">
 			<div class="container-wrap">
 				<div class="row no-gutters m-3">
-          <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-primary justify-content-center border border-light">
-		  		<a href="https://docs.google.com/forms/d/e/1FAIpQLSfqvC4ZT77VpuQPY-MqmTSYUuXWamBfQBaMi_JRy5-8o2WHdA/viewform?usp=sf_link" target="_blank">
-            <div class="media block-6 d-block text-center">
+          <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-primary justify-content-center border border-light" style="cursor:default;">
+            <div class="media block-6 d-block text-center" data-toggle="modal" data-target="#exampleModalCenter">
               <div class="icon d-flex justify-content-center align-items-center">
             	<span class="flaticon-teacher"></span>
               </div>
@@ -149,8 +131,7 @@ Future Step Solutions
                 <h3 class="heading">Engineering</h3>
                 <p>Apply.</p>
               </div>
-            </div>
-			</a>      
+            </div>     
           </div>
 
 
@@ -574,15 +555,15 @@ Future Step Solutions
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-2 d-flex">
     			<div class="col-md-6 align-items-stretch d-flex">
-    				<div class="img img-video d-flex align-items-center" style="background-image: url({% static 'images/about-2.jpg' %});">
+    			{% comment %} 	<div class="img img-video d-flex align-items-center" style="background-image: url({% static 'images/about-2.jpg' %});">
     					<div class="video justify-content-center">
 								<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
 									<span class="ion-ios-play"></span>
 		  					</a>
-							</div>
+							</div> {% endcomment %}
     				</div>
     			</div>
-          <div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
+          <div class="col-md-10 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
             <h2 class="mb-4">Future Step Solutions</h2>
             <p>FSS is an education consultancy has counselled and guided students to get admissions in good colleges across the country in various fields like Engineering, Medical, Commerce, Law, Aviation, Management and also PG courses of different programmes.</p>
             <p>We have been leading as a top consultancy in Bangalore from a decade and has done 5000 admissions successfully in various colleges in the country based on students score and percentile to accomplish his choice of field interest.</p>
@@ -959,7 +940,7 @@ Future Step Solutions
             <div class="carousel-testimony owl-carousel">
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-1.jpg' %})">
+                  <div class="user-img mr-4">
                   </div>
                   <div class="text ml-2">
                     <span class="quote d-flex align-items-center justify-content-center">
@@ -973,7 +954,7 @@ Future Step Solutions
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-2.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                     <span class="quote d-flex align-items-center justify-content-center">
@@ -987,7 +968,7 @@ Future Step Solutions
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-3.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                     <span class="quote d-flex align-items-center justify-content-center">
@@ -1001,7 +982,7 @@ Future Step Solutions
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-4.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                     <span class="quote d-flex align-items-center justify-content-center">
@@ -1015,7 +996,7 @@ Future Step Solutions
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static 'images/teacher-1.jpg' %})">
+                  <div class="user-img mr-4" >
                   </div>
                   <div class="text ml-2">
                     <span class="quote d-flex align-items-center justify-content-center">
@@ -1034,7 +1015,7 @@ Future Step Solutions
     </section>
 	<br/>
 
-		<section class="ftco-gallery">
+		{% comment %} <section class="ftco-gallery">
     	<div class="container-wrap">
     		<div class="row no-gutters">
 					<div class="col-md-3 ftco-animate">
@@ -1068,7 +1049,46 @@ Future Step Solutions
         </div>
     	</div>
     </section>
-	<br/>
+	<br/> {% endcomment %}
+
+  	<section class="ftco-section testimony-section">
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="mb-1 h4 font-weight-bold">Apply for Engineering Admissions</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       {% if new_form %}
+    <div class="d-flex container align-items-center justify-content-center my-auto" style="height:100%;">
+   <h3>
+    {{ new_form }}
+    </h3>
+    </div>
+   {% else %}
+ {% load crispy_forms_tags %}
+ <div class="d-flex container align-items-center justify-content-center my-auto col-8 ">
+                <form action="{% url 'forms' %}" method="POST">
+                    {% csrf_token %}
+                    {{ engg_form | crispy  }}
+                  <div class="form-group">
+                    <input type="submit" value="Submit" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
+                  </div>
+            </form>
+<div/>
+    {% endif %}
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
 
 
 {% endblock  %}

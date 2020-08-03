@@ -30,19 +30,14 @@
     font-size:20px;
   }
 .custom-blog-body{
-font-family: "Source Sans Pro script=all rev=1";
+font-family: 'Source Sans Pro', sans-serif;
 font-weight: 500;
 font-style: normal;
 color:#000000;
 transition-duration: 350ms;
 transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-font-size:24px;
+font-size:18px;
 }
-       /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
 
 #error {
   z-index:5; position: fixed; left: 50%; top: 50px; width:auto;
@@ -57,7 +52,8 @@ font-size:24px;
     right: 25px;
     bottom: 25px;
     color: #fff; 
-    width: 100px;
+    background: #fd5f00;
+    width: 190px;
     border-radius: 10px;
     z-index: 11;
     } 
@@ -89,10 +85,13 @@ font-size:24px;
 
 <body>
 
+                  <div id="enquiry-bottom-box" class="col-md topper d-flex align-items-center justify-content-end">
+                <p class="mb-0">
                   <a href="/#enquiry" class="btn py-2 px-3  d-flex align-items-center justify-content-center">
-                  <span class="ion-ios-help-circle" style="color:#5d50c6; font-size:50px;" id="enquiry-bottom-box" title="Enquire now"></span>
-                    {% comment %} <span class="icon-external-link" style="margin:5px; color:#fff;"></span><span style="margin:3px; color:#fff;">Enquire Now</span> {% endcomment %}
+                    <span class="icon-external-link" style="margin:5px; color:#fff;"></span><span style="margin:3px; color:#fff;">Enquire Now</span>
                   </a>
+                </p>
+              </div>
 
 <header>
 <div class="bg-top navbar-light">
@@ -153,6 +152,80 @@ font-size:24px;
     <!-- END nav -->
     </header>
 
+
+
+
+{% if message %}
+        <!-- Button trigger modal -->
+        <button type="button" id="btn-success" class="btn btn-primary" data-toggle="modal" data-target="#successModal" style="display:none;">
+          Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Successful</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-success">
+                {{ message }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endif %}
+
+
+
+
+
+{% if error %}
+            <!-- Button trigger modal -->
+            <button type="button" id="btn-error" class="btn btn-primary" data-toggle="modal" data-target="#errorModal" style="display:none;">
+              Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-danger">
+                    {{ error }}
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% block content %}
 <svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg>
 {% endblock %}
@@ -179,7 +252,7 @@ font-size:24px;
               
 
           
-              {% for blog in recBlogs %}
+              {% for blog in recentBlogFoot %}
               <div class="block-21 mb-4 d-flex">
                 <a href="{% url 'details' blog.slug %}" class="blog-img mr-4" style="background-image: url({{ blog.image.url }});"></a>
                 <div class="text">
@@ -209,13 +282,35 @@ font-size:24px;
               </ul>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-5">
               <h2 class="ftco-heading-2">Subscribe Us!</h2>
-              <form class="subscribe-form">
+              <form  action="{% url 'subscribe' %}" method="POST" class="subscribe-form">
+              {% csrf_token %}
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                  <input name="email" type="email" class="form-control mb-2 text-center" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3" required>
                 </div>
               </form>
             </div>
@@ -233,12 +328,16 @@ font-size:24px;
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made <i class="icon-education" aria-hidden="true"></i> by <a href="https://fssonline.in" target="_blank">fssonline</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made <i class="icon-education" aria-hidden="true"></i> by <a href="{% url 'home' %}" target="_blank">Future Step Solutions</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
       </div>
     </footer> 
+    
+
+
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
     
   <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -257,7 +356,26 @@ font-size:24px;
   {% comment %} <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>  {% endcomment %}
   {% comment %} https://goo.gl/maps/vNjPWoDCvV5nHdsG6 {% endcomment %}
   {% comment %} <script src="{% static 'js/google-map.js' %}"></script> {% endcomment %}
-  <script src="{% static 'js/main.js' %}"></script>   
+  <script src="{% static 'js/main.js' %}"></script>
+
+  {% if message %}
+    <script>
+  window.onload=function() {
+              var SuccessButton = document.getElementById("btn-success");
+                SuccessButton.click();
+              };
+</script>   
+  {% endif %}
+
+  {% if error %}
+    <script>
+  window.onload=function() {
+              var ErrorButton = document.getElementById('btn-error');
+                ErrorButton.click();
+              };
+  </script>   
+  {% endif %}
+  
 </body>
 
 </html>
