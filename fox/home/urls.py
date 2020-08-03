@@ -6,5 +6,9 @@ from . import views
 urlpatterns = [
     path('form/',views.forms,name="forms"),
     path('', views.new_enquiry, name="home"),
-    path('subscribe/',views.subscribe,name="subscribe"),
+    path('subscribe/', views.subscribe, name="subscribe"),
+    path('Medicalform/', views.Medforms, name='Medicalform'),
+    path('Aviationform/', views.Aviationform, name='Aviationform'),
+    path('Architectureform/', views.Architectureform, name='Architectureform'),
+    path('PGMedicalform/', views.PGMedicalform, name='PGMedicalform'),
 ]

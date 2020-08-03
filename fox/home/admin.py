@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Enquiry, Contact_request, Subscribers, Engineering_form
+from .models import Enquiry, Contact_request, Subscribers, Engineering_form, Medical_form, Aviation_form, Architecture_form,PGMedical_form
 from blog.models import Blog
 
 @admin.register(Enquiry)
@@ -15,12 +15,32 @@ class contactAdmin(admin.ModelAdmin):
 
 @admin.register(Engineering_form)
 class EngineeringFormAdmin(admin.ModelAdmin):
-    list_display = ('name', 'phone','branch' ,'created_on')
-    list_filter = ('created_on', 'branch')
+    list_display = ('name', 'phone','branch' ,'created_on',)
+    list_filter = ('created_on', 'branch',)
 
 
 
 
 @admin.register(Subscribers)
 class SubscribersAdmin(admin.ModelAdmin):
-    list_display=('email', 'created_on')
+    list_display = ('email', 'created_on',)
+    
+@admin.register(Medical_form)
+class MedicalFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone','branch' ,'created_on',)
+    list_filter = ('created_on', 'branch',)
+
+@admin.register(Aviation_form)
+class AviationFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone' ,'created_on',)
+    list_filter = ('created_on',)
+
+@admin.register(Architecture_form)
+class ArchitectureFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone' ,'created_on',)
+    list_filter = ('created_on',)
+
+@admin.register(PGMedical_form)
+class PGMedicalFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone' ,'created_on','neet_score')
+    list_filter = ('created_on',)
