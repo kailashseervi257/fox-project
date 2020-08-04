@@ -3,7 +3,7 @@ from .models import Enquiry, Contact_request, Subscribers
 import re
 from django.utils.timezone import datetime
 from blog.models import Blog
-from .forms import Engineering_Form, Medical_Form, Aviation_Form, Architecture_Form, PGMedical_Form
+from .forms import Engineering_Form, Medical_Form, Aviation_Form, Architecture_Form, PGMedical_Form, LawManagementCommerce_Form
 
 
 homeForm = {
@@ -11,7 +11,8 @@ homeForm = {
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
 
 
@@ -47,7 +48,8 @@ def new_enquiry(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
         if request.POST['fullName'] and request.POST['interestedIn'] and request.POST['phone'] and request.POST['appliedFor'] and request.POST['message']:
@@ -75,7 +77,8 @@ def new_enquiry(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
         return render(request, 'home/home.html',homeForm)
 
@@ -86,7 +89,8 @@ def forms(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
         form = Engineering_Form(data=request.POST)
@@ -106,7 +110,8 @@ def forms(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html',homeForm)
         
@@ -116,7 +121,8 @@ def subscribe(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == "POST":
         subs = Subscribers.objects.all()
@@ -138,7 +144,8 @@ def subscribe(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html', homeForm)
     
@@ -150,7 +157,8 @@ def Medforms(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
         form = Medical_Form(data=request.POST)
@@ -170,7 +178,8 @@ def Medforms(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html', homeForm)
     
@@ -180,7 +189,8 @@ def Aviationform(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
         form = Aviation_Form(data=request.POST)
@@ -200,7 +210,8 @@ def Aviationform(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html', homeForm)
     
@@ -211,7 +222,8 @@ def Architectureform(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
         form = Architecture_Form(data=request.POST)
@@ -231,7 +243,8 @@ def Architectureform(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html', homeForm)
     
@@ -242,7 +255,8 @@ def PGMedicalform(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
         form = PGMedical_Form(data=request.POST)
@@ -262,6 +276,41 @@ def PGMedicalform(request):
             'med_form': Medical_Form(),
             'aviation_form': Aviation_Form(),
             'arch_form': Architecture_Form(),
-            'PGmed_form':PGMedical_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
         }
-    return render(request, 'home/home.html',homeForm)
+    return render(request, 'home/home.html', homeForm)
+    
+
+def LMCform(request):
+    homeForm = {
+            'engg_form': Engineering_Form(),
+            'med_form': Medical_Form(),
+            'aviation_form': Aviation_Form(),
+            'arch_form': Architecture_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
+        }
+    if request.method == 'POST':
+        form = LawManagementCommerce_Form(data=request.POST)
+        Pattern = re.compile("^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$")
+        if form.is_valid() and Pattern.match(request.POST['phone']) and len(request.POST['phone']) >= 10:
+            form.created_on = datetime.now()
+            new_form = form.save(commit=False)
+            new_form.save()
+            # homeForm['new_form']='Successfully submitted....'
+            homeForm['message'] = 'Applied successfully !'
+            return render(request, 'home/home.html',homeForm)
+        if form.errors:
+            homeForm['error'] = form.errors
+            return render(request, 'home/home.html',homeForm)
+    homeForm = {
+            'engg_form': Engineering_Form(),
+            'med_form': Medical_Form(),
+            'aviation_form': Aviation_Form(),
+            'arch_form': Architecture_Form(),
+            'PGmed_form': PGMedical_Form(),
+            'LMC_form':LawManagementCommerce_Form(),
+        }
+    return render(request, 'home/home.html', homeForm)
+    

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Enquiry, Contact_request, Subscribers, Engineering_form, Medical_form, Aviation_form, Architecture_form,PGMedical_form
+from .models import Enquiry, Contact_request, Subscribers, Engineering_form, Medical_form, Aviation_form, Architecture_form,PGMedical_form, LawManagementCommerce_form
 from blog.models import Blog
 
 @admin.register(Enquiry)
@@ -44,3 +44,8 @@ class ArchitectureFormAdmin(admin.ModelAdmin):
 class PGMedicalFormAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone' ,'created_on','neet_score')
     list_filter = ('created_on',)
+
+@admin.register(LawManagementCommerce_form)
+class LMCFormAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone' ,'created_on','Law_Management_or_Commerce')
+    list_filter = ('created_on','Law_Management_or_Commerce',)

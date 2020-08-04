@@ -117,3 +117,19 @@ class PGMedical_form(models.Model):
         
     def __str__(self):
         return 'By {} on {}'.format(self.name, self.created_on)
+
+class LawManagementCommerce_form(models.Model):
+    name = models.CharField(max_length=20)
+    phone = models.CharField(max_length=12)
+    email = models.EmailField(max_length=50)
+    TwelfthPercentage = models.CharField(max_length=10)
+    branch = models.CharField(max_length=1000)
+    college = models.CharField(max_length=50)
+    created_on = models.DateTimeField(auto_now=True)
+    anyEntrance = models.BooleanField(default=False)
+    Law_Management_or_Commerce=models.CharField(max_length=15, default='NA')
+    class Meta:
+        ordering = ['-created_on']
+        
+    def __str__(self):
+        return 'By {} on {}'.format(self.name, self.created_on)

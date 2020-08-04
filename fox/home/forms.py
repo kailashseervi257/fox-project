@@ -1,4 +1,4 @@
-from .models import Subscribers, Engineering_form, Medical_form, Aviation_form, Architecture_form, PGMedical_form
+from .models import Subscribers, Engineering_form, Medical_form, Aviation_form, Architecture_form, PGMedical_form, LawManagementCommerce_form
 from django import forms
 
 class SubscriptionForm(forms.ModelForm):
@@ -277,4 +277,39 @@ class PGMedical_Form(forms.ModelForm):
 
     class Meta:
         model = PGMedical_form
-        fields = ('name', 'phone', 'email', 'neet_score','branch')
+        fields = ('name', 'phone', 'email', 'neet_score', 'branch')
+        
+class LawManagementCommerce_Form(forms.ModelForm):
+    BA = 'BA'
+    BBA = 'BBA'
+    BBM = 'BBM'
+    BHM = 'BHM'
+    BMS = 'BMS'
+    BCOM = 'B.com'
+    LMC_branches = [
+        (BA , 'BA'),
+        (BBA , 'BBA'),
+        (BBM , 'BBM'),
+        (BHM , 'BHM'),
+        (BMS , 'BMS'),
+        (BCOM , 'B.com'),
+    ]
+    Law = 'Law'
+    Management = 'Management'
+    Commerce = 'Commerce'
+    LMC = [
+        (Law , 'Law'),
+        (Management , 'Management'),
+        (Commerce , 'Commerce'),
+    ]
+    CHOICES=[('1','Yes'),('2','No')]
+    phone=forms.CharField(required=True, help_text='Your 10 digit mobile number.')
+    email=forms.EmailField(required=True)
+    TwelfthPercentage = forms.FloatField(label='12th/2nd PUC Percentage',required=True)
+    branch = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=LMC_branches, required=True, help_text="Branches you're interested in.")
+    anyEntrance = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES, label='Any entrance?')
+    Law_Management_or_Commerce = forms.ChoiceField(widget=forms.RadioSelect, choices=LMC, label='Apply for Law/Manageemnt/Commerce :', required=True)
+
+    class Meta:
+        model = LawManagementCommerce_form
+        fields = ('name', 'phone', 'email','Law_Management_or_Commerce', 'branch', 'TwelfthPercentage', 'anyEntrance')

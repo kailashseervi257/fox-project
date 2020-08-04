@@ -160,8 +160,7 @@ Future Step Solutions
             </div>   
           </div>
           <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-darken justify-content-center border border-light">
-		    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj-NvsprOlfn52SAISPfRnNiwnlHphZSjLsujm3oRPQPajmw/viewform?usp=sf_link" target="_blank">
-            <div class="media block-6 d-block text-center">
+            <div class="media block-6 d-block text-center" data-toggle="modal" data-target="#LMCModalCenter" style="cursor:pointer;">
               <div class="icon d-flex justify-content-center align-items-center">
             		<span class="flaticon-diploma"></span>
               </div>
@@ -172,7 +171,6 @@ Future Step Solutions
             </div>      
           </div>
         </div>
-		</a>
 		</div>
 			<div class="container-wrap">
 				<div class="row no-gutters m-3">
@@ -189,8 +187,7 @@ Future Step Solutions
             </div>
           </div>
 		  <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-primary justify-content-center border border-light">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj-NvsprOlfn52SAISPfRnNiwnlHphZSjLsujm3oRPQPajmw/viewform?usp=sf_link" target="_blank">
-			<div class="media block-6 d-block text-center">
+			<div class="media block-6 d-block text-center" data-toggle="modal" data-target="#LMCModalCenter" style="cursor:pointer;">
               <div class="icon d-flex justify-content-center align-items-center">
             		<span class="flaticon-books"></span>
               </div>
@@ -199,11 +196,9 @@ Future Step Solutions
 			    <p>Apply.</p>
               </div>
             </div>
-			</a>      
           </div>
 		  		  <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-darken justify-content-center border border-light">
-		  	<a href="https://docs.google.com/forms/d/e/1FAIpQLSfj-NvsprOlfn52SAISPfRnNiwnlHphZSjLsujm3oRPQPajmw/viewform?usp=sf_link" target="_blank">
-            <div class="media block-6 d-block text-center">
+            <div class="media block-6 d-block text-center" data-toggle="modal" data-target="#LMCModalCenter" style="cursor:pointer;">
               <div class="icon d-flex justify-content-center align-items-center">
             		<span class="flaticon-books"></span>
               </div>
@@ -212,7 +207,6 @@ Future Step Solutions
                 <p>Apply.</p>
               </div>
             </div> 
-            </a>     
           </div>
 		  <div class="col-md-3 d-flex services align-self-stretch py-5 px-4 ftco-animate bg-primary justify-content-center border border-light">
             <div class="media block-6 d-block text-center" data-toggle="modal" data-target="#PGmedModalCenter" style="cursor:pointer;">
@@ -1256,4 +1250,51 @@ Future Step Solutions
 </div>
 
 </section>
+
+
+{% comment  %}
+---------------------------------------LMC form---------------------------------
+{% endcomment %}
+
+<section class="ftco-section testimony-section">
+<!-- Modal -->
+<div class="modal fade" id="LMCModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="mb-1 h4 font-weight-bold">Apply for Law/Management/Commerce</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       {% if new_form %}
+    <div class="d-flex container align-items-center justify-content-center my-auto" style="height:100%;">
+   <h3>
+    {{ new_form }}
+    </h3>
+    </div>
+   {% else %}
+ {% load crispy_forms_tags %}
+ <div class="d-flex container align-items-center justify-content-center my-auto col-8 ">
+                <form action="{% url 'LMCform' %}" method="POST">
+                    {% csrf_token %}
+                    {{ LMC_form | crispy  }}
+                  <div class="form-group">
+                    <input type="submit" value="Submit" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
+                  </div>
+            </form>
+<div/>
+    {% endif %}
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+
 {% endblock  %}
