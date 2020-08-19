@@ -40,61 +40,44 @@
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="p-0"><span class="ion-ios-arrow-up ml-2 mr-2"></span></button>
 
 {% load static  %}
-
- {% comment %} <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Blog Single</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{% url 'home' %}">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
-          </div>
-        </div>
-      </div>
-  </section> {% endcomment %}
 <section class="ftco-section " style="padding-top:5px;">
 	<div class="container">
   {% if 404_error %}
   {{ 404_error|safe }}
   
   {% endif %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="2Dih3f72"></script>
+
+
 		<div id="top" class="row">
       <div class="col-lg-8 ftco-animate fadeInUp ftco-animated"  style="color:#000; ">    
-             <br/>    
+             <br/>
           <p>
           <img src="{{ singleBlog.image.url }}" alt="" class="img-fluid">
           <h1 class="mb-3"><b>{{singleBlog.title}}</b></h1>
           </p>
           <p class="text-left" style="color:#808080;"><span class="icon-calendar"></span>   {{ singleBlog.pub_date_pro}} | {{ singleBlog.author|title }} </p> 
-         
-    
-
-     
           <div class="custom-blog-body" >{% autoescape off %} {{ singleBlog.body | linebreaks }} {% endautoescape %}</div>
-
-            
             <div class="ftco-footer-widget mb-5">
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <h3 class="h4 font-weight-bold">Share:</h3>
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a class="twitter-share-button" target="_blank"
+                href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsteps2career.in{{ request.path | urlencode }}&amp" 
+                data-size="large">
+                <span class="icon-twitter"></span></a>
+                </li>
+                <li class="ftco-animate"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsteps2career.in{{ request.path | urlencode }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><span class="icon-facebook"></span></a>
+                </li>
+
+                <li class="ftco-animate">
+                <a target="_blank" href="whatsapp://send?text=https://steps2career.in{{ request.path | urlencode }}" data-action="share/whatsapp/share"><span class="icon-whatsapp"></span></a>
+                </li>
+
+
               </ul>
             </div>
-
-
-
-
-
-            
             <div class="about-author d-flex p-4 ">
-              {% comment %} <div class="bio mr-5">
-                <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder" class="img-fluid mb-4">
-              </div>
-              <div class="desc">
-                <h3>Written: {{singleBlog.author}}</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-              </div> {% endcomment %}
             </div>
           </div>
 
@@ -132,32 +115,18 @@
                 <div class="text">
                   <h4 class="heading"><a href="{% url 'details' pblogs.slug %}" >{{ pblogs.title }}</a></h4>
                   <div class="meta">
-                    {% comment %} <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-calendar"></span> {{ pblogs.pub_date_pro }}</a></div>
-                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-person"></span> {{ pblogs.author }}</a></div>
-                    <div><a href="{% url 'details' pblogs.slug %}"><span class="icon-chat"></span> 19</a></div> {% endcomment %}
                   </div>
                 </div>
               </div>
               <hr style="border: 1px dashed #C0C0C0"/>
               {% endfor %}
-
             <div class="sidebar-box ftco-animate">
-            {% comment %}  <h3>Tag Cloud</h3>
-              <ul class="tagcloud m-0 p-0">
-            <a href="{% url 'category' 'top' %}" class="tag-cloud-link">Engineering</a>
-                <a href="#" class="tag-cloud-link">Kids</a>
-                <a href="#" class="tag-cloud-link">Nursery</a>
-                <a href="#" class="tag-cloud-link">Daycare</a>
-                <a href="#" class="tag-cloud-link">Care</a>
-                <a href="#" class="tag-cloud-link">Kindergarten</a>
-                <a href="#" class="tag-cloud-link">Teacher</a> {% endcomment %}
               </ul>
             </div>
             <div class="sidebar-box ftco-animate">
             </div>
           </div>
         </div>
-
 <!-- Comments -->
           <div class=" mt-5" style="color:#000;">
               <h3 class="mb-1 h4 font-weight-bold">{{ comments.count }} Comment(s)</h3>
@@ -166,7 +135,7 @@
                 <li class="comment mb-1">
                 <hr/>
                    <div class="vcard bio">
-                    {% comment %} <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder"> {% endcomment %}
+                    <img src="{% static '/images/pr.png' %}" alt="Image placeholder"/>
                   </div>
                   <div class="comment-body">
                     <h5><strong>{{ comment.name }}</strong> <div class="meta" style="color:#A9A9A9;" >{{ comment.created_on }}</div></h5> 
@@ -194,178 +163,9 @@
                   <div class="form-group">
                     <input type="submit" value="Post Comment" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
                   </div>
-                  {% comment %} <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                   {% endcomment %}
-
                 </form>
                 {% endif %}
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            {% comment %} <div class="pt-5 mt-5">
-              <h3 class="mb-5 h4 font-weight-bold">6 Comments</h3>
-              <ul class="comment-list">
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta mb-2">June 27, 2019 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta mb-2">June 27, 2019 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-
-                  <ul class="children">
-                    <li class="comment">
-                      <div class="vcard bio">
-                        <img src="{% static 'images/teacher-1.jpg' %}" alt="Image placeholder">
-                      </div>
-                      <div class="comment-body">
-                        <h3>John Doe</h3>
-                        <div class="meta mb-2">June 27, 2019 at 2:21pm</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                        <p><a href="#" class="reply">Reply</a></p>
-                      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                      <ul class="children">
-                        <li class="comment">
-                          <div class="vcard bio">
-                            <img src="images/teacher-1.jpg" alt="Image placeholder">
-                          </div>
-                          <div class="comment-body">
-                            <h3>John Doe</h3>
-                            <div class="meta mb-2">June 27, 2019 at 2:21pm</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <p><a href="#" class="reply">Reply</a></p>
-                          </div>
-
-                            <ul class="children">
-                              <li class="comment">
-                                <div class="vcard bio">
-                                  <img src="images/teacher-1.jpg" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                  <h3>John Doe</h3>
-                                  <div class="meta mb-2">June 27, 2019 at 2:21pm</div>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                  <p><a href="#" class="reply">Reply</a></p>
-                                </div>
-                              </li>
-                            </ul>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="images/teacher-1.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta mb-2">June 27, 2019 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p><a href="#" class="reply">Reply</a></p>
-                  </div>
-                </li>
-              </ul> {% endcomment %}
-              <!-- END comment-list -->
-              
-              {% comment %} <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5 h4 font-weight-bold">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                  </div>
-
-                </form>
-              </div>
-            </div>
-            </div> <!-- .col-md-8 --> {% endcomment %}
-
-          
 			</div>
 		</section>
 

@@ -6,7 +6,6 @@
  <style>
       .custom-blog-title {
   font-family: "Source Sans Pro script=all rev=1", sans-serif;
-  font-weight: 900;
   color:#000;
   font-style: normal;
   transition-duration: 350ms;
@@ -31,7 +30,7 @@
   }
 .custom-blog-body{
 font-family: 'Source Sans Pro', sans-serif;
-font-weight: 500;
+font-weight: 100;
 font-style: normal;
 color:#000000;
 transition-duration: 350ms;
@@ -63,7 +62,6 @@ font-size:18px;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    {% comment %} <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet"> {% endcomment %}
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href=  "{% static 'css/animate.css' %}">
     
@@ -129,10 +127,10 @@ font-size:18px;
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light sticky-top" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container d-flex align-items-center px-4">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span>Menu
+          <span class="oi oi-menu" >Menu</span>
         </button>
         <form name="searchbox" method="GET" action="{% url 'search:searchposts' %}" value="{{request.GET.q}}" class="searchform order-lg-last">
           <div class="form-group d-flex">
@@ -149,19 +147,16 @@ font-size:18px;
         </div>
       </div>
     </nav>
-    <!-- END nav -->
     </header>
 
 
 
 
 {% if message %}
-        <!-- Button trigger modal -->
         <button type="button" id="btn-success" class="btn btn-primary" data-toggle="modal" data-target="#successModal" style="display:none;">
           Launch demo modal
         </button>
 
-        <!-- Modal -->
         <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -352,10 +347,6 @@ font-size:18px;
   <script src="{% static 'js/aos.js' %}"></script>
   <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
   <script src="{% static 'js/scrollax.min.js' %}"></script>
-  {% comment %} <script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.6960844506734!2d77.59852621482288!3d13.0550068908012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAzJzE4LjAiTiA3N8KwMzYnMDIuNiJF!5e0!3m2!1sen!2sin!4v1594021034738!5m2!1sen!2sin" ></script> {% endcomment %}
-  {% comment %} <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>  {% endcomment %}
-  {% comment %} https://goo.gl/maps/vNjPWoDCvV5nHdsG6 {% endcomment %}
-  {% comment %} <script src="{% static 'js/google-map.js' %}"></script> {% endcomment %}
   <script src="{% static 'js/main.js' %}"></script>
 
   {% if message %}

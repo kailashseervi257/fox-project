@@ -22,29 +22,12 @@
         </div>
       </div>
     </section>
-{% comment %} {% if is_paginated %}
-<nav aria-label="Page navigation container"></nav>
-<ul class="pagination justify-content-center">
-{% if page_obj.has_previous %}
-<li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Prev </a></li>
-{% endif %}
-{% if page_obj.has_next %}
-<li><a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;  </a></li>
-{% endif %}
-</ul>
-</nav>
-</div>
-
-{% endif %} {% endcomment %}
-
-
-
 <section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
     <div class="container">
       <div class="row">
       {% for  blog in blog_list  %}
         <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
-          <div class="blog-entry" style="margin-bottom:0;">
+          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
             <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
 							<div class="meta-date text-center p-2">
                 <span class="day">{{ blog.pub_date_pro_day }}</span>
@@ -53,7 +36,7 @@
               </div>
             </a>
           </div>
-          <div class="text bg-white p-4">
+          <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
             <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
             <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p>
               <div class="d-flex align-items-center mt-1">  

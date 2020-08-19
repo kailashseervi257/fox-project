@@ -163,7 +163,6 @@
 				$('.number').each(function(){
 					var $this = $(this),
 						num = $this.data('number');
-						console.log(num);
 					$this.animateNumber(
 					  {
 					    number: num,
@@ -246,16 +245,4 @@
 
     fixedContentPos: false
   });
-
-
-  $('.appointment_date').datepicker({
-	  'format': 'm/d/yyyy',
-	  'autoclose': true
-	});
-
-	$('.appointment_time').timepicker();
-
-
-
-
 })(jQuery);
