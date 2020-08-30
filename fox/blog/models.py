@@ -7,6 +7,29 @@ STATUS = (
     (1, "Publish")
 )
 
+Mtech = 'Mtech'
+MBA = 'MBA'
+UGMedical = 'UG-Medical'
+PGMedical = 'PG-Medical'
+Engineering = 'Engineering'
+Commerce = 'Commerce'
+Law = 'Law'
+Architecture = 'Architecture'
+Management = 'Management'
+All='All'
+CATEGORY = (
+    (Mtech, 'Mtech'),
+    (MBA, 'MBA'),
+    (UGMedical, 'UG-Medical'),
+    (PGMedical, 'PG-Medical'),
+    (Engineering, 'Engineering'),
+    (Commerce, 'Commerce'),
+    (Law, 'Law'),
+    (Architecture, 'Architecture'),
+    (Management, 'Management'),
+    (All,'All')
+)
+
 class Blog(models.Model):
     title = models.CharField(max_length=255, unique=True)
     url = models.CharField(max_length=255,default=None)
@@ -18,6 +41,7 @@ class Blog(models.Model):
     views_total = models.IntegerField(default=1)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
+    category=models.CharField(max_length=255,choices=CATEGORY, default=All)
     
     class Meta:
         ordering = ['-pub_date']

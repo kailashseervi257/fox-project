@@ -73,8 +73,7 @@ def category(request,cat):
     query = cat
     if query is not None:
         submitbutton = 'cat'
-        lookups = Q(title__icontains=query) | Q(body__icontains=query)
-        results = Blog.objects.filter(lookups).distinct()
+        results = Blog.objects.filter(status=1, category=query).order_by('pub_date').reverse()
         if results is not None:
             body={'results': results, 'submitbutton':submitbutton,'query':query}
             return render(request, 'search/search.html', body)

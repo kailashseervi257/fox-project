@@ -411,27 +411,27 @@ Future Step Solutions
         </div>
 		<div class="row">
 		{% for blog in recBlogs %}
-		<div class="col-md-6 col-lg-4 ftco-animate" style="z-index:5;">
-            <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;">
-              <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
-				<div class="meta-date text-center p-2">
-                  <span class="day">{{ blog.pub_date_pro_day }}</span>
-                  <span class="mos">{{ blog.pub_date_pro_month }}</span>
-                  <span class="yr">{{ blog.pub_date_pro_year }}</span>
-                </div>
-              </a>
-              <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
-                <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{ blog.title }}</a></h5>                
-				<div class="d-flex align-items-center mt-1">
-	                
-					<p class="ml-0 mb-0">
-	                	<a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">{{ blog.author | title }}</a>
-	                </p>
-                </div>
+		 <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
+          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
+            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
+							<div class="meta-date text-center p-2">
+                <span class="day">{{ blog.pub_date_pro_day }}</span>
+                <span class="mos">{{ blog.pub_date_pro_month }}</span>
+                <span class="yr">{{ blog.pub_date_pro_year }}</span>
+              </div>
+            </a>
+          </div>
+          <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
+            <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
+            <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p>
+              <div class="d-flex align-items-center mt-1">  
+	              <p class="ml-0 mb-0">
+                  <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">By {{ blog.author | title}}</a>
+                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
+	              </p>
               </div>
             </div>
           </div>
-
 		{% endfor %}
                 </div>
 			</div>

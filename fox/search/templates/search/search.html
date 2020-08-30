@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+{% block title %}
+{% if submitbutton == 'cat' %}
+Category : {{ query }}
+{% else %}
+Results for {{ request.GET.q }}
+{% endif %}
+{% endblock %}
 
-{% block title %}Results for {{ request.GET.q }}{% endblock %}
 {% block navbar %}
 			      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
             <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
@@ -18,28 +24,28 @@
 <h1>Category:<b>{{ query }}</b></h1>
     <div class="container">
       <div class="row">
-        {% for result in results %}
-
-        <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
-          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;">
-            <a href="{% url 'details' result.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ result.image.url }});">
+        {% for blog in results %}
+         <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
+          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
+            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
 							<div class="meta-date text-center p-2">
-                <span class="day">{{ result.pub_date_pro_day }}</span>
-                <span class="mos">{{ result.pub_date_pro_month }}</span>
-                <span class="yr">{{ result.pub_date_pro_year }}</span>
+                <span class="day">{{ blog.pub_date_pro_day }}</span>
+                <span class="mos">{{ blog.pub_date_pro_month }}</span>
+                <span class="yr">{{ blog.pub_date_pro_year }}</span>
               </div>
             </a>
           </div>
           <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
-            <h5><a href="{% url 'details' result.slug %}" class="custom-blog-title short">{{result.title}}</a></h5>
-              <div class="d-flex align-items-center mt-1">
+            <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
+            <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p>
+              <div class="d-flex align-items-center mt-1">  
 	              <p class="ml-0 mb-0">
-                  <a href="{% url 'details' result.slug %}" class="mr-2" style="color: #000">{{ result.author}} | Uploaded {{result.pub_date_pro_month}} {{result.pub_date_pro_day}}, {{result.pub_date_pro_year}}</a>
+                  <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">By {{ blog.author | title}}</a>
+                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
 	              </p>
               </div>
             </div>
           </div>
-
         {% endfor %}
         </div>
         <br/>
@@ -55,29 +61,28 @@
 <h1>Results for <b>{{ request.GET.q }}</b></h1>
     <div class="container">
       <div class="row">
-        {% for result in results %}
-
+        {% for blog in results %}
         <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
-          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;">
-            <a href="{% url 'details' result.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ result.image.url }});">
+          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
+            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
 							<div class="meta-date text-center p-2">
-                <span class="day">{{ result.pub_date_pro_day }}</span>
-                <span class="mos">{{ result.pub_date_pro_month }}</span>
-                <span class="yr">{{ result.pub_date_pro_year }}</span>
+                <span class="day">{{ blog.pub_date_pro_day }}</span>
+                <span class="mos">{{ blog.pub_date_pro_month }}</span>
+                <span class="yr">{{ blog.pub_date_pro_year }}</span>
               </div>
             </a>
           </div>
           <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
-            <h5><a href="{% url 'details' result.slug %}" class="custom-blog-title short ">{{result.title}}</a></h5>
-            <p style="color: #C0C0C0;">{% autoescape off %}{{result.body | truncatechars:58}}{% endautoescape %} <a href="{% url 'details' result.slug %}" >Read more </a></p>
-              <div class="d-flex align-items-center mt-1">
+            <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
+            <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p>
+              <div class="d-flex align-items-center mt-1">  
 	              <p class="ml-0 mb-0">
-                 <a href="{% url 'details' result.slug %}" class="mr-2" style="color: #696969;">By {{ result.author | title}}</a>
+                  <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">By {{ blog.author | title}}</a>
+                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
 	              </p>
               </div>
             </div>
           </div>
-
         {% endfor %}
         </div>
         <br/>
