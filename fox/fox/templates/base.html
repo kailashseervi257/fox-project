@@ -80,6 +80,13 @@ font-size:18px;
 <script src="https://cdn.jsdelivr.net/sharer.js/latest/sharer.min.js"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177399806-1">
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177399806-1');
+</script>
 </script>
 </head>
 
@@ -352,13 +359,7 @@ font-size:18px;
   <script src="{% static 'js/main.js' %}"></script>
 
 
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-177399806-1');
-</script>
+ 
 
   {% if message %}
     <script>
