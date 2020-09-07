@@ -49,6 +49,12 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="2Dih3f72"></script>
 
+<div class="container">
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+            <span class="mr-2"><a href="{% url 'blog' %}">Blogs <i class="ion-ios-arrow-forward"></i></a></span> 
+            
+            <span>{{singleBlog.title}} <i class="ion-ios-arrow-forward"></i></span></p>
+</div>
 
 		<div id="top" class="row">
       <div class="col-lg-8 ftco-animate fadeInUp ftco-animated"  style="color:#000; ">    
@@ -93,6 +99,7 @@
             <br/>
             	<h3>Category</h3>
               <ul class="categories">
+                <li><a href="{% url 'category' 'Arts' %}">Arts <span></span></a></li>
                 <li><a href="{% url 'category' 'Mtech' %}">Mtech <span></span></a></li>
                 <li><a href="{% url 'category' 'MBA' %}">MBA <span></span></a></li>
                 <li><a href="{% url 'category' 'UG-Medical' %}">UG-Medical <span></span></a></li>

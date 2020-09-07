@@ -79,6 +79,8 @@ font-size:18px;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/sharer.js/latest/sharer.min.js"></script>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177399806-1">
+</script>
 </head>
 
 <body>
@@ -111,7 +113,8 @@ font-size:18px;
                 <div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
                 <div class="text">
                   <span>Call</span>
-                  <span><a href="tel:9590747327">9590747327 9590747327</span>
+                  <span><a href="tel:9590747327">919590747327</span>
+                  <span><a href="tel:9590747327">917022363258</span>
 
                 </div>
               </div>
@@ -154,7 +157,6 @@ font-size:18px;
 
 {% if message %}
         <button type="button" id="btn-success" class="btn btn-primary" data-toggle="modal" data-target="#successModal" style="display:none;">
-          Launch demo modal
         </button>
 
         <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -182,7 +184,7 @@ font-size:18px;
 {% if error %}
             <!-- Button trigger modal -->
             <button type="button" id="btn-error" class="btn btn-primary" data-toggle="modal" data-target="#errorModal" style="display:none;">
-              Launch demo modal
+              
             </button>
 
             <!-- Modal -->
@@ -349,6 +351,15 @@ font-size:18px;
   <script src="{% static 'js/scrollax.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 
+
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177399806-1');
+</script>
+
   {% if message %}
     <script>
   window.onload=function() {
@@ -369,5 +380,3 @@ font-size:18px;
 </body>
 
 </html>
-
-

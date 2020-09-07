@@ -17,6 +17,7 @@ Law = 'Law'
 Architecture = 'Architecture'
 Management = 'Management'
 All='All'
+Arts='Arts'
 CATEGORY = (
     (Mtech, 'Mtech'),
     (MBA, 'MBA'),
@@ -27,7 +28,8 @@ CATEGORY = (
     (Law, 'Law'),
     (Architecture, 'Architecture'),
     (Management, 'Management'),
-    (All,'All')
+    (All,'All'),
+    (Arts,'Arts'),
 )
 
 class Blog(models.Model):
