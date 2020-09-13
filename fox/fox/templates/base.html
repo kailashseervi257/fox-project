@@ -61,7 +61,7 @@ font-size:18px;
    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href=  "{% static 'css/animate.css' %}">
     
@@ -79,14 +79,13 @@ font-size:18px;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/sharer.js/latest/sharer.min.js"></script>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177399806-1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177399806-1"></script>
  <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-177399806-1');
-</script>
 </script>
 </head>
 
@@ -117,12 +116,12 @@ font-size:18px;
                 </div>
               </div>
               <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span>
                 <div class="text">
                   <span>Call</span>
-                  <span><a href="tel:9590747327">919590747327</span>
-                  <span><a href="tel:9590747327">917022363258</span>
+                  <span><a href="tel:9590747327">9590747327</span>
 
+                  <span><a href="tel:7022363258">7022363258</span>
                 </div>
               </div>
               <div class="col-md topper d-flex align-items-center justify-content-end">
@@ -144,7 +143,7 @@ font-size:18px;
         </button>
         <form name="searchbox" method="GET" action="{% url 'search:searchposts' %}" value="{{request.GET.q}}" class="searchform order-lg-last">
           <div class="form-group d-flex">
-            <input type="text" name="q" class="form-control pl-3" placeholder="Type a keyword">
+            <input type="text" name="q" class="form-control pl-3" placeholder="Search">
             <button type="submit" name="submit" value="Search" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
           </div>
         </form>

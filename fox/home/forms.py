@@ -145,18 +145,18 @@ class Medical_Form(forms.ModelForm):
     Other = 'Other'
     
     Medical_branches = [
-        (MBBS,'MBBS (Bachelor of Medicine and Bachelor of Surgery)'),
-        (BDS,'BDS (Bachelor of Dental Surgery)'),
+        (MBBS,'MBBS (Consultancy only)'),
+        (BDS,'BDS (Consultancy only)'),
         (BScNursing,'B.SC. NURSING'),
-        (B_PHARMA,'B.PHARM. (BACHELOR OF PHARMACY)'),
-        (PHARM_D,'PHARM D ( Doctor of Pharmacy)'),
-        (BAMS,'BAMS (Bachelor of Ayurvedic Medicine and Surgery)'),
-        (BHMS,'BHMS (Bachelor of Homeopathic Medicine and Surgery)'),
-        (BUMS,'BUMS ( Bachelor of Unani Medicine and Surgery)'),
-        (BPT,'BPT (Bachelor of Physiotherapy)'),
-        (B_V_SC_and_A_H,'B.V.SC. & A.H. (Bachelor of Veterinary Science and Animal Husbandry)'),
-        (BOT,'BOT (BACHELOR OF OCCUPATIONAL THERAPY)'),
-        (BASLP,'BASLP (BACHELOR OF AUDIOLOGY SPEECH LANGUAGE PATHOLOGY)'),
+        (B_PHARMA,'B.PHARM.'),
+        (PHARM_D,'PHARM D'),
+        (BAMS,'BAMS'),
+        (BHMS,'BHMS'),
+        (BUMS,'BUMS'),
+        (BPT,'BPT'),
+        (B_V_SC_and_A_H,'B.V.SC. & A.H.'),
+        (BOT,'BOT'),
+        (BASLP,'BASLP'),
         (Other , 'Other'),
     ]
 
