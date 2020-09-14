@@ -145,8 +145,8 @@ class Medical_Form(forms.ModelForm):
     Other = 'Other'
     
     Medical_branches = [
-        (MBBS,'MBBS (Consultancy only)'),
-        (BDS,'BDS (Consultancy only)'),
+        (MBBS,'MBBS'),
+        (BDS,'BDS'),
         (BScNursing,'B.SC. NURSING'),
         (B_PHARMA,'B.PHARM.'),
         (PHARM_D,'PHARM D'),
@@ -308,7 +308,7 @@ class LawManagementCommerce_Form(forms.ModelForm):
     TwelfthPercentage = forms.FloatField(label='12th/2nd PUC Percentage',required=True)
     branch = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=LMC_branches, required=True, help_text="Branches you're interested in.")
     anyEntrance = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES, label='Any entrance?')
-    Law_Management_or_Commerce = forms.ChoiceField(widget=forms.RadioSelect, choices=LMC, label='Apply for Law/Manageemnt/Commerce :', required=True)
+    Law_Management_or_Commerce = forms.ChoiceField(widget=forms.RadioSelect, choices=LMC, label='Apply for Law/Management/Commerce :', required=True)
 
     class Meta:
         model = LawManagementCommerce_form

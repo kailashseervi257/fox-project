@@ -563,6 +563,7 @@ Future Step Solutions
  <div class="d-flex container align-items-center justify-content-center my-auto col-8 ">
                 <form action="{% url 'Medicalform' %}" method="POST">
                     {% csrf_token %}
+                    <p class="text-danger" style="font-family: Times New Roman;">Note: We do only counselling for MBBS & BDS(strictly no admissions*). </p>
                     {{ med_form | crispy  }}
                   <div class="form-group">
                     <input type="submit" value="Submit" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
@@ -674,7 +675,7 @@ Future Step Solutions
  <div class="d-flex container align-items-center justify-content-center my-auto col-8 ">
                 <form action="{% url 'PGMedicalform' %}" method="POST">
                     {% csrf_token %}
-                    {{ PGmed_form | crispy  }}
+<p class="text-danger" style="font-family: Times New Roman;">Note: We do only counselling* </p>                    {{ PGmed_form | crispy  }}
                   <div class="form-group">
                     <input type="submit" value="Submit" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
                   </div>
