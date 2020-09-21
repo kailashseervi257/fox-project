@@ -79,6 +79,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fox.wsgi.application'
 
+# Email
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=465
+EMAIL_HOST_USER='kseervi257@gmail.com'
+EMAIL_HOST_PASSWORD='810575558290359480'
+EMAIL_USE_TLS=False
+EMAIL_USE_SSL=True
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

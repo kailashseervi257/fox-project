@@ -88,7 +88,7 @@ a#menu-share + ul{
 a#menu-share:hover + ul{
   visibility: visible;
   animation: scale-in 0.5s;
-}
+} 
 
 a#menu-share i{
   animation: rotate-in 0.5s;
@@ -98,10 +98,12 @@ a#menu-share:hover > i{
   animation: rotate-out 0.5s;
 }
 
+
 @keyframes bot-to-top {
     0%   {bottom:-40px}
     50%  {bottom:40px}
 }
+
 
 @keyframes scale-in {
     from {transform: scale(0);opacity: 0;}
@@ -454,7 +456,6 @@ font-size:18px;
   <script src="{% static 'js/scrollax.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 
-
  
 
   {% if message %}
@@ -465,7 +466,6 @@ font-size:18px;
               };
 </script>   
   {% endif %}
-
   {% if error %}
     <script>
   window.onload=function() {
@@ -475,11 +475,12 @@ font-size:18px;
   </script>   
   {% endif %}
 
-  		<a style="color:white;" class="float" id="menu-share">
+
+  		<a style="color:white;" class="float show" id="menu-share">
 <i class="fa icon-paper-plane-o my-float"></i>
 </a>
 <ul id="ul">
-<li id="ul-li"><a id="ul-li-a" target="_blank" href="https://wa.me/919590747327?text={{ 'I am interested in admissions' | urlencode }}">
+<li id="ul-li"><a id="ul-li-a" target="_blank" href="https://wa.me/919590747327?text={{ 'Hey, I am interested in admissions' | urlencode }}">
 <i class="fa icon-whatsapp my-float"></i>
 </a></li>
 <li id="ul-li"><a id="ul-li-a" href="tel:9590747327">
@@ -490,5 +491,4 @@ font-size:18px;
 </a></li>
 </ul>
 </body>
-
 </html>

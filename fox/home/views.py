@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Enquiry, Contact_request, Subscribers
 import re
 from django.utils.timezone import datetime
+import pytz
 from blog.models import Blog
 from .forms import Engineering_Form, Medical_Form, Aviation_Form, Architecture_Form, PGMedical_Form, LawManagementCommerce_Form
+from django.core.mail import send_mail
+from django.core.mail import mail_admins
+from django.conf import settings
 
 
 homeForm = {
@@ -52,6 +56,7 @@ def new_enquiry(request):
             'LMC_form':LawManagementCommerce_Form(),
         }
     if request.method == 'POST':
+        IST=pytz.timezone('Asia/Kolkata')
         if request.POST['fullName'] and request.POST['interestedIn'] and request.POST['phone'] and request.POST['appliedFor'] and request.POST['message']:
             Pattern=re.compile("(0/91)?[7-9][0-9]{9}")
             if Pattern.match(request.POST['phone']) and len(request.POST['phone']) >= 10:
@@ -61,8 +66,15 @@ def new_enquiry(request):
                 formInfo.ph = request.POST['phone']
                 formInfo.applied_for = request.POST['appliedFor']
                 formInfo.message = request.POST['message']
-                formInfo.post_date=datetime.now()
+                formInfo.post_date = datetime.now(IST)
+                print(formInfo.post_date)
                 formInfo.save()
+                subject = 'New enquiry form'
+                message = 'Name: '+formInfo.full_name+'\ninterested in '+formInfo.interested_in+'\nPhone number: '+formInfo.ph+'\nHas applied for '+formInfo.applied_for+'\nMessage: '+formInfo.message+'\nRequest on: '+str(datetime.now(IST))
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = ['kseervi2578@gmail.com',]
+                # mail_admins(subject,message, fail_silently=False,connection=None, html_message=None)
+                send_mail( subject, message, email_from, recipient_list )
                 homeForm['message']='Message successfully sent'
                 return render(request, 'home/home.html',homeForm)
             else:
@@ -313,4 +325,3 @@ def LMCform(request):
             'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html', homeForm)
-    
