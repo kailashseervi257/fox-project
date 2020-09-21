@@ -72,7 +72,7 @@ def new_enquiry(request):
                 subject = 'New enquiry form'
                 message = 'Name: '+formInfo.full_name+'\ninterested in '+formInfo.interested_in+'\nPhone number: '+formInfo.ph+'\nHas applied for '+formInfo.applied_for+'\nMessage: '+formInfo.message+'\nRequest on: '+str(datetime.now(IST))
                 email_from = settings.EMAIL_HOST_USER
-                recipient_list = ['kseervi2578@gmail.com',]
+                recipient_list=settings.EMAIL_RECIPIENTS_LIST
                 # mail_admins(subject,message, fail_silently=False,connection=None, html_message=None)
                 send_mail( subject, message, email_from, recipient_list )
                 homeForm['message']='Message successfully sent'
