@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from slugify import slugify
+from ckeditor_uploader.fields import RichTextUploadingField
 
 STATUS = (
     (0, "Draft"),
@@ -38,8 +39,7 @@ class Blog(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/')
     slug = models.SlugField(max_length=255, unique=True)
-    body = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
+    body = RichTextUploadingField(blank=True)
     views_total = models.IntegerField(default=1)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
