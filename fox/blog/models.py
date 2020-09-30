@@ -19,6 +19,7 @@ Architecture = 'Architecture'
 Management = 'Management'
 All='All'
 Arts='Arts'
+Updates = 'Updates'
 CATEGORY = (
     (Mtech, 'Mtech'),
     (MBA, 'MBA'),
@@ -31,6 +32,7 @@ CATEGORY = (
     (Management, 'Management'),
     (All,'All'),
     (Arts,'Arts'),
+    (Updates,'Updates'),
 )
 
 class Blog(models.Model):
@@ -102,7 +104,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.name)
-
-
-
-
