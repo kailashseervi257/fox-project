@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from slugify import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
-
+import pytz
+IST=pytz.timezone('Asia/Kolkata')
 STATUS = (
     (0, "Draft"),
     (1, "Publish")
@@ -104,3 +105,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.name)
+
+class FileUploader(models.Model):
+    file = models.FileField(upload_to='files/')
+    description=models.CharField(max_length=255, default='File')
+    uploaded_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{}'s file".format(self.file)
