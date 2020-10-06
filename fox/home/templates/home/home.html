@@ -21,7 +21,7 @@ Future Step Solutions
 {% for hBlog in headBlogs.values %}
 <div class="bchild">
 		<div class="blog-img">
-<a href="{% url 'details' hBlog.slug %}"><img src="media/{{  hBlog.image }}" alt="image3"></a>		</div>
+<a href="{% url 'details' hBlog.slug %}"><img src="/media/{{  hBlog.image }}" alt="image3"></a>		</div>
 		<div class="blog-title">
 <h5><a href="{% url 'details' hBlog.slug %}" class="custom-blog-title short">{{ hBlog.title }}</a></h5>		</div>	</div>
 {% endfor %}
