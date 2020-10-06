@@ -342,12 +342,12 @@ def popupForm(request):
                 formInfo.admissionType = request.POST['admissionType']
                 formInfo.post_date = datetime.now(IST)
                 formInfo.save()
-                # subject = 'New Popup enquiry form'
-                # Emessage = 'Name: '+formInfo.name+'\n '+'\nPhone number: '+formInfo.ph+'\nCourse Type'+formInfo.courseType+'\nEntrance: '+formInfo.Entrance+'\nTwelfthPercentage'+formInfo.TwelfthPercentage+'Admission Type'+'\nRequest on: '+str(datetime.now(IST))
-                # email_from = settings.EMAIL_HOST_USER
-                # recipient_list=settings.EMAIL_RECIPIENTS_LIST
-                # # mail_admins(subject,message, fail_silently=False,connection=None, html_message=None)
-                # send_mail( subject, Emessage, email_from, recipient_list )
+                subject = 'New Popup enquiry form'
+                Emessage = 'Name: '+formInfo.name+'\n '+'\nPhone number: '+formInfo.ph+'\nCourse Type'+formInfo.courseType+'\nEntrance: '+formInfo.Entrance+'\nTwelfthPercentage'+formInfo.TwelfthPercentage+'Admission Type'+'\nRequest on: '+str(datetime.now(IST))
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list=settings.EMAIL_RECIPIENTS_LIST
+                # mail_admins(subject,emessage, fail_silently=False,connection=None, html_message=None)
+                send_mail( subject, Emessage, email_from, recipient_list )
                 homeForm['message']='Message successfully sent'
                 return render(request, 'home/home.html',homeForm)
             else:
