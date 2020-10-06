@@ -12,4 +12,5 @@ urlpatterns = [
     path('Architectureform/', views.Architectureform, name='Architectureform'),
     path('PGMedicalform/', views.PGMedicalform, name='PGMedicalform'),
     path('LMCform/', views.LMCform, name='LMCform'),
+    path('Pform/',views.popupForm, name='popupForm')
 ]

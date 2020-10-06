@@ -133,3 +133,50 @@ class LawManagementCommerce_form(models.Model):
         
     def __str__(self):
         return 'By {} on {}'.format(self.name, self.created_on)
+
+Counselling = 'Counselling'
+DirectAdmissions = 'Direct Admissions'
+AdmissionType = [
+    (Counselling , 'Counselling'),
+    (DirectAdmissions , 'Direct Admissions'),
+]
+
+KCET2020 = 'K-CET 2020'
+COMEDK2020 = 'COMED-K2020'
+NEET2020 = 'NEET2020'
+JEEMAINS = 'JEE Mains 2020'
+JEEADVANCE = 'JEE Advance 2020'
+OTHER = 'Other'
+entrance = [
+    (KCET2020 ,'K-CET 2020'),
+    (COMEDK2020 , 'COMED-K2020'),
+    (NEET2020 , 'NEET2020'),
+    (JEEMAINS , 'JEE Mains 2020'),
+    (JEEADVANCE , 'JEE Advance 2020'),
+    (OTHER,'Other'),
+]
+
+BEBTECH = 'BE / B.Tech'
+Degree = 'Degree'
+Paramedical = 'Paramedical'
+Medical = 'Medical'
+Architecture = 'Architecture'
+CourseType = [
+    (BEBTECH ,'BE / B.Tech'),
+    (Degree ,'Degree'),
+    (Paramedical , 'Paramedical'),
+    (Medical , 'Medical'),
+    (Architecture,'Architecture'),
+]
+
+class PopupForm(models.Model):
+    name = models.CharField(max_length=25)
+    ph = models.CharField(max_length=12)
+    courseType = models.CharField(max_length=15,choices=CourseType)
+    Entrance = models.CharField(max_length=20,choices=entrance, default=OTHER)
+    TwelfthPercentage = models.CharField(max_length=10)
+    post_date = models.DateTimeField(auto_now=True)
+    admissionType = models.CharField(max_length=20,choices=AdmissionType)
+
+    def __str__(self):
+        return self.name

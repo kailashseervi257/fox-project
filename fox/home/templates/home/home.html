@@ -12,6 +12,24 @@ Future Step Solutions
 {% endblock  %}
 {% block content %}
 {% load static %}
+
+
+
+
+<section class="ftco-section bg-light" style="padding-top:5px;">
+<div class="parent">
+{% for hBlog in headBlogs.values %}
+<div class="bchild">
+		<div class="blog-img">
+<a href="{% url 'details' hBlog.slug %}"><img src="{% static hBlog.image %}" alt="image3"></a>		</div>
+		<div class="blog-title">
+<h5><a href="{% url 'details' hBlog.slug %}" class="custom-blog-title short">{{ hBlog.title }}</a></h5>		</div>	</div>
+{% endfor %}
+</section>
+
+
+
+
     <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image:url({% static 'images/bg_1.jpg' %});">
       	<div class="overlay"></div>

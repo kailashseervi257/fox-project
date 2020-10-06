@@ -73,6 +73,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'home.context_processors.recentBlogs',
                 'home.context_processors.recentBlogsFooter',
+                'home.context_processors.homeHeaderBlogs',
+                'home.context_processors.show_popup_once_processor',
                 # 'home.context_processors.subscribeForm',
             ],
         },

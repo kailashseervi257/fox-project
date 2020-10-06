@@ -134,7 +134,7 @@ a#menu-share:hover > i{
     font-weight: 700;
     font-style: normal;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    color:#000; 
+    color:#494746; 
     font-size:28px;
   }
   .shorter{
@@ -256,6 +256,7 @@ font-size:18px;
     <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
     
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
     <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -339,6 +340,75 @@ font-size:18px;
 <p><a href="https://www.steps2career.in/blog/UG-NEET-Latest-Updates-2020/">NEET 2020 Answer keys released.</a></p>
 </div>
 
+<button type="button" class="btn btn-primary" data-toggle="modal" id="popup-btn" data-target="#popup" data-whatever="@mdo" style="display:block;    position: fixed; z-index:10; left: 30px; bottom: 40px;
+" >Message</button>
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" name="popupForm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight:600;">Get guidance to get admissions in top colleges</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  method="POST" action="{% url 'popupForm' %}">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="Pname" class="col-form-label">Name</label>
+            <input type="text" class="form-control" id="Pname" name="name" >
+          </div>
+          <div class="form-group">
+            <label for="Pphone" class="col-form-label">Phone No.</label>
+            <input type="text" class="form-control" id="Pphone" name="ph">
+          </div>
+          <div class="form-group">
+            <label for="PcourseType" class="col-form-label">Course type</label>
+            <select name="courseType" id="PcourseType" class="form-control">
+											<option value="">----</option>
+											<option value="BE/B.Tech">B.E / B.Tech</option>
+											<option value="Degree">Degree</option>
+											<option value="Paramedical">Paramedical</option>
+											<option value="Medical">Medical</option>
+											<option value="Architecture">Architecture</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Pentrance" class="col-form-label">Entrance exam</label>
+            <select name="Entrance" id="Pentrance" class="form-control">
+                      <option value="">----</option>
+											<option value="K-CET">K-CET 2020</option>
+											<option value="COMED-K">COMED-K 2020</option>
+											<option value="NEET">NEET 2020</option>
+											<option value="JEE-Mains">JEE Mains 2020</option>
+											<option value="JEE-Advance">JEE Advance 2020</option>
+											<option value="OTHER">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Ppercent" class="col-form-label">12th Percentage</label>
+            <input name="TwelfthPercentage" type="number" class="form-control" id="Ppercent" pattern="\d*" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label for="Admissiontype" class="col-form-label">Admission type</label>
+            <select name="admissionType" id="Admissiontype" class="form-control">
+                      <option value="">----</option>
+											<option value="Counselling">Counselling</option>
+											<option value="DirectAdmission">Direct admission</option>
+            </select>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          <button type="submit" class="btn btn-primary">Send message</button>
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -396,6 +466,7 @@ font-size:18px;
 
 
 {% block content %}
+
 <svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg>
 {% endblock %}
 
@@ -505,7 +576,6 @@ font-size:18px;
     </footer> 
     
 
-
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
     
@@ -534,7 +604,22 @@ function stopColor() {
   clearInterval(timer);
 }
 </script>
- 
+
+
+
+
+{% if show_popup %}
+<script>
+setTimeout(popup, 30000); 
+function popup() {
+  var popup=document.getElementById('popup-btn');
+  popup.click();
+}
+</script>
+{% endif %}
+
+
+
 
   {% if message %}
     <script>

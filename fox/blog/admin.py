@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Blog, BlogView, Comment, BlogImages, FileUploader
+from .models import Blog, BlogView, Comment, BlogImages, FileUploader, HeaderBlogs
 
 
 class BlogImageAdmin(admin.StackedInline):
@@ -41,4 +41,9 @@ class BlogImageAdmin(admin.ModelAdmin):
 
 @admin.register(FileUploader)
 class FileUploaderAdmin(admin.ModelAdmin):
-    list_display=('file', 'uploaded_on')
+    list_display = ('file', 'uploaded_on')
+    
+@admin.register(HeaderBlogs)
+class HeaderBlogsAdmin(admin.ModelAdmin):
+    list_display = ('blog',)
+

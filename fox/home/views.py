@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Enquiry, Contact_request, Subscribers
+from .models import Enquiry, Contact_request, Subscribers, PopupForm
 import re
 from django.utils.timezone import datetime
 import pytz
@@ -8,6 +8,7 @@ from .forms import Engineering_Form, Medical_Form, Aviation_Form, Architecture_F
 from django.core.mail import send_mail
 from django.core.mail import mail_admins
 from django.conf import settings
+from django.http import HttpResponseRedirect
 
 
 homeForm = {
@@ -67,7 +68,6 @@ def new_enquiry(request):
                 formInfo.applied_for = request.POST['appliedFor']
                 formInfo.message = request.POST['message']
                 formInfo.post_date = datetime.now(IST)
-                print(formInfo.post_date)
                 formInfo.save()
                 subject = 'New enquiry form'
                 message = 'Name: '+formInfo.full_name+'\ninterested in '+formInfo.interested_in+'\nPhone number: '+formInfo.ph+'\nHas applied for '+formInfo.applied_for+'\nMessage: '+formInfo.message+'\nRequest on: '+str(datetime.now(IST))
@@ -325,3 +325,34 @@ def LMCform(request):
             'LMC_form':LawManagementCommerce_Form(),
         }
     return render(request, 'home/home.html', homeForm)
+
+
+def popupForm(request):
+    if request.method == 'POST':
+        IST=pytz.timezone('Asia/Kolkata')
+        if request.POST['name'] and request.POST['ph'] and request.POST['courseType'] and request.POST['Entrance'] and request.POST['TwelfthPercentage'] and request.POST['admissionType']:
+            Pattern=re.compile("(0/91)?[7-9][0-9]{9}")
+            if Pattern.match(request.POST['ph']) and len(request.POST['ph']) >= 10:
+                formInfo = PopupForm()
+                formInfo.name = request.POST['name']
+                formInfo.ph = request.POST['ph']
+                formInfo.courseType = request.POST['courseType']
+                formInfo.Entrance = request.POST['Entrance']
+                formInfo.TwelfthPercentage = request.POST['TwelfthPercentage']
+                formInfo.admissionType = request.POST['admissionType']
+                formInfo.post_date = datetime.now(IST)
+                formInfo.save()
+                # subject = 'New Popup enquiry form'
+                # Emessage = 'Name: '+formInfo.name+'\n '+'\nPhone number: '+formInfo.ph+'\nCourse Type'+formInfo.courseType+'\nEntrance: '+formInfo.Entrance+'\nTwelfthPercentage'+formInfo.TwelfthPercentage+'Admission Type'+'\nRequest on: '+str(datetime.now(IST))
+                # email_from = settings.EMAIL_HOST_USER
+                # recipient_list=settings.EMAIL_RECIPIENTS_LIST
+                # # mail_admins(subject,message, fail_silently=False,connection=None, html_message=None)
+                # send_mail( subject, Emessage, email_from, recipient_list )
+                homeForm['message']='Message successfully sent'
+                return render(request, 'home/home.html',homeForm)
+            else:
+                homeForm['error']='Invalid phone number'
+                return render(request, 'home/home.html',homeForm)
+        else:
+            homeForm['error']='Invalid phone number'
+            return render(request,'home/home.html',homeForm)

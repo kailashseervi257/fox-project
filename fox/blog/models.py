@@ -113,3 +113,9 @@ class FileUploader(models.Model):
 
     def __str__(self):
         return "{}'s file".format(self.file)
+
+class HeaderBlogs(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '{}'.format(self.blog)
