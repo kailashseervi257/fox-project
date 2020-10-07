@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from slugify import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 import pytz
+from django.urls import reverse
 IST=pytz.timezone('Asia/Kolkata')
 STATUS = (
     (0, "Draft"),
@@ -73,6 +74,9 @@ class Blog(models.Model):
     
     def short(self):
         return self.body[:62]
+    
+    def get_absolute_url(self):
+        return reverse('details', args=[str(self.id)])
 
 
 class BlogImages(models.Model):
