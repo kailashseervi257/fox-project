@@ -76,7 +76,7 @@ class Blog(models.Model):
         return self.body[:62]
     
     def get_absolute_url(self):
-        return reverse('details', args=[str(self.id)])
+        return reverse('details', args=[str(self.slug)])
 
 
 class BlogImages(models.Model):
