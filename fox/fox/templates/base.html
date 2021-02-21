@@ -53,7 +53,7 @@ Follow: http://www.twitter.com/themehats
     <link href="{% static 'assets/demos/index/css/themes/default.css' %}" rel="stylesheet" id="style_theme" type="text/css" />
     <link href="{% static 'assets/demos/index/css/custom.css' %}" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" />
 </head>
 
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
@@ -70,16 +70,13 @@ Follow: http://www.twitter.com/themehats
                     </ul>
                 </nav>
                 <div class="c-brand">
-                    <a href="index.html" class="c-logo">
-                        <img src="../../assets/base/img/layout/logos/logo-3.png" alt="JANGO" class="c-desktop-logo">
-                        <img src="../../assets/base/img/layout/logos/logo-1.png" alt="JANGO"
-                            class="c-desktop-logo-inverse">
-                        <img src="../../assets/base/img/layout/logos/logo-3.png" alt="JANGO" class="c-mobile-logo">
+                    <a href="{% url 'home' %}" class="c-logo">
+                        Future Step Solutions
                     </a>
                     <ul class="c-icons c-theme-ul">
-                        <li><a href="#"><i
+                        <li><a href="https://www.instagram.com/educonsultz2021/"><i
                                     class="socicon-btn  socicon-solid c-theme-on-hover socicon-instagram"></i></a></li>
-                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                        <li><a href="https://m.facebook.com/2021admissions.counselling.guidnance/?ref=bookmarks"><i class="icon-social-facebook"></i></a></li>
                         <li><a href="#"><i
                                     class="socicon-btn  socicon-solid c-theme-on-hover  socicon-linkedin"></i></a></li>
                     </ul>
@@ -900,10 +897,9 @@ Follow: http://www.twitter.com/themehats
                                 <div class="c-line-left hide"></div>
                             </div>
                             <p class="c-address c-font-16">
-                                25, Lorem Lis Street, Orange <br> California, US <br> Phone: 800 123 3456
-                                <br> Fax: 800 123 3456 <br> Email: <a href="mailto:info@jango.com"><span
-                                        class="c-theme-color">info@jango.com</span></a>
-                                <br> Skype: <a href="#"><span class="c-theme-color">jango</span></a>
+                                25, Lorem Lis Street, Orange <br> California, US <br>Phone: <a href="tel:919590747327">095907 47327</a><br> Email: <a href="mailto:futurestepsolutions@gmail.com"><span
+                                        class="c-theme-color">futurestepsolutions@gmail.com</span></a>
+                                <br>
                             </p>
                         </div>
                         <div class="col-md-5">
@@ -959,7 +955,7 @@ Follow: http://www.twitter.com/themehats
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-sm-12 c-col">
-                        <p class="c-copyright c-font-grey">2015 © JANGO
+                        <p class="c-copyright c-font-grey">2021 © FSS
                             <span class="c-font-grey-3">All Rights Reserved.</span>
                         </p>
                     </div>
