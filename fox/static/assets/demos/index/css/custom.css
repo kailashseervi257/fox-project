@@ -1,0 +1,201 @@
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark > .nav.navbar-nav > li .dropdown-menu > li > h3 {
+    color: #002940;
+}
+
+.c-layout-header.c-layout-header-6 .c-topbar{
+    padding: 0%;
+}
+
+.c-navbar{
+    background:rgba(0, 41, 64, 1);
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark > .nav.navbar-nav > li .dropdown-menu > li > a {
+    color: rgba(0, 41, 64, 1);
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark > .nav.navbar-nav > li .dropdown-menu > li > a:hover{
+    color: rgb(206, 229, 241);
+    background: rgba(0, 41, 64, 1);
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark-mobile {
+    background: rgba(0, 41, 64, 1);
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark-mobile > .nav.navbar-nav > li .dropdown-menu > li > a{
+    border-bottom:none ;
+}
+
+.c-bg-dark{
+    background-color: rgba(0, 41, 64, 1);
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark-mobile > .nav.navbar-nav > li > .c-link {
+    color: #fff;
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark > .nav.navbar-nav > li > .dropdown-menu {
+    background: #fff;
+}
+
+.c-layout-header .c-navbar .c-mega-menu.c-mega-menu-dark > .nav.navbar-nav > li > .dropdown-menu.c-menu-type-classic .dropdown-menu {
+    background: #fff;
+}
+
+
+.c-layout-header.c-layout-header-6 .c-topbar .c-top-menu > .c-links > li > a:not(.btn) {
+    color:rgba(0, 41, 64, 1);
+}
+
+.c-layout-header.c-layout-header-6 .c-quick-search > .form-control {
+    color: #fff;
+}
+
+.c-layout-header.c-layout-header-6 .c-quick-search > .form-control::placeholder {
+    color: rgba(105, 114, 129, 1);
+}
+
+@media (max-width: 991px){
+    .c-layout-header.c-layout-header-6 .c-quick-search > span {
+        color: rgba(105, 114, 129, 1);
+    }
+}
+
+.c-content-feature-6 .c-list{
+    display: flex;
+    justify-content: space-around;
+}
+
+.c-content-feature-6 .c-list .c-card{
+    width:100%;
+}
+
+.c-layout-footer-7{
+    background-color: rgba(0, 41, 64, 1);
+}
+
+
+
+
+@media (max-width: 991px){
+    .c-content-feature-6 > .c-list > li > .c-card{
+        width:85%;
+    }
+
+    .c-content-feature-6 > .c-list > li > .c-card a{
+        width: 100%;
+        font-size: small;
+    }
+}
+
+.form-control{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.socicon-btn{
+    color: #fff;
+}
+
+.main-search{
+    height: 450px;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 12%;
+    text-align: center;
+}
+
+@media (max-width: 991px){
+    .main-search{
+        padding-top: 20%;
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+    
+    .main-search h4{
+        line-height: 2;
+
+    }
+}
+
+.c-content-step-1 > .c-description{
+    padding: 0%;
+}
+
+.c-content-accordion-1 .panel{
+    margin-bottom: -5px;
+}
+
+.c-content-accordion-1 .panel > .panel-heading > .panel-title > a{
+    padding: 15px 30px;
+}
+
+.c-content-accordion-1.c-accordion-blue .panel > .panel-heading > .panel-title > a {
+    background-color: rgba(0, 41, 64, 1);
+}
+
+.c-content-accordion-1.c-accordion-blue .panel > .panel-collapse > .panel-body {
+    background-color: rgba(0, 41, 64, 1);
+}
+
+.c-content-accordion-1.c-accordion-blue .panel > .panel-heading > .panel-title > a:hover{
+    background:rgba(0, 82, 127, 1);
+}
+
+.panel-body ul li{
+    list-style: none;
+    padding: 2px;
+}
+
+.panel-body ul li > a{
+    color: #fff;
+}
+
+.c-content-accordion-1.c-accordion-blue .panel > .panel-heading > .panel-title > a.collapsed:hover{
+    background: rgba(0, 82, 127, 1);
+}
+
+@media (min-width: 766px){
+    #colleges-accordion{
+        display: none;
+    }
+}
+
+@media (min-width:766px){
+    #colleges-footer{
+        display: block;
+    }
+}
+
+@media (max-width:766px){
+    #colleges-footer{
+        display: none;
+    }
+}
+
+.c-content-accordion-1.c-accordion-blue .panel > .panel-heading > .panel-title > a.collapsed {
+    background-color: #002940;
+    color: #598096;
+}
+
+.c-content-contact-1 > .row .c-body > .c-section{
+    text-align: left;
+}
+
+#contact-page{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width:766px){
+    #contact-page{
+        flex-direction: column;
+    }
+}
+
+.blog-body img.img-fluid{
+    max-width: 85%;
+    margin: 10px 7%;
+}

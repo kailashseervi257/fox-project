@@ -1,65 +1,57 @@
- {% extends "base.html" %}
- {% block title %}Blogs{% endblock %}
-  {% load static  %}
-{% block navbar %}
-            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
-            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
-            <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Our Services</a></li>
-            <li class="nav-item active"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
-            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% extends 'base.html' %}
+{% block title %}
+Blog
 {% endblock  %}
- {% block content %}
-<div class="container">
-            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blogs <i class="ion-ios-arrow-forward"></i></span></p>
-</div>
-<section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
-    <div class="container">
-      <div class="row">
-      {% for  blog in blog_list  %}
-        <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
-          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
-            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }}); ">
-							<div class="meta-date text-center p-2">
-                <span class="day">{{ blog.pub_date_pro_day }}</span>
-                <span class="mos">{{ blog.pub_date_pro_month }}</span>
-                <span class="yr">{{ blog.pub_date_pro_year }}</span>
-              </div>
+
+{% block content %}
+{% load static %}
+
+    {% block navbar %}
+        <li><a href="{% url 'home' %}" class="c-font-uppercase c-font-bold">Home</a></li>
+        <li><a href="{% url 'about' %}" class="c-font-uppercase c-font-bold">About</a></li>
+        <li class="c-active"><a href="{% url 'blog' %}" class="c-font-uppercase c-font-bold">Blog</a></li>
+        <li><a href="{% url 'contact' %}" class="c-font-uppercase c-font-bold">Contact</a></li>
+    {% endblock navbar %}
+
+
+<div class="c-layout-page" style="
+        width: 60%;
+        margin: 85px auto;
+        position: relative;
+    ">
+        <div class="blog-hero" style="
+        margin-top: 10%;
+    ">
+            <a href="#">
+                <img src="{% static 'assets/base/img/content/backgrounds/bg-1.jpg' %}" alt="" style="
+        max-width: 100%;
+        vertical-align: middle;
+        height: auto;
+    ">
+                <h2 class="c-font-center c-font-bold c-font-25">Lorem ipsum dolor sit amet consectetur.</h2>
             </a>
-          </div>
-          <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
-            <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
-            {% comment %} <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p> {% endcomment %}
-              <div class="d-flex align-items-center mt-1">  
-	              <p class="ml-0 mb-0">
-                  <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #c0c0c0;">By {{ blog.author | title}}</a>
-                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
-	              </p>
-              </div>
-            </div>
-          </div>
-{% endfor %}
-</div>
-<br/>
+        </div>
+        <hr>
+        <p class="text-center c-font-25"><u>All Articles</u></p>
+        <div class="row justify-content-center">
+            {% for  blog in blog_list  %}
+                <div class="col-sm-10 col-md-10 col-lg-6 text-center" style="
+                    margin-bottom: 3%;
+                    ">
+                                <a href="{% url 'details' blog.slug %}">
+                                    <img style="
+                    max-width: 100%;
+                    " src="{{ blog.image.url }}" alt="">
+                        <p class="c-font-20">{{blog.title}}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
-</section>
-<div class="pagination justify-content-center">
-{% if blog_list.has_other_pages %}
-  <nav></nav>
-  <ul class="pagination justify-content-center" style="margin-top:16px;">
-{% if blog_list.has_previous %}
-<li><a href="?page={{ blog_list.previous_page_number }}" class="page-link btn btn-primary rounded-0" style="margin-right:3px;">< Prev </a></li>
-{% endif %}
-<span class="current" style="margin-left:2px; margin-right:2px; margin-top:4px;">
-Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }} 
-</span>
-{% if blog_list.has_next %}
-<li><a href="?page={{ blog_list.next_page_number }}" class="page-link btn btn-primary rounded-0" style="margin-right:3px;">Next >  </a></li>
-<li><a href="?page={{ blog_list.paginator.num_pages }}" class="page-link border-0" style="color: #fd5f00;">Last &raquo</a></li>
-{% endif %}
-</ul>
-</nav>
-</div>
-{% endif %}
-      </div>
- {% endblock  %}
+    </div>
+    <!-- END: PAGE CONTAINER -->
+
+    </div>
+    <!-- END: PAGE CONTAINER -->
+{% endblock content %}

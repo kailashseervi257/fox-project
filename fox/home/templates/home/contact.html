@@ -1,88 +1,87 @@
-{% extends "base.html" %}
-{% block title %}Contact{% endblock %}
-{% block navbar %}
-			<li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
-            <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Our Services</a></li>
-            <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
-            <li class="nav-item active"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% extends 'base.html' %}
+{% block title %}
+Contact
 {% endblock  %}
+
 {% block content %}
+{% load static %}
 
-{% load static  %}
-    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_1.jpg' %});">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Contact Us</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
-          </div>
+    {% block navbar %}
+        <li><a href="{% url 'home' %}" class="c-font-uppercase c-font-bold">Home</a></li>
+        <li><a href="{% url 'about' %}" class="c-font-uppercase c-font-bold">About</a></li>
+        <li><a href="{% url 'blog' %}" class="c-font-uppercase c-font-bold">Blog</a></li>
+        <li class="c-active"><a href="{% url 'contact' %}" class="c-font-uppercase c-font-bold">Contact</a></li>
+    {% endblock navbar %}
+    <!-- BEGIN: PAGE CONTAINER -->
+    <div class="c-layout-page" style="background: rgb(0 41 64 / 9%);">
+        <div class="c-content-box c-size-md c-bg-img-top c-no-padding c-pos-relative" jstcache="0" style="margin: 50px;">
+            <div class="container">
+                <div class="c-content-contact-1 c-opt-1">
+                    <div class="row" data-auto-height=".c-height" id="contact-page">
+                        
+                        <div class="col-md-6">
+                            <div class="c-contact">
+                                <div class="c-content-title-1">
+                                    <h3 class="c-font-uppercase c-font-bold">Keep in touch</h3>
+                                    <div class="c-line-left"></div>
+                                    <p class="c-font-lowercase">Our helpline is always open to receive any inquiry or
+                                        feedback.
+                                        Please feel free to drop us an email from the form below and we will get back to
+                                        you as soon as we can.</p>
+                                </div>
+                                <form action="#">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-top: 55px;">
+                            <div class="c-body">
+                                <div class="c-section">
+                                    <h3>JANGO Inc.</h3>
+                                </div>
+                                <div class="c-section">
+                                    <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Address</div>
+                                    <p>25, Lorem Lis Street,<br>Orange C, California,<br>United States of America
+                                    </p>
+                                </div>
+                                <div class="c-section">
+                                    <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Contacts</div>
+                                    <p><strong>T</strong> 800 123 0000<br><strong>F</strong> 800 123 8888</p>
+                                </div>
+                                <div class="c-section">
+                                    <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Social</div>
+                                    <br>
+                                    <ul class="c-content-iconlist-1 c-theme">
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-      </div>
-    </section>
+        <!-- END: CONTENT/CONTACT/FEEDBACK-1 -->
 
-    <section class="ftco-section contact-section">
-      <div class="container">
-        <div class="row d-flex contact-info">
-          <div class="col-md-3 d-flex">
-          	<div class="bg-light align-self-stretch box p-4 text-center">
-          		<h3 class="mb-4">Address</h3>
-	           <a href="https://goo.gl/maps/vNjPWoDCvV5nHdsG6" style="color:#000;"> <p>#53, 2nd floor, 3rd Cross, Bhuvaneshwari Nagar, Dasarahalli main road, Hebbal, Kempapura, Bangalore-560024 Land mark- Near Union Bank / Nice Mart, INDIA.</p></a>
-	          </div>
-          </div>
-          <div class="col-md-3 d-flex">
-          	<div class="bg-light align-self-stretch box p-4 text-center">
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel:9590747327">+91-9590747327</a></p>
-	          </div>
-          </div>
-          <div class="col-md-3 d-flex">
-          	<div class="bg-light align-self-stretch box p-4 text-center">
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:futurestepsolutions@gmail.com">futurestepsolutions@gmail.com</a></p>
-	          </div>
-          </div>
-        </div>
-      </div>
-    </section>
-		{% if error %}
-            <div id="error" class="alert alert-danger  " role="alert">
-            <span class="closebtn " onclick="this.parentElement.style.display='none';" style="cursor:pointer;" >&times;</span>  						
-  							{{ error }}
-					  </div>
-					</div>
-					{% endif %}
-		<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
-			<div class="container">
-				<div class="row d-flex align-items-stretch no-gutters">
-					<div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
-						<form method='POST' action="{% url 'contact' %}">
-            {% csrf_token %}
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name" name="name">
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your Email" name="email">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject" name="subject">
-              </div>
-              <div class="form-group">
-                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-					</div>
-					<div class="col-md-6 d-flex align-items-stretch">
-						<div id="map"></div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <!-- END: PAGE CONTENT -->
+    </div>
+    <!-- END: PAGE CONTAINER -->
 
-
-{% endblock %}
+    <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
+{% endblock content %}

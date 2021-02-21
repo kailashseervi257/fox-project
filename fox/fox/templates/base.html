@@ -1,885 +1,1040 @@
 <!DOCTYPE html>
+<!-- 
+Theme: JANGO - Ultimate Multipurpose HTML Theme Built With Twitter Bootstrap 3.3.7
+Version: 2.0.1
+Author: Themehats
+Site: http://www.themehats.com
+Purchase: http://themeforest.net/item/jango-responsive-multipurpose-html5-template/11987314?ref=themehats
+Contact: support@themehats.com
+Follow: http://www.twitter.com/themehats
+-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
-<head>
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 {% load static %}
- <title>{% block title %}{% endblock %}</title>
- <style>
-*{
-    box-sizing: border-box;
-    margin:0px;
-    padding: 0px;
-}
-
-.parent{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    top:50px;
-    align-items: center;
-    
-}
-.blog-img img{
-    width: 298px;
-    height: 180px;
-    border-radius: 4px 4px 0px 0px;
-}
-.child1, .child2, .child3, .child4 {
-    width:300px;
-    border-radius: 4px;
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-    border: 1px solid rgb(173, 158, 158);
-
-}
-.child1{
-    margin-bottom: 10px;
-}
-.child2{
-    margin-bottom: 10px;
-}
-.child3{
-    margin-bottom: 10px;
-}
-.child4{
-    margin-bottom: 10px;
-}
-
-.blog-title h3{
-height: 56px;
-left: 13px;
-top: 12px;
-margin:12px;
-border-radius: 4px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 28px;
-
-color: #FD5F00;
-}
-
-
-.parent{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    top:50px;
-    align-items: center;
-    
-}
-.blog-img img{
-    width: 298px;
-    height: 180px;
-    border-radius: 4px 4px 0px 0px;
-}
-.bchild {
-    width:300px;
-    border-radius: 4px;
-    border: 1px solid rgb(189, 187, 187);
-    margin-bottom: 10px;
-}
-
-.bchild:hover{
-    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.blog-title h5{
-left: 13px;
-top: 12px;
-margin:12px;
-border-radius: 4px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 28px;
-padding:5px;
-color: #FD5F00;
-}
-
-#popup-btn{
-    position: fixed;
-    z-index:10;
-    left: 10px;
-    bottom: 10px;
-}
-
-
-
-
-
-   .label-container{
-  position:fixed;
-  bottom:48px;
-  right:105px;
-  display:table;
-  visibility: hidden;
-}
-
-.label-text{
-  color:#FFF;
-  background:rgba(51,51,51,0.5);
-  display:table-cell;
-  vertical-align:middle;
-  padding:10px;
-  border-radius:3px;
-}
-
-.label-arrow{
-  display:table-cell;
-  vertical-align:middle;
-  color:#333;
-  opacity:0.5;
-}
-
-.float{
-  position:fixed;
-  width:60px;
-  height:60px;
-  bottom:40px;
-  right:40px;
-  background-color:#5d50c6 ;
-  color:#FFF;
-  border-radius:50px;
-  text-align:center;
-  box-shadow: 2px 2px 3px #999;
-  z-index:1000;
-  animation: bot-to-top 2s ease-out;
-}
-
-#ul{
-  position:fixed;
-  right:40px;
-  padding-bottom:20px;
-  bottom:80px;
-  z-index:100;
-}
-
-#ul-li{
-  list-style:none;
-  margin-bottom:10px;
-}
-
-#ul-li-a{
-  background-color:#5d50c6 ;
-  color:#FFF;
-  border-radius:50px;
-  text-align:center;
-  box-shadow: 2px 2px 3px #999;
-  width:60px;
-  height:60px;
-  display:block;
-}
-
-#ul:hover{
-  visibility:visible!important;
-  opacity:1!important;
-}
-
-
-.my-float{
-  font-size:24px;
-  margin-top:18px;
-}
-
-a#menu-share + ul{
-  visibility: hidden;
-}
-
-a#menu-share:hover + ul{
-  visibility: visible;
-  animation: scale-in 0.5s;
-} 
-
-a#menu-share i{
-  animation: rotate-in 0.5s;
-}
-
-a#menu-share:hover > i{
-  animation: rotate-out 0.5s;
-}
-
-
-@keyframes bot-to-top {
-    0%   {bottom:-40px}
-    50%  {bottom:40px}
-}
-
-
-@keyframes scale-in {
-    from {transform: scale(0);opacity: 0;}
-    to {transform: scale(1);opacity: 1;}
-}
-
-@keyframes rotate-in {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-}
-
-@keyframes rotate-out {
-    from {transform: rotate(360deg);}
-    to {transform: rotate(0deg);}
-} 
-
-
-      .custom-blog-title {
-  font-family: "Source Sans Pro script=all rev=1", sans-serif;
-  color:#000;
-  font-style: normal;
-  transition-duration: 350ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  font-size:47px;
-}
-  
-    .short{
-    font-family: "Source Sans Pro script=all rev=1", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    color:#494746; 
-    font-size:28px;
-  }
-  .shorter{
-    font-family: "Source Sans Pro script=all rev=1", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    color:#000; 
-    font-size:20px;
-  }
-.custom-blog-body{
-font-family: 'Source Sans Pro', sans-serif;
-font-weight: 100;
-font-style: normal;
-color:#000000;
-transition-duration: 350ms;
-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-font-size:18px;
-overflow: overlay;
-}
-
-#error {
-  z-index:5; position: fixed; left: 50%; top: 50px; width:auto;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.anouncement{
-  width:100%;
-  background-color:#232333;
-  display :flex;
-  background-color:#f1f1f1;
-  flex-direction:row;
-  justify-content:center;
-  width:80%;
-  margin:auto;
-}
-.anouncement h4 {
-    display: inline-flex;
-    align-items: center;
-    margin: 5px;
-    padding: 2px;
-    color: white;
-    height: 60px;
-    align-self: center;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 20px;
-}
-.color-red{
-      background-color: #ff111c;
-} 
-.color-blue{
-      background-color: #3300fd;
-}
-
-.anouncement p{
-    margin: 10px;
-    display: inline-flex;
-    align-items: center;
-    font-size: 14px;
-    color: #ffffff;
-    flex-direction: row;
-    background-color: #f1f1f1;
-    color: red;
-}
-
-.anouncement p a{
-    display: contents;
-    color: #3300fd;
-}
-@media screen and (max-width:768px){
-  .anouncement{
-    display:flex;
-    overflow:hidden;
-    flex-direction:column;
-  }
-  .anouncement h4{
-    margin:5px;
-    padding:2px;
-    background-color:#3611ff;
-    color:white;
-  }
-  .anouncement p{
-    font-size:16px;
-  }
-}
-@media screen and (max-width:510px)
-{
-  .anouncement{
-    flex-direction:column;
-  }
-  .anouncement p{
-    font-size:14px;
-  }
-   .anouncement h4{
-    margin:2px;
-    padding:2px;
-    background-color:#3611ff;
-    color:white;
-  }
-}
-    </style>
-   
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" />
-    <link href="https://fonts.googleapis.com/css2?family=Fondamento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href=  "{% static 'css/animate.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-
-    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
-
-    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<script src="https://cdn.jsdelivr.net/sharer.js/latest/sharer.min.js"></script>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177399806-1"></script>
- <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-177399806-1');
-</script>
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!-- <link
+        href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all'
+        rel='stylesheet' type='text/css'> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="{% static 'assets/plugins/socicon/socicon.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/bootstrap-social/bootstrap-social.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/animate/animate.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN: BASE PLUGINS  -->
+    <link href="{% static 'assets/plugins/revo-slider/css/settings.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/revo-slider/css/layers.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/revo-slider/css/navigation.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/cubeportfolio/css/cubeportfolio.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/owl-carousel/assets/owl.carousel.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/fancybox/jquery.fancybox.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/slider-for-bootstrap/css/slider.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END: BASE PLUGINS -->
+    <!-- BEGIN: PAGE STYLES -->
+    <link href="{% static 'assets/plugins/ilightbox/css/ilightbox.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END: PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="{% static 'assets/demos/index/css/plugins.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/demos/index/css/components.css' %}" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/demos/index/css/themes/default.css' %}" rel="stylesheet" id="style_theme" type="text/css" />
+    <link href="{% static 'assets/demos/index/css/custom.css' %}" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
-<body>
-<header>
-<div class="bg-top navbar-light">
-      <div class="container">
-        <div class="row no-gutters d-flex align-items-center align-items-stretch">
-          <div class="col-md-4 d-flex align-items-center py-4">
-            <a class="navbar-brand" href="{% url 'home' %}">Future Step<br> Solutions<span></span></a>
-          </div>
-          <div class="col-lg-8 d-block">
-            <div class="row d-flex">
-              <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                <div class="text">
-                  <span>Email</span>
-                  <span><a href="mailto:futurestepsolutions@gmail.com">futurestepsolutions@gmail.com</a></span>
-                </div>
-              </div>
-              <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
-                <div class="icon d-flex justify-content-center align-items-center"><span class="icon-phone2"></span>
-                <div class="text">
-                  <span>Call</span>
-                  <span><a href="tel:9590747327">9590747327</span>
-
-                  <span><a href="tel:7022363258">7022363258</span>
-                </div>
-              </div>
-              <div class="col-md topper d-flex align-items-center justify-content-end">
-                <p class="mb-0">
-                  <a href="/#enquiry" class="btn py-2 px-3 btn-primary d-flex align-items-center justify-content-center" target="_blank">
-                    <span>Enquire Now</span>
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container d-flex align-items-center px-4">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu" >Menu</span>
-        </button>
-        <form name="searchbox" method="GET" action="{% url 'search:searchposts' %}" value="{{request.GET.q}}" class="searchform order-lg-last">
-          <div class="form-group d-flex">
-            <input type="text" name="q" class="form-control pl-3" placeholder="Search">
-            <button type="submit" name="submit" value="Search" placeholder="" class="form-control search"><span class="ion-ios-search"></span></button>
-          </div>
-        </form>
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav mr-auto">
-            {% block navbar %}
-            
-            {% endblock %}
-          </ul>
-        </div>
-      </div>
-    </nav>
-    </header>
-
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" id="popup-btn" data-target="#popup" data-whatever="@mdo" style="display:block;    position: fixed; z-index:10; left: 30px; bottom: 40px;
-" >Message</button> 
-<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" name="popupForm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight:600;">Get guidance to get admissions in top colleges</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form  method="POST" action="{% url 'popupForm' %}" id="PUForm">
-        {% csrf_token %}
-          <div class="form-group">
-            <label for="Pname" class="col-form-label">Name</label>
-            <input type="text" class="form-control" id="Pname" name="name" >
-          </div>
-          <div class="form-group">
-            <label for="Pphone" class="col-form-label">Phone No.</label>
-            <input type="text" class="form-control" id="Pphone" name="ph">
-          </div>
-          <div class="form-group">
-            <label for="PcourseType" class="col-form-label">Course type</label>
-            <select name="courseType" id="PcourseType" class="form-control">
-											<option value="">----</option>
-											<option value="BEBTech">B.E / B.Tech</option>
-											<option value="Degree">Degree</option>
-											<option value="Paramedical">Paramedical</option>
-											<option  value="Medical">Medical</option>
-											<option value="Architecture">Architecture</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="Pentrance" class="col-form-label">Entrance exam</label>
-            <select name="Entrance" id="Pentrance" class="form-control">
-                      <option value="">----</option>
-											<option value="K-CET">K-CET 2020</option>
-											<option value="COMED-K">COMED-K 2020</option>
-											<option value="NEET">NEET 2020</option>
-											<option value="JEE-Mains">JEE Mains 2020</option>
-											<option value="JEE-Advance">JEE Advance 2020</option>
-											<option value="OTHER">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="Ppercent" class="col-form-label">12th Percentage</label>
-            <input name="TwelfthPercentage" type="number" class="form-control" id="Ppercent" pattern="\d*" maxlength="5">
-          </div>
-          <div class="form-group">
-            <label for="admissionType" class="col-form-label">Admission type</label>
-            <select name="admissionType" id="admissionType" class="form-control">
-                      
-            </select>
-          </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-          <button type="submit" class="btn btn-primary">Send message</button>
-      </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-{% if message %}
-        <button type="button" id="btn-success" class="btn btn-primary" data-toggle="modal" data-target="#successModal" style="display:none;">
-        </button>
-
-        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="successModalLabel">Successful</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body text-success">
-                {{ message }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-{% endif %}
-
-
-
-
-
-{% if error %}
-            <!-- Button trigger modal -->
-            <button type="button" id="btn-error" class="btn btn-primary" data-toggle="modal" data-target="#errorModal" style="display:none;">
-              
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+    <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
+    <!-- BEGIN: HEADER -->
+    <header class="c-layout-header c-layout-header-6" data-minimize-offset="80">
+        <div class="c-topbar">
+            <div class="container">
+                <nav class="c-top-menu">
+                    <ul class="c-links c-theme-ul">
+                        {% block navbar %}
+                            
+                        {% endblock %}
+                    </ul>
+                </nav>
+                <div class="c-brand">
+                    <a href="index.html" class="c-logo">
+                        <img src="../../assets/base/img/layout/logos/logo-3.png" alt="JANGO" class="c-desktop-logo">
+                        <img src="../../assets/base/img/layout/logos/logo-1.png" alt="JANGO"
+                            class="c-desktop-logo-inverse">
+                        <img src="../../assets/base/img/layout/logos/logo-3.png" alt="JANGO" class="c-mobile-logo">
+                    </a>
+                    <ul class="c-icons c-theme-ul">
+                        <li><a href="#"><i
+                                    class="socicon-btn  socicon-solid c-theme-on-hover socicon-instagram"></i></a></li>
+                        <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                        <li><a href="#"><i
+                                    class="socicon-btn  socicon-solid c-theme-on-hover  socicon-linkedin"></i></a></li>
+                    </ul>
+                    <button class="c-topbar-toggler" type="button">
+                        <i class="fa fa-ellipsis-v"></i>
                     </button>
-                  </div>
-                  <div class="modal-body text-danger">
-                    {{ error }}
-                  </div>
+                    <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                    </button>
+                    <button class="c-search-toggler" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
                 </div>
-              </div>
             </div>
-{% endif %}
-
-
-
-{% block content %}
-
-<svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"></circle><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"></circle></svg>
-{% endblock %}
-
-<footer class="ftco-footer ftco-bg-dark ftco-section" style="padding-top: 4">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-              <div class="block-23 mb-3">
-                <ul>
-                  <li><a href="https://goo.gl/maps/vNjPWoDCvV5nHdsG6"><span class="icon icon-map-marker"></span><span class="text">#53, 2nd floor, 3rd Cross, Bhuvaneshwari Nagar, Dasarahalli main road, Hebbal, Kempapura, Bangalore-560024 Land mark- Near Union Bank / Nice Mart, INDIA.</span></a></li>
-                  <li><a href="tel:9590747327"><span class="icon icon-phone"></span><span class="text">+91-9590747327</span></a></li>
-                  <li><a href="mailto:futurestepsolutions@gmail.com"><span class="icon icon-envelope"></span><span class="text">futurestepsolution@gmail.com</span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!---blog area in footer--->
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Recent Blog</h2>
-              
-
-          
-              {% for blog in recentBlogFoot %}
-              <div class="block-21 mb-4 d-flex">
-                <a href="{% url 'details' blog.slug %}" class="blog-img mr-4" style="background-image: url({{ blog.image.url }});"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="{% url 'details' blog.slug %}">{{ blog.title }}</a></h3>
-                  <div class="meta">
-                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-calendar"></span> {{ blog.pub_date_pro}}</a></div><br/>
-                    <div><a href="{% url 'details' blog.slug %}"><span class="icon-person"></span> {{ blog.author | title }}</a></div>
-                    {% comment %} <div><a href="{% url 'details' blog.slug %}"><span class="icon-chat"></span> 19</a></div> {% endcomment %}
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-
-
-
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5 ml-md-4">
-              <h2 class="ftco-heading-2">Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="{% url 'home' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                <li><a href="{% url 'about' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                <li><a href="{% url 'services' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="{% url 'blog' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Blog</a></li>
-                <li><a href="{% url 'contact' %}"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
-              </ul>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Subscribe Us!</h2>
-              <form  action="{% url 'subscribe' %}" method="POST" class="subscribe-form">
-              {% csrf_token %}
-                <div class="form-group">
-                  <input name="email" type="email" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3" required>
-                </div>
-              </form>
-            </div>
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
+        <div class="c-navbar">
+            <div class="container">
+                <!-- BEGIN: BRAND -->
+                <div class="c-navbar-wrapper clearfix">
+                    <!-- END: BRAND -->
+                    <!-- BEGIN: QUICK SEARCH -->
+                    <form class="c-quick-search" action="#">
+                        <input type="text" name="query" placeholder="Search  colleges, courses, exams...." value=""
+                            class="form-control" autocomplete="off">
+                        <span class="c-theme-link">×</span>
+                    </form>
+                    <!-- END: QUICK SEARCH -->
+                    <!-- BEGIN: HOR NAV -->
+                    <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- BEGIN: MEGA MENU -->
+                    <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
+                    <nav
+                        class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                        <ul class="nav navbar-nav c-theme-nav">
+                            <li class="">
+                                <a href="javascript:;" class="c-link dropdown-toggle">Colleges<span
+                                        class="c-arrow c-toggler"></span></a>
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made <i class="icon-education" aria-hidden="true"></i> by <a href="{% url 'home' %}" target="_blank">Future Step Solutions</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
+
+                                <div class="dropdown-menu c-menu-type-mega c-menu-type-fullwidth"
+                                    style="min-width: auto">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <ul class="dropdown-menu c-menu-type-inline">
+                                                <li>
+                                                    <h3>Top Colleges</h3>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top Engineering colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top MBBS colleges in Karnataka</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top Architecture colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top PG-Medical colleges in Karnataka</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top PG-Medical colleges in Maharashtra</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul class="dropdown-menu c-menu-type-inline">
+                                                <li>
+                                                    <!-- <h3>Home Samples</h3> -->
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top BBA Colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top BA colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top law colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top Paramedical colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top MBA Colleges in Bangalore, Pune, Mumbai, Delhi</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul class="dropdown-menu c-menu-type-inline">
+                                                <li>
+                                                    <a href="#">Top MCA Colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top BAMS Colleges in Bangalore</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Top BDS Colleges in Bangalore</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </li>
+                            <li class="c-menu-type-classic">
+                                <a href="javascript:;" class="c-link dropdown-toggle">Courses<span
+                                        class="c-arrow c-toggler"></span></a>
+
+
+                                <ul class="dropdown-menu c-menu-type-classic c-pull-left">
+                                    <li>
+                                        <a href="javascript:;"><span class="c-arrow c-toggler">Engineering</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">MBBS<span class="c-arrow c-toggler"></span></a>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a href="javascript:;">PG-Medical(MD/MS)<span
+                                                class="c-arrow c-toggler"></span></a>
+                                        <ul class="dropdown-menu c-pull-right">
+                                            <li class="dropdown-submenu">
+                                                <a href="#">Non Clinical<span class="c-arrow c-toggler"></span></a>
+                                                <ul class="dropdown-menu c-pull-right">
+                                                    <li>
+                                                        <a href="#">Pathology</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Microbiology</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Pharmacology</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Biochemistry</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Physiology</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Psychiatric</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Anatomy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Forensic Medicine</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Radiology</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Dermatology</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Paediatrics</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Orthopaedics</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Obstetrics & Gynaecology(OBG)</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Anaesthesia</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">General medicine</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">General Surgery</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Ophthalmology</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">ENT</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Pulmonary Medicine</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Transfusion medicine</a>
+                                            </li>
+
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="c-link dropdown-toggle">Exam<span
+                                        class="c-arrow c-toggler"></span></a>
+
+
+
+                                <ul class="dropdown-menu c-menu-type-mega c-menu-type-classic" style=" min-width: auto">
+                                    <li>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <h3>Entrance exams</h3>
+                                            </li>
+                                            <li>
+                                                <a href="#">K-CET</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">JEE Mains</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">COMED-K</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">NEET-UG</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">NEET-PG</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">NATA</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">PGCET</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">CAT</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">SNAP</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">XAT</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">NMAT</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="c-link dropdown-toggle">Study Abroad<span
+                                        class="c-arrow c-toggler"></span></a>
+
+
+
+                                <ul class="dropdown-menu c-menu-type-mega c-menu-type-classic" style="min-width: auto">
+                                    <li>
+                                        <ul class="dropdown-menu c-menu-type-inline">
+
+                                            <!-- <li>
+                                                <h3>Shop Pages 1</h3>
+                                            </li> -->
+                                            <li>
+                                                <a href="#" target="_blank">Georgia</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">USA</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">New Zealand</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Australia</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">China</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Russia</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">Philippines</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">Ukraine</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank">Nepal</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+
+                            <li class="c-search-toggler-wrapper">
+                                <a href="#" class="c-btn-icon c-search-toggler"><i class="fa fa-search"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- END: MEGA MENU -->
+                    <!-- END: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- END: HOR NAV -->
+                </div>
+                <!-- BEGIN: LAYOUT/HEADERS/QUICK-CART -->
+                <!-- BEGIN: CART MENU -->
+
+                <!-- END: CART MENU -->
+                <!-- END: LAYOUT/HEADERS/QUICK-CART -->
+            </div>
         </div>
-      </div>
-    </footer> 
+
+    </header>
+    <!-- END: HEADER -->
+    <!-- END: LAYOUT/HEADERS/HEADER-1 -->
+    <!-- BEGIN: CONTENT/USER/FORGET-PASSWORD-FORM -->
+    <div class="modal fade c-content-login-form" id="forget-password-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">Password Recovery</h3>
+                    <p>To recover your password please fill in your email address</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="forget-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="forget-email"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit"
+                                class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Submit</button>
+                            <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form"
+                                data-dismiss="modal">Back To Login</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer c-no-border">
+                    <span class="c-text-account">Don't Have An Account Yet ?</span>
+                    <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal"
+                        class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/FORGET-PASSWORD-FORM -->
+    <!-- BEGIN: CONTENT/USER/SIGNUP-FORM -->
+    <div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">Create An Account</h3>
+                    <p>Please fill in below form to create an account with us</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="signup-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-email"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-username" class="hide">Username</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-username"
+                                placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-fullname" class="hide">Fullname</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-fullname"
+                                placeholder="Fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-country" class="hide">Country</label>
+                            <select class="form-control input-lg c-square" id="signup-country">
+                                <option value="1">Country</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit"
+                                class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Signup</button>
+                            <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form"
+                                data-dismiss="modal">Back To Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/SIGNUP-FORM -->
+    <!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
+    <div class="modal fade c-content-login-form" id="login-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+                    <p>Let's make today a great day!</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="login-email"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password" class="hide">Password</label>
+                            <input type="password" class="form-control input-lg c-square" id="login-password"
+                                placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <div class="c-checkbox">
+                                <input type="checkbox" id="login-rememberme" class="c-check">
+                                <label for="login-rememberme" class="c-font-thin c-font-17">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span> Remember Me </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit"
+                                class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
+                            <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form"
+                                data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a>
+                        </div>
+                        <div class="clearfix">
+                            <div class="c-content-divider c-divider-sm c-icon-bg c-bg-grey c-margin-b-20">
+                                <span>or signup with</span>
+                            </div>
+                            <ul class="c-content-list-adjusted">
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-twitter">
+                                        <i class="fa fa-twitter"></i> Twitter </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-facebook">
+                                        <i class="fa fa-facebook"></i> Facebook </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-google">
+                                        <i class="fa fa-google"></i> Google </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer c-no-border">
+                    <span class="c-text-account">Don't Have An Account Yet ?</span>
+                    <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal"
+                        class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/LOGIN-FORM -->
+    <!-- BEGIN: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+
+    <!-- END: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+    <!-- BEGIN: PAGE CONTAINER -->
+    {% block content %}
     
+    {% endblock content %}
+    <!-- END: PAGE CONTAINER -->
+    <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-6 -->
+    <footer class="c-layout-footer c-layout-footer-7">
 
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+        <div class="container">
 
-    
-  <script src="{% static 'js/jquery.min.js' %}"></script>
-  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
-  <script src="{% static 'js/popper.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
-  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-  <script src="{% static 'js/aos.js' %}"></script>
-  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
-  <script src="{% static 'js/scrollax.min.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
-<script>
-var timer = setInterval(setColor, 300);
+            <div class="c-prefooter">
 
-function setColor() {
-  var x = document.querySelector(".anouncement h4");
-  x.style.backgroundColor = x.style.backgroundColor == "red" ? "blue" : "red";
-}
+                <div class="c-body">
+                    <div class="row" id="colleges-footer">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top engineering colleges in Bangalore
+                                    </h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">RV College</a></li>
+                                        <li><a href="#">MS Ramaiah College</a></li>
+                                        <li><a href="#">BMS College</a></li>
+                                        <li><a href="#"> PES Institute Of Technology</a></li>
+                                        <li><a href="#">RNS Institute Of Technology</a></li>
+                                        <li><a href="#">Reva University</a></li>
+                                        <li><a href="#">CMR Institute Of Technology</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top MBBS colleges in Karnataka</h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">MS Ramaiah medical college</a></li>
+                                        <li><a href="#">Vydehi medical college</a></li>
+                                        <li><a href="#">KIMS Medcal college</a></li>
+                                        <li><a href="#">Ambedkar Medical College</a></li>
+                                        <li><a href="#">BGS Medical College</a></li>
+                                        <li><a href="#">BM Patil Medical College</a></li>
+                                        <li><a href="#">MVJ Medical College</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top PG Medical colleges in Karnataka
+                                    </h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#"> MS Ramaiah medical college</a></li>
+                                        <li><a href="#">Vydehi medical college</a></li>
+                                        <li><a href="#">JSS Medical College</a></li>
+                                        <li><a href="#">KIMS Medcal college</a></li>
+                                        <li><a href="#">Ambedkar Medical College</a></li>
+                                        <li><a href="#">BGS Medical College</a></li>
+                                        <li><a href="#">BM Patil Medical College</a></li>
+                                        <li><a href="#">MVJ Medical College</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">TOP BBA colleges in Bangalore</h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">Christ University</a></li>
+                                        <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                        <li><a href="#">Mount Carmel College</a></li>
+                                        <li><a href="#">Jain University</a></li>
+                                        <li><a href="#">Reva University</a></li>
+                                        <li><a href="#">MS Ramaiah Arts, Science & Commere College</a></li>
+                                        <li><a href="#">Dayanand Sagar College of Arts, Science and Commerce</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top BA colleges in Bangalore</h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">Christ University</a></li>
+                                        <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                        <li><a href="#">Mount carmel College</a></li>
+                                        <li><a href="#">Jain University</a></li>
+                                        <li><a href="#">Reva University</a></li>
+                                        <li><a href="#">MS Ramaiah Arts, Science & Commere College</a></li>
+                                        <li><a href="#">Dayanand Sagar College of Arts, Science and Commerce</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top B.com colleges in Bangalore</h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">Christ University</a></li>
+                                        <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                        <li><a href="#">Mount carmel College</a></li>
+                                        <li><a href="#">Jain University</a></li>
+                                        <li><a href="#">Reva University</a></li>
+                                        <li><a href="#">MS Ramaiah Arts, Science & Commere College</a></li>
+                                        <li><a href="#">Dayanand Sagar College of Arts, Science and Commerce</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top MBA colleges in Bangalore</h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">Christ University</a></li>
+                                        <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                        <li><a href="#">Jain University</a></li>
+                                        <li><a href="#">Reva University</a></li>
+                                        <li><a href="#">MS Ramaiah College</a></li>
+                                        <li><a href="#">Dayanand Sagar College</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <ul class="c-links c-theme-ul" style="font-size: 1.4rem;">
+                                <li>
+                                    <h3 class="c-title c-font-bold c-font-white">Top Business Schools Bangaloree</h3>
+                                    <ul class="c-links c-theme-ul">
+                                        <li><a href="#">SIBM</a></li>
+                                        <li><a href="#">NMIMS</a></li>
+                                        <li><a href="#">IFIM</a></li>
+                                        <li><a href="#">Xaviers College</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
 
-function stopColor() {
-  clearInterval(timer);
-}
+                    </div>
+                    <div class="c-content-accordion-1 c-accordion-blue" id="colleges-accordion">
+                        <div class="panel-group" role="tablist">
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingOne-3">
+                                    <h4 class="panel-title">
+                                        <a class="c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-100" href="#collapseOne-3" aria-expanded="true"
+                                            aria-controls="collapseOne-3">Top Engineering
+                                            Colleges in Bangalore</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne-3" class="panel-collapse collapse in" role="tabpanel"
+                                    aria-labelledby="headingOne-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#">RV College</a></li>
+                                            <li><a href="#">MS Ramaiah College</a></li>
+                                            <li><a href="#">BMS College</a></li>
+                                            <li><a href="#"> PES Institute Of Technology</a></li>
+                                            <li><a href="#">RNS Institute Of Technology</a></li>
+                                            <li><a href="#">Reva University</a></li>
+                                            <li><a href="#">CMR Institute Of Technology</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingTwo-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseTwo-3" aria-expanded="false"
+                                            aria-controls="collapseTwo-3">Top MBBS
+                                            colleges in Karnataka</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingTwo-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#">MS Ramaiah medical college</a></li>
+                                            <li><a href="#">Vydehi medical college</a></li>
+                                            <li><a href="#">KIMS Medcal college</a></li>
+                                            <li><a href="#">Ambedkar Medical College</a></li>
+                                            <li><a href="#">BGS Medical College</a></li>
+                                            <li><a href="#">BM Patil Medical College</a></li>
+                                            <li><a href="#">MVJ Medical College</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingThree-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseThree-3" aria-expanded="false"
+                                            aria-controls="collapseThree-3">Top PG
+                                            Medical colleges in Karnataka</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingThree-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#"> MS Ramaiah medical college</a></li>
+                                            <li><a href="#">Vydehi medical college</a></li>
+                                            <li><a href="#">JSS Medical College</a></li>
+                                            <li><a href="#">KIMS Medcal college</a></li>
+                                            <li><a href="#">Ambedkar Medical College</a></li>
+                                            <li><a href="#">BGS Medical College</a></li>
+                                            <li><a href="#">BM Patil Medical College</a></li>
+                                            <li><a href="#">MVJ Medical College</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingThree-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseFour-3" aria-expanded="false"
+                                            aria-controls="collapseFour-3">Top BBA
+                                            Colleges in Bangalore</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingThree-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#">Christ University</a></li>
+                                            <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                            <li><a href="#">Mount Carmel College</a></li>
+                                            <li><a href="#">Jain University</a></li>
+                                            <li><a href="#">Reva University</a></li>
+                                            <li><a href="#">MS Ramaiah Arts, Science & Commere College</a></li>
+                                            <li><a href="#">Dayanand Sagar College of Arts, Science and Commerce</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingThree-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseFive-3" aria-expanded="false"
+                                            aria-controls="collapseFive-3">Top BA
+                                            colleges in Bangalore</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFive-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingThree-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#">Christ University</a></li>
+                                            <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                            <li><a href="#">Mount carmel College</a></li>
+                                            <li><a href="#">Jain University</a></li>
+                                            <li><a href="#">Reva University</a></li>
+                                            <li><a href="#">MS Ramaiah Arts, Science & Commere College</a></li>
+                                            <li><a href="#">Dayanand Sagar College of Arts, Science and Commerce</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingThree-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseSix-3" aria-expanded="false"
+                                            aria-controls="collapseSix-3">Top B.com
+                                            Colleges in Bangalore</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSix-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingThree-3">
+                                    <div class="panel-body c-font-14">
+                                        <h3 class="c-title c-font-bold c-font-white"></h3>
+                                        <ul class="c-links">
+                                            <li><a href="#">Christ University</a></li>
+                                            <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                            <li><a href="#">Mount carmel College</a></li>
+                                            <li><a href="#">Jain University</a></li>
+                                            <li><a href="#">Reva University</a></li>
+                                            <li><a href="#">MS Ramaiah Arts, Science & Commere College</a></li>
+                                            <li><a href="#">Dayanand Sagar College of Arts, Science and Commerce</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingThree-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseSeven-3" aria-expanded="false"
+                                            aria-controls="collapseSeven-3">Top MBA
+                                            colleges in Bangalore</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSeven-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingThree-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#">Christ University</a></li>
+                                            <li><a href="#">St.Joseph's College Of Commerce</a></li>
+                                            <li><a href="#">Jain University</a></li>
+                                            <li><a href="#">Reva University</a></li>
+                                            <li><a href="#">MS Ramaiah College</a></li>
+                                            <li><a href="#">Dayanand Sagar College</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-heading" role="tab" id="headingThree-3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed c-font-bold c-font-16" data-toggle="collapse"
+                                            data-parent="#accordion-3" href="#collapseEight-3" aria-expanded="false"
+                                            aria-controls="collapseEight-3">Top
+                                            Business Schools Bangalore</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseEight-3" class="panel-collapse collapse" role="tabpanel"
+                                    aria-labelledby="headingThree-3">
+                                    <div class="panel-body c-font-14">
+                                        <ul class="c-links">
+                                            <li><a href="#">SIBM</a></li>
+                                            <li><a href="#">NMIMS</a></li>
+                                            <li><a href="#">IFIM</a></li>
+                                            <li><a href="#">Xaviers College</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-var Select_List_Data = {
-    
-    'admissionType': { // name of associated select box
-        
-        // names match option values in controlling select box
-        Medical: {
-            text: ['Counselling',],
-            value: ['Counselling',]
-        },
-        BEBTech:{
-          text:['Counselling','DirectAdmission'],
-          value:['Counselling','DirectAdmission']
-        },
-        Paramedical:{
-          text:['Counselling','DirectAdmission'],
-          value:['Counselling','DirectAdmission']
-        },
-        Degree:{
-          text:['Counselling','DirectAdmission'],
-          value:['Counselling','DirectAdmission']
-        },
-        Architecture:{
-          text:['Counselling','DirectAdmission'],
-          value:['Counselling','DirectAdmission']
-        },
-    }    
-};
 
-function removeAllOptions(sel, removeGrp) {
-    var len, groups, par;
-    if (removeGrp) {
-        groups = sel.getElementsByTagName('optgroup');
-        len = groups.length;
-        for (var i=len; i; i--) {
-            sel.removeChild( groups[i-1] );
-        }
-    }
-    
-    len = sel.options.length;
-    for (var i=len; i; i--) {
-        par = sel.options[i-1].parentNode;
-        par.removeChild( sel.options[i-1] );
-    }
-}
+                <div class="c-line"></div>
 
-function appendDataToSelect(sel, obj) {
-    var f = document.createDocumentFragment();
-    var labels = [], group, opts;
-    
-    function addOptions(obj) {
-        var f = document.createDocumentFragment();
-        var o;
-        
-        for (var i=0, len=obj.text.length; i<len; i++) {
-            o = document.createElement('option');
-            o.appendChild( document.createTextNode( obj.text[i] ) );
-            
-            if ( obj.value ) {
-                o.value = obj.value[i];
-            }
-            
-            f.appendChild(o);
-        }
-        return f;
-    }
-    
-    if ( obj.text ) {
-        opts = addOptions(obj);
-        f.appendChild(opts);
-    } else {
-        for ( var prop in obj ) {
-            if ( obj.hasOwnProperty(prop) ) {
-                labels.push(prop);
-            }
-        }
-        
-        for (var i=0, len=labels.length; i<len; i++) {
-            group = document.createElement('optgroup');
-            group.label = labels[i];
-            f.appendChild(group);
-            opts = addOptions(obj[ labels[i] ] );
-            group.appendChild(opts);
-        }
-    }
-    sel.appendChild(f);
-}
+                <div class="c-foot">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="c-content-title-1 c-title-md">
+                                <h3 class="c-title c-font-uppercase c-font-bold">Contact Us</h3>
+                                <div class="c-line-left hide"></div>
+                            </div>
+                            <p class="c-address c-font-16">
+                                25, Lorem Lis Street, Orange <br> California, US <br> Phone: 800 123 3456
+                                <br> Fax: 800 123 3456 <br> Email: <a href="mailto:info@jango.com"><span
+                                        class="c-theme-color">info@jango.com</span></a>
+                                <br> Skype: <a href="#"><span class="c-theme-color">jango</span></a>
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="c-content-title-1 c-title-md">
+                                <h3 class="c-title c-font-uppercase c-font-bold">Subscribe to Newsletter</h3>
+                                <div class="c-line-left hide"></div>
+                            </div>
+                            <div class="c-line-left hide"></div>
+                            <form action="#">
+                                <div class="input-group input-group-lg c-square">
+                                    <input type="text" class="c-input form-control c-square c-theme"
+                                        placeholder="Your Email Here">
+                                    <span class="input-group-btn">
+                                        <button
+                                            class="btn c-theme-btn c-theme-border c-btn-square c-btn-uppercase c-font-16"
+                                            type="button">Subscribe</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-line"></div>
+
+                <div class="c-head">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="c-left">
+                                <div class="socicon">
+                                    <a href="#"
+                                        class="socicon-btn socicon-btn-circle socicon-solid c-theme-on-hover socicon-facebook tooltips"
+                                        data-original-title="Facebook" data-container="body"></a>
+                                    <a href="#"
+                                        class="socicon-btn socicon-btn-circle socicon-solid c-theme-on-hover socicon-instagram tooltips"
+                                        data-original-title="Instagram" data-container="body"></a>
+                                    <a href="#"
+                                        class="socicon-btn socicon-btn-circle socicon-solid c-theme-on-hover socicon-linkedin tooltips"
+                                        data-original-title="LinkedIn" data-container="body"></a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="c-postfooter c-bg-dark-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 c-col">
+                        <p class="c-copyright c-font-grey">2015 © JANGO
+                            <span class="c-font-grey-3">All Rights Reserved.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-document.forms['PUForm'].elements['courseType'].onchange = function(e) {
-    // name of associated select box
-    var relName = 'admissionType';
-    
-    // reference to associated select box 
-    var relList = this.form.elements[ relName ];
-    
-    // get data from object literal based on selection in controlling select box (this.value)
-    var obj = Select_List_Data[ relName ][ this.value ];
-    
-    // remove current option elements
-    removeAllOptions(relList, true);
-    
-    // call function to add optgroup/option elements
-    // pass reference to associated select box and data for new options
-    appendDataToSelect(relList, obj);
-};
-
-
-// populate associated select box as page loads
-(function() { // immediate function to avoid globals
-    
-    var form = document.forms['PUForm'];
-    
-    // reference to controlling select box
-    var sel = form.elements['courseType'];
-    sel.selectedIndex = 0;
-    
-    // name of associated select box
-    var relName = 'admissionType';
-    // reference to associated select box
-    var rel = form.elements[ relName ];
-    
-    // get data for associated select box passing its name
-    // and value of selected in controlling select box
-    var data = Select_List_Data[ relName ][ sel.value ];
-    
-    // add options to associated select box
-    appendDataToSelect(rel, data);
-    
-}());
-
-</script>
-
-
-
-
-{% if show_popup %}
-<script>
-setTimeout(popup, 15000); 
-function popup() {
-  var popup=document.getElementById('popup-btn');
-  popup.click();
-}
-</script>
-{% endif %}
-
-
-
-
-  {% if message %}
+    </footer>
+    <!-- END: LAYOUT/FOOTERS/FOOTER-6 -->
+    <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+    <!-- END: LAYOUT/FOOTERS/GO2TOP -->
+    <!-- BEGIN: LAYOUT/BASE/BOTTOM -->
+    <!-- BEGIN: CORE PLUGINS -->
+    <!--[if lt IE 9]>
+	<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+	<![endif]-->
+    <script src="{% static 'assets/plugins/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery-migrate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/jquery.easing.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/reveal-animate/wow.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/demos/index/js/scripts/reveal-animate/reveal-animate.js' %}" type="text/javascript"></script>
+    <!-- END: CORE PLUGINS -->
+    <!-- BEGIN: LAYOUT PLUGINS -->
+    <script src="{% static 'assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/owl-carousel/owl.carousel.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/counterup/jquery.waypoints.min.j' %}s" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/counterup/jquery.counterup.min.j' %}s" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/fancybox/jquery.fancybox.pack.j' %}s" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/smooth-scroll/jquery.smooth-scroll.j' %}s" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/typed/typed.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/js-cookie/js.cookie.js' %}" type="text/javascript"></script>
+    <!-- END: LAYOUT PLUGINS -->
+    <!-- BEGIN: THEME SCRIPTS -->
+    <script src="{% static 'assets/base/js/components.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/base/js/components-shop.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/base/js/app.js' %}" type="text/javascript"></script>
     <script>
-  window.onload=function() {
-              var SuccessButton = document.getElementById("btn-success");
-                SuccessButton.click();
-              };
-</script>   
-  {% endif %}
-  {% if error %}
-    <script>
-  window.onload=function() {
-              var ErrorButton = document.getElementById('btn-error');
-                ErrorButton.click();
-              };
-  </script>   
-  {% endif %}
-
-
-  		<a style="color:white;" class="float show" id="menu-share">
-<i class="fa icon-paper-plane-o my-float"></i>
-</a>
-<ul id="ul">
-<li id="ul-li"><a id="ul-li-a" target="_blank" href="https://wa.me/919590747327?text={{ 'Hey, I am interested in admissions' | urlencode }}">
-<i class="fa icon-whatsapp my-float"></i>
-</a></li>
-<li id="ul-li"><a id="ul-li-a" href="tel:9590747327">
-<i class="fa icon-phone2 my-float"></i>
-</a></li>
-<li id="ul-li"><a id="ul-li-a" href="/#enquiry">
-<i class="fa icon-envelope-o my-float"></i>
-</a></li>
-</ul>
+        $(document).ready(function () {
+            App.init(); // init core    
+        });
+    </script>
+    <!-- END: THEME SCRIPTS -->
+    <!-- BEGIN: PAGE SCRIPTS -->
+    <script src="{% static 'assets/demos/default/js/scripts/revo-slider/slider-4.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/isotope/isotope.pkgd.min.js" type="text/javascript' %}"></script>
+    <script src="{% static 'assets/plugins/isotope/imagesloaded.pkgd.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/isotope/packery-mode.pkgd.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/ilightbox/js/jquery.requestAnimationFrame.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/ilightbox/js/jquery.mousewheel.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/ilightbox/js/ilightbox.packed.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/demos/default/js/scripts/pages/isotope-gallery.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.parallax.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'assets/plugins/revo-slider/js/extensions/revolution.extension.kenburn.min.js' %}"
+        type="text/javascript"></script>
+    <!-- END: PAGE SCRIPTS -->
+    <!-- END: LAYOUT/BASE/BOTTOM -->
 </body>
+
 </html>

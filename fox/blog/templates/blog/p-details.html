@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% block title %}{{singleBlog.title}}{% endblock %}
+{% block navbar %}
+<style>
+
+.blog-body-img {
+  
+  width:730px;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 120px;
+  right: 35px; 
+  z-index: 99; 
+  border: none;
+  outline: none; 
+  background-color: #fd5f00; 
+  color: white;
+  cursor: pointer; 
+  padding: 15px;
+  border-radius: 2px; 
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+</style>
+			      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
+            <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Our Services</a></li>
+            <li class="nav-item active"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+            <li class="nav-item "><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock  %}
+{% block content %}
+    <button onclick="topFunction()" id="myBtn" title="Go to top" class="p-0"><span class="ion-ios-arrow-up ml-2 mr-2"></span></button>
+
+{% load static  %}
+<section class="ftco-section " style="padding-top:5px;">
+	<div class="container">
+  {% if 404_error %}
+  {{ 404_error|safe }}
+  
+  {% endif %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="2Dih3f72"></script>
+
+<div class="container">
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+            <span class="mr-2"><a href="{% url 'blog' %}">Blogs <i class="ion-ios-arrow-forward"></i></a></span> 
+            
+            <span>{{singleBlog.title}} <i class="ion-ios-arrow-forward"></i></span></p>
+</div>
+
+		<div id="top" class="row">
+      <div class="col-lg-8 ftco-animate fadeInUp ftco-animated"  style="color:#000; ">    
+             <br/>
+          <p>
+          <img src="{{ singleBlog.image.url }}" alt="" class="img-fluid">
+          <h1 class="mb-3"><b>{{singleBlog.title}}</b></h1>
+          </p>
+          <p class="text-left" style="color:#808080;"><span class="icon-calendar"></span>   {{ singleBlog.pub_date_pro}} | {{ singleBlog.author|title }} </p> 
+          <div class="custom-blog-body" >{% autoescape off %} {{ singleBlog.body | linebreaks }} {% endautoescape %}</div>
+            <div class="ftco-footer-widget mb-5">
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <h3 class="h4 font-weight-bold">Share:</h3>
+                <li class="ftco-animate"><a class="twitter-share-button" target="_blank"
+                href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fsteps2career.in{{ request.path | urlencode }}&amp" 
+                data-size="large">
+                <span class="icon-twitter"></span></a>
+                </li>
+                <li class="ftco-animate"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsteps2career.in{{ request.path | urlencode }}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><span class="icon-facebook"></span></a>
+                </li>
+
+                <li class="ftco-animate">
+                <a target="_blank" href="whatsapp://send?text=https://steps2career.in{{ request.path | urlencode }}" data-action="share/whatsapp/share"><span class="icon-whatsapp"></span></a>
+                </li>
+
+
+              </ul>
+            </div>
+            <div class="about-author d-flex p-4 ">
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box ftco-animate">
+            <br/>
+            	<h3>Category</h3>
+              <ul class="categories">
+                <li><a href="{% url 'category' 'Updates' %}">Latest Updates 2020 <span></span></a></li>
+                <li><a href="{% url 'category' 'Arts' %}">Arts <span></span></a></li>
+                <li><a href="{% url 'category' 'Mtech' %}">Mtech <span></span></a></li>
+                <li><a href="{% url 'category' 'MBA' %}">MBA <span></span></a></li>
+                <li><a href="{% url 'category' 'UG-Medical' %}">UG-Medical <span></span></a></li>
+                <li><a href="{% url 'category' 'PG-Medical' %}">PG-Medical <span></span></a></li>
+                <li><a href="{% url 'category' 'Engineering' %}">Engineering <span></span></a></li>
+                <li><a href="{% url 'category' 'Commerce' %}">Commerce <span></span></a></li>
+                <li><a href="{% url 'category' 'Law' %}">Law <span></span></a></li>
+                <li><a href="{% url 'category' 'Architecture' %}">Architecture <span></span></a></li>
+                <li><a href="{% url 'category' 'Management' %}">Management <span></span></a></li>
+              </ul>
+            </div>
+
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Popular Articles</h3>
+              {% for pblogs in popularBlogs %}
+              <div class="block-21 mb-1 d-flex" style="z-index:5;">
+                <a class="blog-img mr-4" style="background-image: url({{ pblogs.image.url }});"></a>
+                <div class="text">
+                  <h4 class="heading"><a href="{% url 'details' pblogs.slug %}" >{{ pblogs.title }}</a></h4>
+                  <div class="meta">
+                  </div>
+                </div>
+              </div>
+              <hr style="border: 1px dashed #C0C0C0"/>
+              {% endfor %}
+            <div class="sidebar-box ftco-animate">
+              </ul>
+            </div>
+            <div class="sidebar-box ftco-animate">
+            </div>
+          </div>
+        </div>
+<!-- Comments -->
+          <div class=" mt-5" style="color:#000;">
+              <h3 class="mb-1 h4 font-weight-bold">{{ comments.count }} Comment(s)</h3>
+              <ul class="comment-list">
+                {% for comment in comments %}
+                <li class="comment mb-1">
+                <hr/>
+                   <div class="vcard bio">
+                    <img src="{% static '/images/pr.png' %}" alt="Image placeholder"/>
+                  </div>
+                  <div class="comment-body">
+                    <h5><strong>{{ comment.name }}</strong> <div class="meta" style="color:#A9A9A9;" >{{ comment.created_on }}</div></h5> 
+                    <article><p style="color:#2F4F4F;">{{ comment.body }}</p></article>
+                    {% comment %} <p><a href="#" class="reply">Reply</a></p> {% endcomment %}
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              </div>
+<!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+               {% if new_comment %}
+                <div class="alert alert-success" role="alert">
+                  Your comment is awaiting moderation
+                </div>
+                {% else %}
+                {% load crispy_forms_tags %}
+                <form method="POST" class="p-5 bg-light">
+                <h3 class="mb-1 h4 font-weight-bold">Leave a comment</h3>
+                <p>Your email address will not be published. Required fields are marked *</p>
+                {{ comment_form | crispy }}
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" style="border-radius:0;" class="btn py-2 px-3 btn-primary">
+                  </div>
+                </form>
+                {% endif %}
+              </div>
+			</div>
+		</section>
+
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
+{% endblock  %}
