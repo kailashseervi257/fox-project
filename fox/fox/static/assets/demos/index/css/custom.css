@@ -204,4 +204,18 @@
    .c-content-step-1 > .c-title{
        font-size: 15px;
    }
+
+   .c-content-feature-6 .c-list{
+        display: flex;
+        flex-direction: column;
+   }
+
+   .c-content-feature-6 > .c-list > li > .c-card{
+       margin-right: auto;
+   }
+
+   .c-content-feature-6 .c-list .c-card{
+       margin: auto;
+   }
 }
+
