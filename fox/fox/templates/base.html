@@ -54,6 +54,16 @@ Follow: http://www.twitter.com/themehats
     <link href="{% static 'assets/demos/index/css/custom.css' %}" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177399806-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-177399806-1');
+    </script>
+    <script data-ad-client="ca-pub-7302180399393526" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
@@ -100,8 +110,9 @@ Follow: http://www.twitter.com/themehats
                 <div class="c-navbar-wrapper clearfix">
                     <!-- END: BRAND -->
                     <!-- BEGIN: QUICK SEARCH -->
-                    <form class="c-quick-search" action="#">
-                        <input type="text" name="query" placeholder="Search  colleges, courses, exams...." value=""
+                    <form class="c-quick-search" name="searchbox" method="GET" action="{% url 'search:searchposts' %}" value="{{request.GET.q}}">
+                        {% csrf_token %}
+                        <input type="text" name="q" placeholder="Search  colleges, courses, exams...." value=""
                             class="form-control" autocomplete="off">
                         <span class="c-theme-link">×</span>
                     </form>
@@ -897,7 +908,7 @@ Follow: http://www.twitter.com/themehats
                                 <div class="c-line-left hide"></div>
                             </div>
                             <p class="c-address c-font-16">
-                                25, Lorem Lis Street, Orange <br> California, US <br>Phone: <a href="tel:919590747327">095907 47327</a><br> Email: <a href="mailto:futurestepsolutions@gmail.com"><span
+                                #53, 2nd floor, 3rd Cross, Bhuvaneshwari Nagar, Dasarahalli main road, Hebbal, Kempapura, Bangalore-560024 Land mark- Near Union Bank / Nice Mart, INDIA.<br>Phone: <a href="tel:919590747327">095907 47327</a><br> Email: <a href="mailto:futurestepsolutions@gmail.com"><span
                                         class="c-theme-color">futurestepsolutions@gmail.com</span></a>
                                 <br>
                             </p>
@@ -908,14 +919,15 @@ Follow: http://www.twitter.com/themehats
                                 <div class="c-line-left hide"></div>
                             </div>
                             <div class="c-line-left hide"></div>
-                            <form action="#">
+                            <form action="{% url 'subscribe' %}" method="POST" class="subscribe-form">
+                                {% csrf_token %}
                                 <div class="input-group input-group-lg c-square">
-                                    <input type="text" class="c-input form-control c-square c-theme"
+                                    <input type="email" name="email" class="c-input form-control c-square c-theme"
                                         placeholder="Your Email Here">
                                     <span class="input-group-btn">
                                         <button
                                             class="btn c-theme-btn c-theme-border c-btn-square c-btn-uppercase c-font-16"
-                                            type="button">Subscribe</button>
+                                            type="submit" value="Subscribe" required>Subscribe</button>
                                     </span>
                                 </div>
                             </form>
@@ -930,10 +942,10 @@ Follow: http://www.twitter.com/themehats
                         <div class="col-md-6 col-sm-12">
                             <div class="c-left">
                                 <div class="socicon">
-                                    <a href="#"
+                                    <a href="https://m.facebook.com/2021admissions.counselling.guidnance/?ref=bookmarks"
                                         class="socicon-btn socicon-btn-circle socicon-solid c-theme-on-hover socicon-facebook tooltips"
                                         data-original-title="Facebook" data-container="body"></a>
-                                    <a href="#"
+                                    <a href="https://www.instagram.com/educonsultz2021/"
                                         class="socicon-btn socicon-btn-circle socicon-solid c-theme-on-hover socicon-instagram tooltips"
                                         data-original-title="Instagram" data-container="body"></a>
                                     <a href="#"

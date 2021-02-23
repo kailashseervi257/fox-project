@@ -8,13 +8,11 @@ Results for {{ request.GET.q }}
 {% endblock %}
 
 {% block navbar %}
-			      <li class="nav-item"><a href="{% url 'home' %}" class="nav-link pl-0">Home</a></li>
-            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="{% url 'course' %}" class="nav-link">Courses</a></li>
-            <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Ours Services</a></li>
-            <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
-            <li class="nav-item "><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
-{% endblock  %}
+        <li><a href="{% url 'home' %}" class="c-font-uppercase c-font-bold">Home</a></li>
+        <li><a href="{% url 'about' %}" class="c-font-uppercase c-font-bold">About</a></li>
+        <li><a href="{% url 'blog' %}" class="c-font-uppercase c-font-bold">Blog</a></li>
+        <li><a href="{% url 'contact' %}" class="c-font-uppercase c-font-bold">Contact</a></li>
+    {% endblock navbar %}
 
 {% block content %}
 <div class="container">
