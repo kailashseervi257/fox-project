@@ -217,5 +217,15 @@
    .c-content-feature-6 .c-list .c-card{
        margin: auto;
    }
+
+   .c-content-feature-6 > .c-list{
+       max-width: 85%;
+       flex-direction: column;
+       display: flex;
+   }
+
+    .c-card.c-bg-opacity-1.c-shadow .btn.btn-lg{
+        padding: 12px 3px;
+   }
 }
 
