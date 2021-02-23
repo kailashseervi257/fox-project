@@ -29,15 +29,16 @@ Contact
                                         Please feel free to drop us an email from the form below and we will get back to
                                         you as soon as we can.</p>
                                 </div>
-                                <form action="#">
+                                <form method='POST' action="{% url 'contact' %}">
+                                    {% csrf_token %}
                                     <div class="form-group">
-                                        <input type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg">
+                                        <input type="text" placeholder="Your Name" class="form-control c-square c-theme input-lg" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg">
+                                        <input type="text" placeholder="Your Email" class="form-control c-square c-theme input-lg" name="email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Contact Phone" class="form-control c-square c-theme input-lg">
+                                        <input type="text" placeholder="Subject" class="form-control c-square c-theme input-lg" name="subject">
                                     </div>
                                     <div class="form-group">
                                         <textarea rows="8" name="message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
@@ -49,24 +50,24 @@ Contact
                         <div class="col-sm-4" style="margin-top: 55px;">
                             <div class="c-body">
                                 <div class="c-section">
-                                    <h3>JANGO Inc.</h3>
+                                    <h3>FSS</h3>
                                 </div>
                                 <div class="c-section">
                                     <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Address</div>
-                                    <p>25, Lorem Lis Street,<br>Orange C, California,<br>United States of America
+                                    <p>#53, 2nd floor, 3rd Cross, Bhuvaneshwari Nagar, Dasarahalli main road, Hebbal, Kempapura, Bangalore-560024 Land mark- Near Union Bank / Nice Mart, INDIA.
                                     </p>
                                 </div>
                                 <div class="c-section">
                                     <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Contacts</div>
-                                    <p><strong>T</strong> 800 123 0000<br><strong>F</strong> 800 123 8888</p>
+                                    <p><strong>T</strong><a href="tel:9590747327"> 919590 747327</a><br></p>
                                 </div>
                                 <div class="c-section">
                                     <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Social</div>
                                     <br>
                                     <ul class="c-content-iconlist-1 c-theme">
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                        {% comment %} <li><a href="#"><i class="fa fa-twitter"></i></a></li> {% endcomment %}
+                                        <li><a href="https://m.facebook.com/2021admissions.counselling.guidnance/?ref=bookmarks"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="https://www.instagram.com/educonsultz2021/"><i class="fa fa-instagram"></i></a></li>
                                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>

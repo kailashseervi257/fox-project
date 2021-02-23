@@ -15,7 +15,7 @@ Results for {{ request.GET.q }}
     {% endblock navbar %}
 
 {% block content %}
-<div class="container">
+<div class="c-layout-page container" style="background: rgb(0 41 64 / 9%); margin-top:150px;">
 
 {% if submitbutton == 'cat' %}
 <section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
@@ -23,27 +23,16 @@ Results for {{ request.GET.q }}
     <div class="container">
       <div class="row">
         {% for blog in results %}
-         <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
-          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
-            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
-							<div class="meta-date text-center p-2">
-                <span class="day">{{ blog.pub_date_pro_day }}</span>
-                <span class="mos">{{ blog.pub_date_pro_month }}</span>
-                <span class="yr">{{ blog.pub_date_pro_year }}</span>
-              </div>
-            </a>
-          </div>
-          <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
-            <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
-            {% comment %} <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p> {% endcomment %}
-              <div class="d-flex align-items-center mt-1">  
-	              <p class="ml-0 mb-0">
-                  <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">By {{ blog.author | title}}</a>
-                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
-	              </p>
-              </div>
-            </div>
-          </div>
+         <div class="col-sm-10 col-md-10 col-lg-6 text-center" style="
+                    margin-bottom: 3%;
+                    ">
+                                <a href="{% url 'details' blog.slug %}">
+                                    <img style="
+                    max-width: 100%;
+                    " src="{{ blog.image.url }}" alt="">
+                        <p class="c-font-20">{{blog.title}}</p>
+                    </a>
+                </div>
         {% endfor %}
         </div>
         <br/>
@@ -53,43 +42,29 @@ Results for {{ request.GET.q }}
 {% endif %}
 
 
-  {% if submitbutton == 'Search' and request.GET.q != '' %}
   {% if results %}
-<section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
-<h1>Results for <b>{{ request.GET.q }}</b></h1>
-    <div class="container">
-      <div class="row">
-        {% for blog in results %}
-        <div class="col-md-6 col-lg-4 ftco-animate mb-3 " style="z-index:5;">
-          <div class="blog-entry" style="margin-bottom:0; border:1px solid #C0C0C0; border-bottom:0px;" >
-            <a href="{% url 'details' blog.slug %}" class="block-20 d-flex align-items-end" style="background-image: url({{ blog.image.url }});">
-							<div class="meta-date text-center p-2">
-                <span class="day">{{ blog.pub_date_pro_day }}</span>
-                <span class="mos">{{ blog.pub_date_pro_month }}</span>
-                <span class="yr">{{ blog.pub_date_pro_year }}</span>
+      <section class="ftco-section bg-light" style="padding-bottom: 5px; padding-top: 20px">
+      <h1>Results for <b>{{ request.GET.q }}</b></h1>
+          <div class="container">
+            <div class="row">
+              {% for blog in results %}
+              <div class="col-sm-10 col-md-10 col-lg-6 text-center" style="
+                          margin-bottom: 3%;
+                          ">
+                                      <a href="{% url 'details' blog.slug %}">
+                                          <img style="
+                          max-width: 100%;
+                          " src="{{ blog.image.url }}" alt="">
+                              <p class="c-font-20">{{blog.title}}</p>
+                          </a>
+                      </div>
+              {% endfor %}
               </div>
-            </a>
+              <br/>
           </div>
-          <div class="text bg-white p-4" style="border:1px solid #C0C0C0; border-top:0px; border-radius:0 0 5px 5px;">
-            <h5><a href="{% url 'details' blog.slug %}" class="custom-blog-title short">{{blog.title}}</a></h5>
-            {% comment %} <p style="color: #C0C0C0;">{% autoescape off %}{{blog.body | truncatechars:58}} {% endautoescape %} <a href="{% url 'details' blog.slug %}" >Read More </a></p> {% endcomment %}
-              <div class="d-flex align-items-center mt-1">  
-	              <p class="ml-0 mb-0">
-                  <a href="{% url 'details' blog.slug %}" class="mr-2" style="color: #696969;">By {{ blog.author | title}}</a>
-                  {% comment %} <a href="{% url 'details' blog.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a> {% endcomment %}
-	              </p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-        <br/>
-    </div>
-</section>
+      </section>
 {% else %}
 <h1>No results for this query</h1>
-{% endif %}
-{% else %}
 {% endif %}
 </div>
 {% endblock  %}

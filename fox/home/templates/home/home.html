@@ -36,13 +36,13 @@ Future Step Solutions
                                     </div>
                                     <div class="WRuJJQ">
                                         <div class="d6HEaw"></div>
-                                        <form class="icyj0A" action="#" role="search" method="post">
+                                        <form name="searchbox" method="GET" action="{% url 'search:searchposts' %}" value="{{request.GET.q}}">
                                             {% csrf_token %}
                                             <div>
                                                 <div>
                                                     <div class="_3GF_gA">
                                                         <div class="fybGUw Ut-ecQ">
-                                                            <div class="tMP70Q"><input class="form-control" type="text"
+                                                            <div class="tMP70Q"><input  name="q" class="form-control" type="text"
                                                                     placeholder="Search colleges, exams, courses and more."
                                                                     aria-label="Search colleges, exams, courses and more."
                                                                     value=""
