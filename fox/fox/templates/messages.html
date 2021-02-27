@@ -1,0 +1,27 @@
+{% if messages %}
+
+    {% for message in messages %}
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog modal-sm">
+                  <div class="modal-content c-square">
+                      <div class="modal-body alert-{{ message.tags }} alert-dismissible" role="alert">
+                          <p>
+                            <strong>
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                Error:
+                                {% else %}
+                                {{message.tags | title}} 
+                                {% endif %}
+                            </strong>
+                            {{ message }}  
+                          </p>
+                      </div>
+                  </div>
+                  <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+          </div>
+        </div>
+    {% endfor %}
+    <script>$(".bs-example-modal-sm").modal('show')</script>
+{% endif  %}

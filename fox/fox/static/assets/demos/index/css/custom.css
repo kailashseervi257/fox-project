@@ -217,9 +217,9 @@
    .c-content-feature-6 .c-list .c-card{
        margin: auto;
    }
-
+   
    .c-content-feature-6 > .c-list{
-       max-width: 85%;
+       width: 85%;
        flex-direction: column;
        display: flex;
    }

@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 from django.core.mail import mail_admins
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.contrib import messages
+
 
 
 homeForm = {
@@ -40,9 +42,11 @@ def contact(request):
             contactReq.subject = request.POST['subject']
             contactReq.message = request.POST['message']
             contactReq.save()
+            messages.success(request, "Submitted")
             return redirect('contact')
         else:
-            return render(request,'home/contact.html',{'error': 'All fields required.'})
+            messages.error(request, 'All fields required.')
+            return render(request,'home/contact.html')
     else:
         return render(request, 'home/contact.html')
 
@@ -75,13 +79,13 @@ def new_enquiry(request):
                 recipient_list=settings.EMAIL_RECIPIENTS_LIST
                 # mail_admins(subject,message, fail_silently=False,connection=None, html_message=None)
                 send_mail( subject, message, email_from, recipient_list )
-                homeForm['message']='Message successfully sent'
+                messages.success(request, "'Message successfully sent")
                 return render(request, 'home/home.html',homeForm)
             else:
-                homeForm['error']='Invalid phone number'
+                messages.error(request, "Invalid phone number")
                 return render(request,'home/home.html',homeForm)
         else:
-            homeForm['error']='All fields required.'
+            messages.error(request, "All fields required.")
             return render(request,'home/home.html',homeForm)
     else:
         homeForm = {
@@ -112,10 +116,10 @@ def forms(request):
             new_form = form.save(commit=False)
             new_form.save()
             # homeForm['new_form']='Successfully submitted....'
-            homeForm['message'] = 'Applied successfully !'
+            messages.error(request, "Applied successfully !")
             return render(request, 'home/home.html',homeForm)
         if form.errors:
-            homeForm['error'] = form.errors
+            messages.error(request, form.errors)
             return render(request, 'home/home.html',homeForm)
     homeForm = {
             'engg_form': Engineering_Form(),
@@ -146,10 +150,10 @@ def subscribe(request):
                 formInfo.created_on=datetime.now()
                 new_sub = formInfo.email
                 formInfo.save()
-                homeForm['message']='Added to mail list'
+                messages.success(request, 'Added to mail list')
                 return render(request, 'home/home.html',homeForm)
             else:
-                homeForm['message']='You have already subscribed!'
+                messages.success(request, "You have already subscribed!")
                 return render(request, 'home/home.html', homeForm)
     homeForm = {
             'engg_form': Engineering_Form(),
@@ -348,11 +352,11 @@ def popupForm(request):
                 recipient_list=settings.EMAIL_RECIPIENTS_LIST
                 # mail_admins(subject,emessage, fail_silently=False,connection=None, html_message=None)
                 send_mail( subject, Emessage, email_from, recipient_list )
-                homeForm['message']='Message successfully sent'
+                messages.success(request, "Message successfully sent")
                 return render(request, 'home/home.html',homeForm)
             else:
-                homeForm['error']='Invalid phone number'
+                messages.error(request, "Invalid phone number")
                 return render(request, 'home/home.html',homeForm)
         else:
-            homeForm['error']='Invalid phone number'
+            messages.error(request, "Invalid phone number")
             return render(request,'home/home.html',homeForm)

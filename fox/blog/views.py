@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render,get_object_or_404
 from .models import Blog, BlogView, BlogImages
 from django.http.response import HttpResponse
@@ -6,6 +7,7 @@ from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from .forms import CommentForm
+from django.contrib import messages
 
 # ---class based
 # class BlogList(generic.ListView):
@@ -42,6 +44,7 @@ def detail(request, slug):
             new_comment = comment_form.save(commit=False)
             new_comment.blog = singleBlog
             new_comment.save()
+            messages.success(request, "Your comment is awaiting moderation")
     else:
         comment_form = CommentForm()
 
