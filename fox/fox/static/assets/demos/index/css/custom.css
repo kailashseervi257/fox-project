@@ -64,7 +64,9 @@
 
 .c-content-feature-6 .c-list{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+
 }
 
 .c-content-feature-6 .c-list .c-card{
@@ -203,11 +205,6 @@
 @media (max-width: 766px){
    .c-content-step-1 > .c-title{
        font-size: 15px;
-   }
-
-   .c-content-feature-6 .c-list{
-        display: flex;
-        flex-direction: column;
    }
 
    .c-content-feature-6 > .c-list > li > .c-card{
