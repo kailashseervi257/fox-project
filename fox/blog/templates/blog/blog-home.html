@@ -24,7 +24,7 @@ Blog
         <div class="row justify-content-center">
             {% for  blog in blog_list  %}
                 <div class="col-sm-10 col-md-10 col-lg-6 text-center" style="margin-bottom: 3%;">
-                    <a href="{% url 'details' blog.slug %}"><img style="max-width: 100%;" src="{{ blog.image.url }}" alt=""><p class="c-font-20">{{blog.title}}</p></a>
+                    <a href="{% url 'details' blog.slug %}"><img style="max-width: 100%; margin-bottom: 10px; border: 1px solid #cedce4;" src="{{ blog.image.url }}" alt=""><p class="c-font-18 c-font-bold">{{blog.title}}</p></a>
                 </div>
             {% endfor %}
         </div>
