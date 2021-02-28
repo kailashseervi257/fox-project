@@ -185,7 +185,7 @@
        font-size: 15px;
    }
 
-   .c-content-feature-6 .c-list{
+   .c-content-feature-6 > .c-list{
        flex-direction: column;
    }
 
