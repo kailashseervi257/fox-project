@@ -19,31 +19,12 @@ Blog
         margin: 85px auto;
         position: relative;
     ">
-        <div class="blog-hero" style="
-        margin-top: 10%;
-    ">
-            <a href="#">
-                <img src="{% static 'assets/base/img/content/backgrounds/bg-1.jpg' %}" alt="" style="
-        max-width: 100%;
-        vertical-align: middle;
-        height: auto;
-    ">
-                <h2 class="c-font-center c-font-bold c-font-25">Lorem ipsum dolor sit amet consectetur.</h2>
-            </a>
-        </div>
-        <hr>
+        
         <p class="text-center c-font-25"><u>All Articles</u></p>
         <div class="row justify-content-center">
             {% for  blog in blog_list  %}
-                <div class="col-sm-10 col-md-10 col-lg-6 text-center" style="
-                    margin-bottom: 3%;
-                    ">
-                                <a href="{% url 'details' blog.slug %}">
-                                    <img style="
-                    max-width: 100%;
-                    " src="{{ blog.image.url }}" alt="">
-                        <p class="c-font-20">{{blog.title}}</p>
-                    </a>
+                <div class="col-sm-10 col-md-10 col-lg-6 text-center" style="margin-bottom: 3%;">
+                    <a href="{% url 'details' blog.slug %}"><img style="max-width: 100%;" src="{{ blog.image.url }}" alt=""><p class="c-font-20">{{blog.title}}</p></a>
                 </div>
             {% endfor %}
         </div>
