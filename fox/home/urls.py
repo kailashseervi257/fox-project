@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.new_enquiry, name="home"),
     path('counselling/', views.counsellingInfo, name="counsellingInfo"),
     path('admissions/', views.admissionsInfo, name="admissionsInfo"),
-    
+    path('rank-predictor/', views.RankPredictorForm, name="rank-predictor"),
     
     path('form/',views.forms,name="forms"),
     path('subscribe/', views.subscribe, name="subscribe"),

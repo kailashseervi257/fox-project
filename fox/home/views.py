@@ -1,5 +1,6 @@
+from django.db.models.fields import EmailField
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Enquiry, Contact_request, Subscribers, PopupForm
+from .models import Enquiry, Contact_request, Subscribers, PopupForm, RankPredictor
 import re
 from django.utils.timezone import datetime
 import pytz
@@ -366,3 +367,27 @@ def popupForm(request):
         else:
             messages.error(request, "Invalid phone number")
             return render(request,'home/home.html',homeForm)
+
+def RankPredictorForm(request):
+    if request.method=="POST":
+        Name = request.POST.get("name")
+        Email = request.POST.get("email")
+        Exam = request.POST.get("exam")
+        Score = request.POST.get("score")
+        if Name and Email and Exam and Score:
+            form = RankPredictor()
+            form.Name=Name
+            form.Email=Email
+            form.Exam=Exam
+            form.Score=Score
+            form.save()
+
+            subject = 'New Rank predictor request'
+            Emessage = 'Name: '+Name+'\n '+'Email: '+Email+"\nExam: "+Exam+"\nScore: "+Score
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list=settings.EMAIL_RECIPIENTS_LIST
+            send_mail( subject, Emessage, email_from, recipient_list )
+            messages.success(request, "Please check you mail inbox")
+        else:
+            messages.error(request, "All fields are required")
+    return redirect('home')
