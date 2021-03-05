@@ -1,6 +1,6 @@
 from django.contrib import admin
-
-from .models import Blog, BlogView, Comment, BlogImages, FileUploader, HeaderBlogs
+from .models import *
+from django.utils.html import format_html
 
 
 class BlogImageAdmin(admin.StackedInline):
@@ -8,18 +8,24 @@ class BlogImageAdmin(admin.StackedInline):
     
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
+    def blogImage(self,object):
+        return format_html("<img src='{}' width='40'/>".format(object.image.url))
     inlines=[BlogImageAdmin]
-    list_display = ('title', 'slug', 'status','updated_on','pub_date')
+    list_display = ('blogImage','title', 'slug','status','updated_on','pub_date')
     search_fields = ['title', 'body']
     pre_populated_fields = {'slug': ('title',)}
+    list_display_links = ['blogImage', 'title']
 
     class Meta:
         model=Blog
 
 @admin.register(BlogView)
 class BlogViewAdmin(admin.ModelAdmin):
-    list_display = ('blog_id', 'blog', 'ip', 'created')
+    def blogImage(self,object):
+        return format_html("<img src='{}' width='40'/>".format(object.blog.image.url))
+    list_display = ('blogImage', 'blog', 'ip', 'created')
     list_filter=('blog',)
+    list_display_links = ['blogImage', 'blog']
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
@@ -36,7 +42,9 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(BlogImages)
 class BlogImageAdmin(admin.ModelAdmin):
-    list_display = ('image', 'blog', )
+    def blogImage(self,object):
+        return format_html("<img src='{}' width='40'/>".format(object.image.url))
+    list_display = ('blogImage', 'blog', )
     list_filter = ( 'blog',)
 
 @admin.register(FileUploader)

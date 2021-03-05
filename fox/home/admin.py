@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Enquiry, Contact_request, Subscribers, Engineering_form, Medical_form, PopupForm,Aviation_form, Architecture_form,PGMedical_form, LawManagementCommerce_form
+from .models import *
 from blog.models import Blog
 
 @admin.register(Enquiry)
@@ -53,3 +53,7 @@ class LMCFormAdmin(admin.ModelAdmin):
 @admin.register(PopupForm)
 class PopupFormAdmin(admin.ModelAdmin):
     list_display=('name','post_date')
+
+@admin.register(RankPredictor)
+class RankPredictorAdmin(admin.ModelAdmin):
+    list_display = ('Name', 'Email', 'Date')

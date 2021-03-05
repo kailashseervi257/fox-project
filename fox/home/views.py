@@ -27,6 +27,12 @@ homeForm = {
 def home(request):
     return render(request, 'home/home.html')
 
+def counsellingInfo(request):
+    return render(request, "home/feature/counsellingInfo.html")
+
+def admissionsInfo(request):
+    return render(request, "home/feature/admissionsInfo.html")
+
 def about(request):
     return render(request, 'home/about.html')
 

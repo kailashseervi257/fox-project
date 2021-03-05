@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import base
+from django.db.models.fields import CharField
 from django.utils.timezone import datetime
 
 
@@ -180,3 +182,13 @@ class PopupForm(models.Model):
 
     def __str__(self):
         return self.name
+
+class RankPredictor(models.Model):
+    Name = models.CharField(max_length=50, blank=True, null=True)
+    Email = models.CharField(max_length=50, blank=True, null=True)
+    Exam = models.CharField(max_length=50, blank=True, null=True)
+    Score = models.CharField(max_length=50, blank=True, null=True)
+    Date = models.DateTimeField(auto_now=True)
+
+    def __str__(self) :
+        return self.Email

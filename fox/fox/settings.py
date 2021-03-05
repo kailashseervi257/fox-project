@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'staff.apps.StaffConfig',
     'course.apps.CourseConfig',
     'home.apps.HomeConfig',
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

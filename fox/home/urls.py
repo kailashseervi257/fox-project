@@ -4,13 +4,17 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    path('form/',views.forms,name="forms"),
     path('', views.new_enquiry, name="home"),
+    path('counselling/', views.counsellingInfo, name="counsellingInfo"),
+    path('admissions/', views.admissionsInfo, name="admissionsInfo"),
+    
+    
+    path('form/',views.forms,name="forms"),
     path('subscribe/', views.subscribe, name="subscribe"),
     path('Medicalform/', views.Medforms, name='Medicalform'),
     path('Aviationform/', views.Aviationform, name='Aviationform'),
     path('Architectureform/', views.Architectureform, name='Architectureform'),
     path('PGMedicalform/', views.PGMedicalform, name='PGMedicalform'),
     path('LMCform/', views.LMCform, name='LMCform'),
-    path('Pform/',views.popupForm, name='popupForm')
+    path('Pform/',views.popupForm, name='popupForm'),
 ]

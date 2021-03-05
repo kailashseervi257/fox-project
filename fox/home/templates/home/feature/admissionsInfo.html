@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+About
+{% endblock  %}
+
+{% block content %}
+{% load static %}
+
+    {% block navbar %}
+        <li><a href="{% url 'home' %}" class="c-font-uppercase c-font-bold">Home</a></li>
+        <li><a href="{% url 'about' %}" class="c-font-uppercase c-font-bold">About</a></li>
+        <li><a href="{% url 'blog' %}" class="c-font-uppercase c-font-bold">Blog</a></li>
+        <li><a href="{% url 'contact' %}" class="c-font-uppercase c-font-bold">Contact</a></li>
+    {% endblock navbar %}
+
+
+	<!-- BEGIN: PAGE CONTAINER -->
+	<div class="c-layout-page">
+
+	</div>
+	<!-- END: PAGE CONTAINER -->
+
+{% endblock content %}

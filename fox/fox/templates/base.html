@@ -70,7 +70,7 @@ Follow: http://www.twitter.com/themehats
     <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
     <!-- BEGIN: HEADER -->
     <header class="c-layout-header c-layout-header-6" data-minimize-offset="80">
-        <div class="c-topbar">
+        <div class="c-topbar" style="padding-bottom: 4px;">
             <div class="container">
                 <nav class="c-top-menu">
                     <ul class="c-links c-theme-ul">
@@ -79,9 +79,9 @@ Follow: http://www.twitter.com/themehats
                         {% endblock %}
                     </ul>
                 </nav>
-                <div class="c-brand">
+                <div class="c-brand" style="margin: 0;">
                     <a href="{% url 'home' %}" class="c-logo">
-                        Future Step Solutions
+                        <img src="{% static 'images/favicon.svg' %}"/>
                     </a>
                     <ul class="c-icons c-theme-ul">
                         <li><a href="https://www.instagram.com/educonsultz2021/"><i class="socicon-btn  socicon-solid c-theme-on-hover socicon-instagram" style="color: #E1306C; height: fit-content;"></i></a></li>
