@@ -15,6 +15,7 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ['title', 'body']
     pre_populated_fields = {'slug': ('title',)}
     list_display_links = ['blogImage', 'title']
+    list_editable=['status',]
 
     class Meta:
         model=Blog
