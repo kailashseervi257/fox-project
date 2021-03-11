@@ -198,3 +198,9 @@
     }
 
 }
+
+@media(max-width: 500px){
+    .c-logo{
+        width:25%
+    }
+}

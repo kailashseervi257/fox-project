@@ -4,6 +4,8 @@ from slugify import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 import pytz
 from django.urls import reverse
+from froala_editor.fields import FroalaField
+
 IST=pytz.timezone('Asia/Kolkata')
 STATUS = (
     (0, "Draft"),
@@ -43,7 +45,7 @@ class Blog(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/')
     slug = models.SlugField(max_length=255, unique=True)
-    body = models.TextField(blank=True)
+    body = FroalaField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts', default=1)
     views_total = models.IntegerField(default=1)
     status = models.IntegerField(choices=STATUS, default=0)
