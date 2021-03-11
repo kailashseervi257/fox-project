@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'ckeditor',
-    'froala_editor',
     'ckeditor_uploader',
     'crispy_forms',
     'blog.apps.BlogConfig',
