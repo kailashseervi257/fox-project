@@ -27,7 +27,25 @@ Blog
                 </div>
             {% endfor %}
         </div>
-
+        <div class="text-center">
+            {% if blog_list.has_other_pages %}
+            <ul class="c-content-pagination c-theme">
+            {% if blog_list.has_previous %}
+            <li class="c-first"><a href="?page=1"><i class="fa fa-angle-double-left"></i></a></li>
+            <li class="c-prev"><a href="?page={{ blog_list.previous_page_number }}"><i class="fa fa-angle-left"></i></a></li>
+            {% endif %}
+            <span class="current" style="margin-left:2px; margin-right:2px; margin-top:4px;">
+            Page {{ blog_list.number }} of {{ blog_list.paginator.num_pages }} 
+            </span>
+            {% if blog_list.has_next %}
+            <li class="c-next"><a href="?page={{ blog_list.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
+            <li class="c-last"><a href="?page={{ blog_list.paginator.num_pages }}"><i class="fa fa-angle-double-right"></i></a></li>
+            {% endif %}
+            </ul>
+            </nav>
+            </div>
+            {% endif %}
+        </div>
     </div>
     </div>
     <!-- END: PAGE CONTAINER -->
