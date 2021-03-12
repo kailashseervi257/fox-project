@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render,get_object_or_404
-from .models import Blog, BlogView, BlogImages
+from .models import Blog, BlogView, BlogImages, Comment
 from django.http.response import HttpResponse
 from itertools import chain
 from django.views import generic
@@ -8,7 +8,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from .forms import CommentForm
 from django.contrib import messages
-
 # ---class based
 # class BlogList(generic.ListView):
 #     queryset = Blog.objects.filter(status=1).order_by('-pub_date')
@@ -39,10 +38,17 @@ def detail(request, slug):
     comments = singleBlog.comments.filter(active=True)
     new_comment = None
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.blog = singleBlog
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        message=request.POST.get('body')
+        comment_form ={
+            'name':name,
+            'email':email,
+            'body':message,
+            'blog':singleBlog
+        }
+        if name and email and message:
+            new_comment = Comment(**comment_form)
             new_comment.save()
             messages.success(request, "Your comment is awaiting moderation")
     else:
