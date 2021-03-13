@@ -21,52 +21,70 @@
 
     <!-- BEGIN: PAGE CONTAINER -->
     <div class="">
-        <div class="row justify-content-center" style="
-    width: 85%;
-    margin: 80px auto;
-">
-<h1 class="c-title c-font-bold c-font-uppercase c-font-30 text-center" style="font-weight: bold;">{{singleBlog.title}}</h1>
+        <div class="row justify-content-center blog-desc">
+            <h1 class="c-title c-font-bold c-font-uppercase c-font-30 text-center" style="font-weight: bold;">{{singleBlog.title}}</h1>
             <img src="{{ singleBlog.image.url }}" alt="" style="max-width: 100%;">
-
             <div class="c-panel c-margin-b-10 c-margin-t-20">
-                <div class="c-author" style="
-    margin-right: 2%;
-"><a href="#">By <span class="c-font-uppercase">{{ singleBlog.author|title }}</span></a></div>
+                <div class="c-author" style="margin-right: 2%;"><a href="#">By <span class="c-font-uppercase">{{ singleBlog.author|title }}</span></a></div>
                 <div class="c-date">on <span class="c-font-uppercase">{{ singleBlog.pub_date_pro}} | {{ singleBlog.author|title }} </span></div>
-
             </div>
             <hr>
             <div class="blog-body" style="line-height: 2; margin-bottom: 10%;">
                 {% autoescape off %} {{ singleBlog.body }} {% endautoescape %}
             </div>
-            <div class="comment-section" style="width:70%">
+            <div class="c-comments">
                 <div class="c-content-title-1">
-                    <h3 class="c-font-uppercase c-font-bold">Leave A Comment</h3>
-            {% if new_comment %}
+                    <h3 class="c-font-uppercase c-font-bold">Comments({{ comments.count }})</h3>
                     <div class="c-line-left"></div>
                 </div>
-                
-                {% else %}
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" class="form-control c-square" name="name">
+
+                <div class="c-comment-list c-margin-b-30">
+                    {% for comment in comments %}
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" alt="" src="../../assets/base/img/content/team/team1.jpg">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="#" class="c-font-bold">{{ comment.name }}</a> on <span class="c-date">{{ comment.created_on }}</span></h4>
+                            {{ comment.body }}
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" class="form-control c-square" name=email>
+                    <hr>
+                    {% endfor %}
+                </div>
+
+
+                <div class="comment-section" style="width:70%">
+                    <div class="c-content-title-1">
+                        <h3 class="c-font-uppercase c-font-bold  c-margin-t-30">Leave A Comment</h3>
+                        {% if new_comment %}
+                        <div class="c-line-left"></div>
                     </div>
-                    <div class="form-group">
-                        <textarea rows="8" name="body" placeholder="Write comment here ..."
-                            class="form-control c-square"></textarea>
+                        {% else %}
+                    <div class="comment-form">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" class="form-control c-square" name="name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" class="form-control c-square" name=email>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="8" name="body" placeholder="Write comment here ..."
+                                    class="form-control c-square"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit"
+                                    class="btn c-theme-btn c-btn-uppercase btn-md c-btn-sbold btn-block c-btn-square">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <button type="submit"
-                            class="btn c-theme-btn c-btn-uppercase btn-md c-btn-sbold btn-block c-btn-square">Submit</button>
-                    </div>
-                </form>
+                </div>
+                        {% endif %}
             </div>
-            {% endif %}
-            
         </div>
     </div>
     <!-- END: PAGE CONTAINER -->
