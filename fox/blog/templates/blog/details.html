@@ -20,9 +20,9 @@
     {% endblock navbar %}
 
     <!-- BEGIN: PAGE CONTAINER -->
-    <div class="c-layout-page">
+    <div class="">
         <div class="row justify-content-center" style="
-    width: 70%;
+    width: 85%;
     margin: 80px auto;
 ">
 <h1 class="c-title c-font-bold c-font-uppercase c-font-30 text-center" style="font-weight: bold;">{{singleBlog.title}}</h1>
@@ -39,7 +39,7 @@
             <div class="blog-body" style="line-height: 2; margin-bottom: 10%;">
                 {% autoescape off %} {{ singleBlog.body }} {% endautoescape %}
             </div>
-            <div class="comment-section">
+            <div class="comment-section" style="width:70%">
                 <div class="c-content-title-1">
                     <h3 class="c-font-uppercase c-font-bold">Leave A Comment</h3>
             {% if new_comment %}
