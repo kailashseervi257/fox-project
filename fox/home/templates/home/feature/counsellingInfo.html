@@ -15,16 +15,44 @@ About
 
 
 	<!-- BEGIN: PAGE CONTAINER -->
-	<div class="c-layout-page">
+	<div class="container container c-margin-b-30">
         <div class="c-content-box c-size-lg c-bg-img-top c-bg-white">
-            <div class="container">
-                <p>Get Career counselling/Counselling guidance for colleges, courses, exams, career from professional educational consultants.</p>
-                <h3>Form includes</h3>
-
-                <li>Name</li>
-                <li>Phone No</li>
-                <li>Qualification</li>
-                <li>Need Counselling</li>
+            <div class="c-content-title-1">
+                <h3 class="c-center c-font-uppercase c-font-bold">Career Counselling</h3>
+                <div class="c-line-center c-theme-bg"></div>
+            </div>
+            <div class="">
+                <div class="c-content-title-1 c-title-md c-margin-b-20 clearfix">
+                    <h3 class="c-center c-font-uppercase c-font-bold">Fill the Form</h3>
+                    <div class="c-line-center c-theme-bg"></div>
+                </div>
+                <form class="form-horizontal col-md-8" action="" method="POST" style="margin: 0 17%;">
+                    {% csrf_token %}
+                    <input type="hidden" name="FormType" value='Career'>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="Name" class="form-control  c-square c-theme col-md-4" id="inputEmail3" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="Phone" class="form-control  c-square c-theme col-md-4" id="inputEmail3" placeholder="Phone No.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="Qualification" class="form-control  c-square c-theme col-md-4" id="inputEmail3" placeholder="Qualification">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="Details" class="form-control  c-square c-theme col-md-4" id="inputPassword3" placeholder="Need counselling in...">
+                        </div>
+                    </div>
+                <div class="col-sm-offset-3 col-md-6">
+                    <button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" style="margin: 0 30%;">Submit</button>
+                </div>
+                </form>
             </div>
         </div>
 	</div>

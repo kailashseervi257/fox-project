@@ -29,7 +29,7 @@
                 <div class="c-date">on <span class="c-font-uppercase">{{ singleBlog.pub_date_pro}} | {{ singleBlog.author|title }} </span></div>
             </div>
             <hr>
-            <div class="blog-body" style="line-height: 2; margin-bottom: 10%;">
+            <div class="blog-body" style="line-height: 2;margin-bottom: 10%;overflow: auto;">
                 {% autoescape off %} {{ singleBlog.body }} {% endautoescape %}
             </div>
             <div class="c-comments">

@@ -1,6 +1,6 @@
 from django.db.models.fields import EmailField
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Enquiry, Contact_request, Subscribers, PopupForm, RankPredictor
+from .models import Enquiry, Contact_request, Subscribers, PopupForm, RankPredictor, CareerAddmission
 import re
 from django.utils.timezone import datetime
 import pytz
@@ -29,9 +29,47 @@ def home(request):
     return render(request, 'home/home.html')
 
 def counsellingInfo(request):
+    if request.method == 'POST':
+        Name = request.POST.get('Name')
+        Phone = request.POST.get('Phone')
+        FormType = 'Career'
+        Qualification = request.POST.get('Qualification')
+        Details = request.POST.get('Details')
+        if Name and Phone and Details:
+            form_instance = CareerAddmission()
+            form_instance.Name = Name
+            form_instance.Phone = Phone
+            form_instance.Qualification = Qualification
+            form_instance.FormType = FormType
+            form_instance.Details = Details
+            form_instance.save()
+            messages.success(request, "Thank you, we will get back to you soon!")
+        else:
+            messages.error(request, "Please fill all the fields")
+        return render(request, "home/feature/counsellingInfo.html")
+
     return render(request, "home/feature/counsellingInfo.html")
 
 def admissionsInfo(request):
+    if request.method == 'POST':
+        Name = request.POST.get('Name')
+        Phone = request.POST.get('Phone')
+        FormType = 'Addmission'
+        Qualification = request.POST.get('Qualification')
+        Details = request.POST.get('Details')
+        if Name and Phone and Details:
+            form_instance = CareerAddmission()
+            form_instance.Name = Name
+            form_instance.Phone = Phone
+            form_instance.Qualification = Qualification
+            form_instance.FormType = FormType
+            form_instance.Details = Details
+            form_instance.save()
+            messages.success(request, "Thank you, we will get back to you soon!")
+        else:
+            messages.error(request, "Please fill all the fields")
+        return render(request, "home/feature/admissionsInfo.html")
+
     return render(request, "home/feature/admissionsInfo.html")
 
 def about(request):

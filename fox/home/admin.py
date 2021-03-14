@@ -57,3 +57,8 @@ class PopupFormAdmin(admin.ModelAdmin):
 @admin.register(RankPredictor)
 class RankPredictorAdmin(admin.ModelAdmin):
     list_display = ('Name', 'Email', 'Date')
+
+@admin.register(CareerAddmission)
+class CareerAddmissionAdmin(admin.ModelAdmin):
+    list_display = ('Name', 'Qualification', 'FormType', 'Date')
+    list_filter = ('FormType',)

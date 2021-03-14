@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import base
-from django.db.models.fields import CharField
+from django.db.models.fields import CharField, related
 from django.utils.timezone import datetime
 
 
@@ -192,3 +192,14 @@ class RankPredictor(models.Model):
 
     def __str__(self) :
         return self.Email
+
+class CareerAddmission(models.Model):
+    Name = models.CharField(max_length=50)
+    Phone = models.CharField(max_length=50)
+    Qualification = models.CharField(max_length=50, blank=True, null=True)
+    FormType = models.CharField(max_length=50, choices=[('Career','Career'), ('Addmission', 'Addmission')])
+    Details = models.CharField(max_length=100, blank=True, null=True)
+    Date = models.DateTimeField(auto_now=True)
+
+    def __str___(self):
+        return self.Name
