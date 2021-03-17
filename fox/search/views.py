@@ -12,7 +12,7 @@ def searchposts(request):
         if query is not None:
             lookups= Q(title__icontains=query) | Q(body__icontains=query)
 
-            results= Blog.objects.filter(lookups).distinct()
+            results= Blog.objects.filter(lookups, status=1).distinct()
             
             body={'results': results,
                      'submitbutton': submitbutton}
