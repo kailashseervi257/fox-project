@@ -53,7 +53,7 @@ def detail(request, slug):
             new_comment = Comment(**comment_form)
             new_comment.save()
             subject = "New comment on the blog '"+ singleBlog.title+"'"
-            Emessage = "Name: "+name+"\Email: "+email+"\Message: "+message
+            Emessage = "Name: "+str(name)+"\Email: "+str(email)+"\Message: "+str(message)
             email_from = settings.EMAIL_HOST_USER
             recipient_list=settings.EMAIL_RECIPIENTS_LIST
             send_mail( subject, Emessage, email_from, recipient_list )

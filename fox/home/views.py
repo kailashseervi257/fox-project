@@ -44,7 +44,7 @@ def counsellingInfo(request):
             form_instance.Details = Details
             form_instance.save()
             subject = "Request for counselling (" + FormType + ")"
-            Emessage = "Name: "+Name+"\nPhone: "+Phone+"\nQualification: "+Qualification+"\nDetails: "+Details
+            Emessage = "Name: "+str(Name)+"\nPhone: "+str(Phone)+"\nQualification: "+str(Qualification)+"\nDetails: "+str(Details)
             email_from = settings.EMAIL_HOST_USER
             recipient_list=settings.EMAIL_RECIPIENTS_LIST
             send_mail( subject, Emessage, email_from, recipient_list )
@@ -70,8 +70,8 @@ def admissionsInfo(request):
             form_instance.FormType = FormType
             form_instance.Details = Details
             form_instance.save()
-            subject = "Request for counselling (" + FormType + ")"
-            Emessage = "Name: "+Name+"\nPhone: "+Phone+"\nQualification: "+Qualification+"\nDetails: "+Details
+            subject = "Request for counselling (" + str(FormType) + ")"
+            Emessage = "Name: "+str(Name)+"\nPhone: "+str(Phone)+"\nQualification: "+str(Qualification)+"\nDetails: "+str(Details)
             email_from = settings.EMAIL_HOST_USER
             recipient_list=settings.EMAIL_RECIPIENTS_LIST
             send_mail( subject, Emessage, email_from, recipient_list )
@@ -98,7 +98,7 @@ def contact(request):
             contactReq.message = request.POST['message']
             contactReq.save()
             subject = "Contact form"
-            Emessage = "Name: "+contactReq.name+"\nEmail: "+contactReq.email+"\nSubject: "+contactReq.subject+"\nMessage: "+contactReq.message
+            Emessage = "Name: "+request.POST['name']+"\nEmail: "+request.POST['email']+"\nSubject: "+request.POST['subject']+"\nMessage: "+request.POST['message']
             email_from = settings.EMAIL_HOST_USER
             recipient_list=settings.EMAIL_RECIPIENTS_LIST
             send_mail( subject, Emessage, email_from, recipient_list )
@@ -212,7 +212,7 @@ def subscribe(request):
                 formInfo.save()
                 messages.success(request, 'Added to mail list')
                 subject = "New Subscriber!!"
-                Emessage = "\nEmail: "+ formInfo.email
+                Emessage = "\nEmail: "+ request.POST['email']
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list=settings.EMAIL_RECIPIENTS_LIST
                 send_mail( subject, Emessage, email_from, recipient_list )
@@ -441,7 +441,7 @@ def RankPredictorForm(request):
             form.save()
 
             subject = 'New Rank predictor request'
-            Emessage = 'Name: '+Name+'\n '+'Email: '+Email+"\nExam: "+Exam+"\nScore: "+Score
+            Emessage = 'Name: '+Name+'\n '+'Email: '+str(Email)+"\nExam: "+str(Exam)+"\nScore: "+str(Score)
             email_from = settings.EMAIL_HOST_USER
             recipient_list=settings.EMAIL_RECIPIENTS_LIST
             send_mail( subject, Emessage, email_from, recipient_list )
