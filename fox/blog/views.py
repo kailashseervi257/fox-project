@@ -6,6 +6,8 @@ from itertools import chain
 from django.views import generic
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
+from django.core.mail import send_mail
+from django.conf import settings
 from .forms import CommentForm
 from django.contrib import messages
 # ---class based
@@ -50,6 +52,11 @@ def detail(request, slug):
         if name and email and message:
             new_comment = Comment(**comment_form)
             new_comment.save()
+            subject = "New comment on the blog '"+ singleBlog.title+"'"
+            Emessage = "Name: "+name+"\Email: "+email+"\Message: "+message
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list=settings.EMAIL_RECIPIENTS_LIST
+            send_mail( subject, Emessage, email_from, recipient_list )
             messages.success(request, "Your comment is awaiting moderation")
     else:
         comment_form = CommentForm()

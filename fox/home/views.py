@@ -43,6 +43,11 @@ def counsellingInfo(request):
             form_instance.FormType = FormType
             form_instance.Details = Details
             form_instance.save()
+            subject = "Request for counselling (" + FormType + ")"
+            Emessage = "Name: "+Name+"\nPhone: "+Phone+"\nQualification: "+Qualification+"\nDetails: "+Details
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list=settings.EMAIL_RECIPIENTS_LIST
+            send_mail( subject, Emessage, email_from, recipient_list )
             messages.success(request, "Thank you, we will get back to you soon!")
         else:
             messages.error(request, "Please fill all the fields")
@@ -65,6 +70,11 @@ def admissionsInfo(request):
             form_instance.FormType = FormType
             form_instance.Details = Details
             form_instance.save()
+            subject = "Request for counselling (" + FormType + ")"
+            Emessage = "Name: "+Name+"\nPhone: "+Phone+"\nQualification: "+Qualification+"\nDetails: "+Details
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list=settings.EMAIL_RECIPIENTS_LIST
+            send_mail( subject, Emessage, email_from, recipient_list )
             messages.success(request, "Thank you, we will get back to you soon!")
         else:
             messages.error(request, "Please fill all the fields")
@@ -87,6 +97,11 @@ def contact(request):
             contactReq.subject = request.POST['subject']
             contactReq.message = request.POST['message']
             contactReq.save()
+            subject = "Contact form"
+            Emessage = "Name: "+contactReq.name+"\nEmail: "+contactReq.email+"\nSubject: "+contactReq.subject+"\nMessage: "+contactReq.message
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list=settings.EMAIL_RECIPIENTS_LIST
+            send_mail( subject, Emessage, email_from, recipient_list )
             messages.success(request, "Submitted")
             return redirect('contact')
         else:
@@ -196,7 +211,13 @@ def subscribe(request):
                 new_sub = formInfo.email
                 formInfo.save()
                 messages.success(request, 'Added to mail list')
+                subject = "New Subscriber!!"
+                Emessage = "\nEmail: "+ formInfo.email
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list=settings.EMAIL_RECIPIENTS_LIST
+                send_mail( subject, Emessage, email_from, recipient_list )
                 return render(request, 'home/home.html',homeForm)
+                
             else:
                 messages.success(request, "You have already subscribed!")
                 return render(request, 'home/home.html', homeForm)
@@ -395,7 +416,6 @@ def popupForm(request):
                 Emessage = 'Name: '+formInfo.name+'\n '+'\nPhone number: '+formInfo.ph+'\nCourse Type'+formInfo.courseType+'\nEntrance: '+formInfo.Entrance+'\nTwelfthPercentage'+formInfo.TwelfthPercentage+'Admission Type'+'\nRequest on: '+str(datetime.now(IST))
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list=settings.EMAIL_RECIPIENTS_LIST
-                # mail_admins(subject,emessage, fail_silently=False,connection=None, html_message=None)
                 send_mail( subject, Emessage, email_from, recipient_list )
                 messages.success(request, "Message successfully sent")
                 return render(request, 'home/home.html',homeForm)
